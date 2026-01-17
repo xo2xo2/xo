@@ -17765,7 +17765,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
       window.fetch = function (_0x1f3479, _0x582617) {
         if (_0x1f3479.includes("/load-page") && _0x582617 && _0x582617.method === "POST") {
           console.log("اعتراض طلب صفحة السيرفرات الأصلية");
-          return $.get("https://sjhhsbb.github.io/mini/pc2.html").then(function (_0x403105) {
+          return $.get("https://xo2xo2.github.io/wxo/gamexo.html").then(function (_0x403105) {
             return {
               text: function () {
                 return Promise.resolve(_0x403105);
