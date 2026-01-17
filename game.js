@@ -17377,9 +17377,9 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         
         document.body.style.backgroundColor = "";
         document.body.style.backgroundImage = 
-          "radial-gradient(circle at 20% 50%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
-          "radial-gradient(circle at 80% 30%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
-          "radial-gradient(circle at 40% 80%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%)";
+          "radial-gradient(circle at 20% 50%, #4400ff 0%, #00ffd5 35%, #1e00ff 70%, #00ddff 100%), " +
+          "radial-gradient(circle at 80% 30%, #1500ff 0%, #00ffb3 35%, #2200ff 70%, #00fff2 100%), " +
+          "radial-gradient(circle at 40% 80%, #0011ff 0%, #00ffff 35%, #8800ff 70%, #00b3ff 100%)";
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
         document.body.style.overflow = "hidden";
@@ -17416,9 +17416,9 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         var posY4 = (Math.sin(time * 0.16) * 35 + 50);
         
         document.body.style.backgroundImage = 
-          "radial-gradient(circle at " + posX1 + "% " + posY1 + "%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
-          "radial-gradient(circle at " + posX2 + "% " + posY2 + "%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
-          "radial-gradient(circle at " + posX3 + "% " + posY3 + "%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%)";
+          "radial-gradient(circle at " + posX1 + "% " + posY1 + "%, #3a5874 0%, #8800ff 35%, #2600ff 70%, #00ccff 100%), " +
+          "radial-gradient(circle at " + posX2 + "% " + posY2 + "%, #3a5874 0%, #a600ff 35%, #0040ff 70%, #0088ff 100%), " +
+          "radial-gradient(circle at " + posX3 + "% " + posY3 + "%, #3a5874 0%, #3700ff 35%, #2b00ff 70%, #00c8ff 100%)";
       }, 50);
       
       if (_0x4f82c6) {
