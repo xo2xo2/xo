@@ -372,7 +372,7 @@ body {
 }
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-top #mm-player-info:hover {
   transition:background-color .2s ease,border .2s ease;
-  background:rgb(255, 255, 255) !important; /* لون التحويم */
+  background:rgb(0,0,0,0.5) !important; /* لون التحويم */
   border-radius:4px;
 }
 
@@ -535,7 +535,7 @@ body {
     height: 100%;
     width: 250px;
     left: 15px;
-    margin-top: -22px;
+    margin-top: -2px;
 }
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-left .description-text {
