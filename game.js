@@ -7571,7 +7571,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         _0x3c7638.dh.Np();
         _0x129b06();
       };
-      $("<button id=\"op_wup\" class=\"op_wup\"><i class=\"fas fa-tools\"></i><span class=\"btn-text\">Settings</span></button>")
+      $("<button id=\"op_wup\" class=\"op_wup\"><i class=\"fas fa-tools\"><::before></::before></i><span class=\"btn-text\">Settings</span></button>")
       .insertAfter("#mm-store");
       $(".store-view-cont").append("<div id=\"idReplaceSkin\"></div>");
       $(".wear-view-cont").append("<div id=\"idWearViewCont\"></div>");
