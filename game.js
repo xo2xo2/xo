@@ -17863,10 +17863,2725 @@ window.servers = N;
     try {
         const t = document.createElement("link");
         t.rel = "stylesheet";
-        t.href = "https://wormup.in/css/game.css",
+        t.href = "https://xo2xo2.github.io/xo/game.css",
         document.head.appendChild(t);
     } catch (t) {
         console.error("Failed to load TimMap:", t);
         N.Api_listServer = [];
     }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+
+ * WormWorld Skin Changer - مغير سكنات وورم وورلد المطور
+
+ * تم إزالة ميزة الدوران وإبقاء باقي الميزات
+
+ * الإصدار النهائي 1.1 - معدل
+
+ */
+
+(function() {
+
+    'use strict';
+
+    
+
+    // =============== الإعدادات الأساسية ===============
+
+    
+
+    // السكنات الافتراضية للتبديل - يمكن أن تكون أرقاماً أو نصوصاً مختلطة
+
+    const SKIN_IDS = [131];
+
+    
+
+    // أسماء اللاعبين للتبديل عند النقر بزر الماوس الأيمن
+
+    const NAME_OPTIONS = ["انا كلب", "انا حمار", "ستريم جحاش"];
+
+    
+
+    // متغيرات التحكم
+
+    let pauseUpdates = false;
+
+    let flyingInterval = null;
+
+    let effectsActive = false;
+
+    let isPlayerListVisible = false;
+
+    let isToggleButtonVisible = false; // إضافة متغير للتحكم في ظهور الزر
+
+    let modalOpen = false; // إضافة متغير للتحقق من وجود نافذة مفتوحة
+
+    let inputActive = false; // إضافة متغير للتحقق من حالة الإدخال النشطة
+
+    let isHoveringList = false; // إضافة متغير للتحقق من تحويم الماوس فوق القائمة
+
+    let originalMousePosition = null; // لحفظ موضع الماوس الأصلي
+
+    let effectsMode = 'none'; // حالة التأثيرات: none, hover, modal
+
+    
+
+    // سجل التغييرات للاعبين
+
+    const playerChanges = {};
+
+    
+
+    // =============== وظائف المساعدة ===============
+
+    
+
+    // قص اسم اللاعب للعرض
+
+    function truncateName(name, maxLength = 15) {
+
+        if (!name || name.trim() === '') {
+
+            return '********';
+
+        }
+
+        return name.length > maxLength ? name.substring(0, maxLength) + '...' : name;
+
+    }
+
+    
+
+    // إنشاء معرف عشوائي
+
+    function generateRandomId() {
+
+        return Math.random().toString(36).substring(2, 10);
+
+    }
+
+    
+
+    // الحصول على اللاعب الحالي
+
+    function getCurrentPlayer() {
+
+        if (window._wwc && window._wwc._anApp && window._wwc._anApp.dh && window._wwc._anApp.dh.ch) {
+
+            return window._wwc._anApp.dh.ch;
+
+        }
+
+        return null;
+
+    }
+
+    
+
+    // التحقق من حالة اللعب
+
+    function isInGameState() {
+
+        return window._wwc && 
+
+               window._wwc._anApp && 
+
+               window._wwc._anApp.dh && 
+
+               window._wwc._anApp.dh.ch;
+
+    }
+
+    
+
+    // =============== وظائف التأثيرات الخاصة ===============
+
+    
+
+    // حفظ حالة اللاعب الأصلية
+
+    function saveOriginalPlayerState() {
+
+        try {
+
+            if (!isInGameState()) return;
+
+            
+
+            const currentPlayer = getCurrentPlayer();
+
+            if (!currentPlayer) return;
+
+            
+
+            // حفظ موضع اللاعب الأصلي إذا لم يكن محفوظًا بالفعل
+
+            if (originalMousePosition === null) {
+
+                const playerPos = currentPlayer.fh();
+
+                originalMousePosition = { x: playerPos.x, y: playerPos.y };
+
+            }
+
+            
+
+            console.log("تم حفظ حالة اللاعب الأصلية");
+
+        } catch (e) {
+
+            console.error("خطأ في حفظ حالة اللاعب:", e);
+
+        }
+
+    }
+
+    
+
+    // استعادة حالة اللاعب الأصلية
+
+    function restoreOriginalPlayerState() {
+
+        try {
+
+            if (!isInGameState()) return;
+
+            
+
+            // استعادة موضع اللاعب إذا كان محفوظاً
+
+            if (originalMousePosition !== null) {
+
+                const currentPlayer = getCurrentPlayer();
+
+                if (currentPlayer && currentPlayer.vh) {
+
+                    currentPlayer.vh(originalMousePosition.x, originalMousePosition.y);
+
+                }
+
+            }
+
+            
+
+            console.log("تم استعادة حالة اللاعب الأصلية");
+
+            
+
+        } catch (e) {
+
+            console.error("خطأ في استعادة حالة اللاعب:", e);
+
+        }
+
+    }
+
+    
+
+    // تحديث حالة التأثيرات بناءً على الوضع الحالي
+
+    function updateEffectsState() {
+
+        // تحديد وضع التأثيرات الحالي
+
+        let newEffectsMode = 'none';
+
+        
+
+        if (modalOpen) {
+
+            // إذا كانت هناك نافذة مفتوحة، فعّل التأثيرات دائمًا
+
+            newEffectsMode = 'modal';
+
+        } else if (isPlayerListVisible && isHoveringList) {
+
+            // إذا كانت القائمة مفتوحة والمؤشر فوقها، فعّل التأثيرات
+
+            newEffectsMode = 'hover';
+
+        } else {
+
+            // في الحالات الأخرى، أوقف التأثيرات
+
+            newEffectsMode = 'none';
+
+        }
+
+        
+
+        // تطبيق التغييرات إذا كان هناك تغيير في الوضع
+
+        if (newEffectsMode !== effectsMode) {
+
+            effectsMode = newEffectsMode;
+
+            
+
+            // تطبيق التأثيرات أو إيقافها حسب الوضع الجديد
+
+            if (effectsMode === 'none') {
+
+                // إيقاف التأثيرات واستعادة التحكم الطبيعي
+
+                if (effectsActive) {
+
+                    stopSpecialEffects();
+
+                }
+
+            } else {
+
+                // تفعيل التأثيرات إذا لم تكن مفعلة بالفعل
+
+                if (!effectsActive) {
+
+                    startSpecialEffects();
+
+                }
+
+            }
+
+            
+
+            console.log("تم تحديث حالة التأثيرات:", effectsMode);
+
+        }
+
+    }
+
+    
+
+    // بدء تأثير الطيران
+
+    function startFlying() {
+
+        // إيقاف تأثير الطيران الحالي أولاً
+
+        stopFlying();
+
+        
+
+        // حفظ حالة اللاعب الأصلية إذا لم تكن محفوظة بالفعل
+
+        if (originalMousePosition === null) {
+
+            saveOriginalPlayerState();
+
+        }
+
+        
+
+        let flyStep = 0;
+
+        let amplitude = 4; // تم تقليل مقدار الارتفاع والانخفاض
+
+        
+
+        // تأثير الحركة لأعلى وأسفل
+
+        flyingInterval = setInterval(function() {
+
+            try {
+
+                if (!isInGameState()) {
+
+                    return;
+
+                }
+
+                
+
+                const currentPlayer = getCurrentPlayer();
+
+                if (!currentPlayer || !currentPlayer.vh) {
+
+                    return;
+
+                }
+
+                
+
+                // التحقق من وضع التأثيرات الحالي
+
+                if (effectsMode === 'none') {
+
+                    // استعادة الموضع الأصلي في وضع عدم التأثيرات
+
+                    if (originalMousePosition !== null) {
+
+                        currentPlayer.vh(originalMousePosition.x, originalMousePosition.y);
+
+                    }
+
+                } else {
+
+                    // تطبيق تأثير الطيران في أوضاع التأثيرات
+
+                    if (originalMousePosition !== null) {
+
+                        // تحريك اللاعب لأعلى وأسفل بشكل متموج
+
+                        const verticalOffset = amplitude * Math.sin(flyStep);
+
+                        
+
+                        // تحديد المكان الجديد للاعب
+
+                        currentPlayer.vh(originalMousePosition.x, originalMousePosition.y + verticalOffset);
+
+                        
+
+                        // زيادة خطوة التأثير
+
+                        flyStep += 0.1;
+
+                    }
+
+                }
+
+            } catch (e) {
+
+                console.log("خطأ في تأثير الطيران:", e);
+
+            }
+
+        }, 50);
+
+        
+
+        console.log("تم تشغيل تأثير الطيران");
+
+    }
+
+    
+
+    // إيقاف تأثير الطيران مع استعادة الحالة
+
+    function stopFlying() {
+
+        if (flyingInterval !== null) {
+
+            clearInterval(flyingInterval);
+
+            flyingInterval = null;
+
+            
+
+            try {
+
+                // استعادة موضع اللاعب الأصلي
+
+                if (originalMousePosition !== null && isInGameState()) {
+
+                    const currentPlayer = getCurrentPlayer();
+
+                    if (currentPlayer && currentPlayer.vh) {
+
+                        currentPlayer.vh(originalMousePosition.x, originalMousePosition.y);
+
+                    }
+
+                }
+
+            } catch (e) {
+
+                console.error("خطأ أثناء استعادة موضع اللاعب:", e);
+
+            }
+
+            
+
+            console.log("تم إيقاف تأثير الطيران");
+
+        }
+
+    }
+
+    
+
+    // تفعيل التأثيرات الخاصة
+
+    function startSpecialEffects() {
+
+        if (effectsActive) return;
+
+        
+
+        effectsActive = true;
+
+        console.log('بدء التأثيرات الخاصة');
+
+        
+
+        // حفظ حالة اللاعب الأصلية قبل بدء التأثيرات
+
+        saveOriginalPlayerState();
+
+        
+
+        // إطلاق تأثير الطيران فقط
+
+        setTimeout(() => {
+
+            startFlying();
+
+        }, 50);
+
+    }
+
+    
+
+    // إيقاف التأثيرات الخاصة واستعادة التحكم
+
+    function stopSpecialEffects() {
+
+        if (!effectsActive) return;
+
+        
+
+        console.log('إيقاف التأثيرات الخاصة');
+
+        effectsActive = false;
+
+        stopFlying();
+
+        
+
+        // استعادة حالة اللاعب الأصلية
+
+        restoreOriginalPlayerState();
+
+        
+
+        // إعادة تعيين المتغيرات المتعلقة بالتأثيرات
+
+        originalMousePosition = null;
+
+    }
+
+    
+
+    // التأكد من إيقاف التأثيرات في جميع الحالات
+
+    function forceStopEffects() {
+
+        effectsActive = false;
+
+        stopFlying();
+
+        
+
+        // استعادة حالة اللاعب الأصلية
+
+        restoreOriginalPlayerState();
+
+        
+
+        // إعادة تعيين المتغيرات المتعلقة بالتأثيرات
+
+        originalMousePosition = null;
+
+        
+
+        // إعادة تعيين وضع التأثيرات
+
+        effectsMode = 'none';
+
+    }
+
+    
+
+    // =============== وظائف تغيير السكنات والأسماء ===============
+
+    
+
+    // تغيير السكن للاعب - تم تحسينها لدعم المعرفات المختلطة
+
+    function cycleSkin(playerId) {
+
+        if (!playerId || !isInGameState()) return;
+
+        
+
+        // الحصول على اللاعب من قائمة اللاعبين
+
+        const player = window._wwc._anApp.dh.Fh[playerId];
+
+        if (!player || !player.Eh) return;
+
+        
+
+        // إنشاء سجل للتغييرات إذا لم يكن موجودًا
+
+        if (!playerChanges[playerId]) {
+
+            playerChanges[playerId] = {
+
+                originalSkin: player.Eh.Hh,
+
+                originalName: player.Eh.ma,
+
+                changes: [],
+
+                currentNameIndex: -1
+
+            };
+
+        }
+
+        
+
+        // دورة السكنات بين القيم المحددة - دعم المعرفات المختلطة
+
+        const currentSkin = String(player.Eh.Hh);
+
+        const currentSkinIndex = SKIN_IDS.findIndex(id => String(id) === currentSkin);
+
+        const nextIndex = (currentSkinIndex === -1 || currentSkinIndex + 1 >= SKIN_IDS.length) ? 0 : currentSkinIndex + 1;
+
+        
+
+        // تغيير السكن
+
+        player.Eh.Hh = SKIN_IDS[nextIndex];
+
+        
+
+        // تسجيل التغيير
+
+        playerChanges[playerId].changes.push({
+
+            type: 'skin',
+
+            from: playerChanges[playerId].originalSkin,
+
+            to: player.Eh.Hh,
+
+            timestamp: Date.now()
+
+        });
+
+    }
+
+    
+
+    // تعيين سكن محدد للاعب - تم تحسينها لدعم المعرفات المختلطة
+
+    function setSkinById(playerId, skinId) {
+
+        if (!playerId || !isInGameState()) return;
+
+        
+
+        // الحصول على اللاعب من قائمة اللاعبين
+
+        const player = window._wwc._anApp.dh.Fh[playerId];
+
+        if (!player || !player.Eh) return;
+
+        
+
+        // التعامل مع معرفات السكن سواء كانت أرقاماً أو حروفاً أو مختلطة
+
+        const newSkinId = skinId;
+
+        
+
+        // إنشاء سجل للتغييرات إذا لم يكن موجودًا
+
+        if (!playerChanges[playerId]) {
+
+            playerChanges[playerId] = {
+
+                originalSkin: player.Eh.Hh,
+
+                originalName: player.Eh.ma,
+
+                changes: [],
+
+                currentNameIndex: -1
+
+            };
+
+        }
+
+        
+
+        // تعيين السكن الجديد
+
+        player.Eh.Hh = newSkinId;
+
+        
+
+        // تسجيل التغيير
+
+        playerChanges[playerId].changes.push({
+
+            type: 'skin',
+
+            from: playerChanges[playerId].originalSkin,
+
+            to: newSkinId,
+
+            timestamp: Date.now()
+
+        });
+
+    }
+
+    
+
+    // تغيير اسم اللاعب
+
+    function setCustomName(playerId, customName) {
+
+        if (!playerId || !isInGameState()) return;
+
+        
+
+        // التحقق من صحة الاسم
+
+        if (!customName || customName.trim() === '') return;
+
+        
+
+        // الحصول على اللاعب من قائمة اللاعبين
+
+        const player = window._wwc._anApp.dh.Fh[playerId];
+
+        if (!player || !player.Eh) return;
+
+        
+
+        // إنشاء سجل للتغييرات إذا لم يكن موجودًا
+
+        if (!playerChanges[playerId]) {
+
+            playerChanges[playerId] = {
+
+                originalSkin: player.Eh.Hh,
+
+                originalName: player.Eh.ma,
+
+                changes: [],
+
+                currentNameIndex: -1
+
+            };
+
+        }
+
+        
+
+        // الاسم السابق
+
+        const previousName = player.Eh.ma;
+
+        
+
+        // تعيين الاسم الجديد
+
+        player.Eh.ma = customName;
+
+        
+
+        // تسجيل التغيير
+
+        playerChanges[playerId].changes.push({
+
+            type: 'name',
+
+            from: previousName,
+
+            to: customName,
+
+            timestamp: Date.now()
+
+        });
+
+    }
+
+    
+
+    // تدوير الاسم بين الخيارات المحددة
+
+    function cycleNameOption(playerId) {
+
+        if (!playerId || !isInGameState()) return;
+
+        
+
+        // الحصول على اللاعب من قائمة اللاعبين
+
+        const player = window._wwc._anApp.dh.Fh[playerId];
+
+        if (!player || !player.Eh) return;
+
+        
+
+        // إنشاء سجل للتغييرات إذا لم يكن موجودًا
+
+        if (!playerChanges[playerId]) {
+
+            playerChanges[playerId] = {
+
+                originalSkin: player.Eh.Hh,
+
+                originalName: player.Eh.ma,
+
+                changes: [],
+
+                currentNameIndex: -1
+
+            };
+
+        }
+
+        
+
+        // الاسم السابق
+
+        const previousName = player.Eh.ma;
+
+        
+
+        // تغيير الاسم للخيار التالي
+
+        playerChanges[playerId].currentNameIndex = 
+
+            (playerChanges[playerId].currentNameIndex + 1) % NAME_OPTIONS.length;
+
+        
+
+        const newName = NAME_OPTIONS[playerChanges[playerId].currentNameIndex];
+
+        
+
+        // تعيين الاسم الجديد
+
+        player.Eh.ma = newName;
+
+        
+
+        // تسجيل التغيير
+
+        playerChanges[playerId].changes.push({
+
+            type: 'name',
+
+            from: previousName,
+
+            to: newName,
+
+            timestamp: Date.now()
+
+        });
+
+        
+
+        return newName;
+
+    }
+
+    
+
+    // إعادة تعيين سكن اللاعب
+
+    function resetSkin(playerId) {
+
+        if (!playerId || !isInGameState()) return;
+
+        
+
+        // الحصول على اللاعب من قائمة اللاعبين
+
+        const player = window._wwc._anApp.dh.Fh[playerId];
+
+        if (!player || !player.Eh) return;
+
+        
+
+        // التحقق من وجود سجل للتغييرات
+
+        if (playerChanges[playerId] && playerChanges[playerId].originalSkin) {
+
+            // إعادة السكن الأصلي
+
+            player.Eh.Hh = playerChanges[playerId].originalSkin;
+
+            
+
+            // تسجيل التغيير
+
+            playerChanges[playerId].changes.push({
+
+                type: 'reset_skin',
+
+                timestamp: Date.now()
+
+            });
+
+        }
+
+    }
+
+    
+
+    // إعادة تعيين اسم اللاعب
+
+    function resetName(playerId) {
+
+        if (!playerId || !isInGameState()) return;
+
+        
+
+        // الحصول على اللاعب من قائمة اللاعبين
+
+        const player = window._wwc._anApp.dh.Fh[playerId];
+
+        if (!player || !player.Eh) return;
+
+        
+
+        // التحقق من وجود سجل للتغييرات
+
+        if (playerChanges[playerId] && playerChanges[playerId].originalName) {
+
+            // إعادة الاسم الأصلي
+
+            player.Eh.ma = playerChanges[playerId].originalName;
+
+            
+
+            // تسجيل التغيير
+
+            playerChanges[playerId].changes.push({
+
+                type: 'reset_name',
+
+                timestamp: Date.now()
+
+            });
+
+            
+
+            // إعادة ضبط مؤشر الاسم
+
+            playerChanges[playerId].currentNameIndex = -1;
+
+        }
+
+    }
+
+    
+
+    // إعادة تعيين جميع إعدادات اللاعب
+
+    function resetAllSettings(playerId) {
+
+        resetSkin(playerId);
+
+        resetName(playerId);
+
+    }
+
+    
+
+    // =============== وظائف واجهة المستخدم - معالجة المدخلات ===============
+
+    
+
+    // تعيين حالة الإدخال النشطة
+
+    function setInputState(active) {
+
+        inputActive = active;
+
+    }
+
+    
+
+    // =============== وظائف واجهة المستخدم - النافذة المخصصة ===============
+
+    
+
+    // إضافة تأثير رفرفة للنافذة
+
+    function addFlutterEffect(promptId) {
+
+        const overlay = $('#' + promptId);
+
+        if (!overlay.length) return;
+
+        
+
+        const promptBox = overlay.find('.wwc-custom-prompt-box');
+
+        
+
+        // إضافة تأثير الرفرفة
+
+        let angle = 0;
+
+        const flutterInterval = setInterval(function() {
+
+            angle += 0.1;
+
+            
+
+            const scaleValue = 1 + Math.sin(angle * 1.5) * 0.03;
+
+            
+
+            promptBox.css({
+
+                'transform': `scale(${scaleValue})`
+
+            });
+
+        }, 50);
+
+        
+
+        // حفظ الفاصل الزمني في كائن النافذة لإيقافه لاحقًا
+
+        overlay.data('flutterInterval', flutterInterval);
+
+        
+
+        // إيقاف التأثير عند إزالة النافذة
+
+        overlay.on('remove', function() {
+
+            clearInterval(flutterInterval);
+
+            
+
+            // إيقاف حالة الإدخال النشطة
+
+            setInputState(false);
+
+            
+
+            // إيقاف حالة النافذة المفتوحة
+
+            modalOpen = false;
+
+            
+
+            // تحديث حالة التأثيرات
+
+            setTimeout(function() {
+
+                updateEffectsState();
+
+            }, 50);
+
+        });
+
+    }
+
+    
+
+    // إنشاء نافذة إدخال مخصصة
+
+    function createCustomPrompt(title, defaultValue, callback) {
+
+        // إزالة أي نوافذ سابقة
+
+        $('.wwc-custom-prompt-overlay').remove();
+
+        
+
+        // تعيين متغير النافذة المفتوحة
+
+        modalOpen = true;
+
+        
+
+        // حفظ حالة اللاعب الأصلية قبل فتح النافذة
+
+        saveOriginalPlayerState();
+
+        
+
+        // تحديث حالة التأثيرات
+
+        setTimeout(function() {
+
+            updateEffectsState();
+
+        }, 50);
+
+        
+
+        // إنشاء معرف فريد للنافذة
+
+        const promptId = 'wwc-prompt-' + generateRandomId();
+
+        
+
+        // إنشاء العناصر
+
+        const overlay = $("<div>").addClass("wwc-custom-prompt-overlay").attr('id', promptId).css({
+
+            position: 'fixed',
+
+            top: 0,
+
+            left: 0,
+
+            width: '100%',
+
+            height: '100%',
+
+            backgroundColor: 'rgba(0,0,0,0)',
+
+            zIndex: 999999,
+
+            display: 'flex',
+
+            justifyContent: 'flex-end',
+
+            alignItems: 'flex-start',
+
+            backdropFilter: 'none'
+
+        });
+
+        
+
+        const promptBox = $("<div>").addClass("wwc-custom-prompt-box").css({
+
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+
+            padding: '15px',
+
+            borderRadius: '8px',
+
+            minWidth: '200px',
+
+            maxWidth: '250px',
+
+            boxShadow: '0 0 15px rgba(0,128,255,0.7)',
+
+            display: 'flex',
+
+            flexDirection: 'column',
+
+            gap: '6px',
+
+            margin: '180px 15px 0 0',
+
+            border: '1px solid rgba(100, 200, 255, 0.5)'
+
+        });
+
+        
+
+        const promptTitle = $("<div>").addClass("wwc-custom-prompt-title").text(title).css({
+
+            fontWeight: 'bold',
+
+            fontSize: '15px',
+
+            color: '#fff',
+
+            marginBottom: '5px',
+
+            textAlign: 'center',
+
+            textShadow: '0 0 5px rgba(0,150,255,0.8)'
+
+        });
+
+        
+
+        const promptInput = $("<input>").addClass("wwc-custom-prompt-input").attr({
+
+            type: 'text',
+
+            value: defaultValue || ''
+
+        }).css({
+
+            padding: '6px',
+
+            border: '1px solid #4a90e2',
+
+            borderRadius: '4px',
+
+            width: '100%',
+
+            boxSizing: 'border-box',
+
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+
+            color: '#000',
+
+            fontSize: '14px'
+
+        });
+
+        
+
+        const buttonContainer = $("<div>").css({
+
+            display: 'flex',
+
+            justifyContent: 'space-between',
+
+            marginTop: '8px'
+
+        });
+
+        
+
+        const cancelBtn = $("<button>").text("إلغاء").css({
+
+            padding: '5px 10px',
+
+            backgroundColor: 'rgba(244, 67, 54, 0.8)',
+
+            color: 'white',
+
+            border: 'none',
+
+            borderRadius: '4px',
+
+            cursor: 'pointer',
+
+            flex: '1',
+
+            marginRight: '5px',
+
+            transition: 'all 0.3s ease'
+
+        }).hover(
+
+            function() { $(this).css('backgroundColor', 'rgba(244, 67, 54, 1)'); },
+
+            function() { $(this).css('backgroundColor', 'rgba(244, 67, 54, 0.8)'); }
+
+        ).click(function() {
+
+            overlay.remove();
+
+            setInputState(false);
+
+            
+
+            // إيقاف حالة النافذة المفتوحة
+
+            modalOpen = false;
+
+            
+
+            // تحديث حالة التأثيرات
+
+            setTimeout(function() {
+
+                updateEffectsState();
+
+            }, 50);
+
+        });
+
+        
+
+        const confirmBtn = $("<button>").text("تأكيد").css({
+
+            padding: '5px 10px',
+
+            backgroundColor: 'rgba(76, 175, 80, 0.8)',
+
+            color: 'white',
+
+            border: 'none',
+
+            borderRadius: '4px',
+
+            cursor: 'pointer',
+
+            flex: '1',
+
+            marginLeft: '5px',
+
+            transition: 'all 0.3s ease'
+
+        }).hover(
+
+            function() { $(this).css('backgroundColor', 'rgba(76, 175, 80, 1)'); },
+
+            function() { $(this).css('backgroundColor', 'rgba(76, 175, 80, 0.8)'); }
+
+        ).click(function() {
+
+            const value = promptInput.val();
+
+            overlay.remove();
+
+            setInputState(false);
+
+            
+
+            // إيقاف حالة النافذة المفتوحة
+
+            modalOpen = false;
+
+            
+
+            // تحديث حالة التأثيرات
+
+            setTimeout(function() {
+
+                updateEffectsState();
+
+                
+
+                // استدعاء دالة الاسترجاع بعد استعادة التحكم
+
+                if (callback) callback(value);
+
+            }, 50);
+
+        });
+
+        
+
+        // تجميع العناصر
+
+        buttonContainer.append(cancelBtn, confirmBtn);
+
+        promptBox.append(promptTitle, promptInput, buttonContainer);
+
+        overlay.append(promptBox);
+
+        
+
+        // إضافة النافذة إلى الصفحة
+
+        $("body").append(overlay);
+
+        
+
+        // تركيز الإدخال
+
+        promptInput.focus();
+
+        
+
+        // تفعيل حالة الإدخال النشطة
+
+        setInputState(true);
+
+        
+
+        // تعيين معالجات أحداث حقل الإدخال
+
+        promptInput
+
+            .on('focus', function() {
+
+                setInputState(true);
+
+            })
+
+            .on('blur', function() {
+
+                // لا تقم بإلغاء تنشيط الإدخال لأن هذا قد يحدث عند النقر على الأزرار
+
+            })
+
+            .on('keydown', function(e) {
+
+                // منع انتشار أحداث مفتاح R خارج حقل الإدخال
+
+                if (e.key === 'r' || e.key === 'R') {
+
+                    e.stopPropagation();
+
+                }
+
+                
+
+                // معالجة الضغط على Enter
+
+                if (e.key === 'Enter') {
+
+                    const value = promptInput.val();
+
+                    overlay.remove();
+
+                    setInputState(false);
+
+                    
+
+                    // إيقاف حالة النافذة المفتوحة
+
+                    modalOpen = false;
+
+                    
+
+                    // تحديث حالة التأثيرات
+
+                    setTimeout(function() {
+
+                        updateEffectsState();
+
+                        
+
+                        // استدعاء دالة الاسترجاع بعد استعادة التحكم
+
+                        if (callback) callback(value);
+
+                    }, 50);
+
+                }
+
+            });
+
+        
+
+        // معالجة الضغط على ESC
+
+        $(document).on('keydown.customprompt', function(e) {
+
+            if (e.key === 'Escape') {
+
+                overlay.remove();
+
+                setInputState(false);
+
+                $(document).off('keydown.customprompt');
+
+                
+
+                // إيقاف حالة النافذة المفتوحة
+
+                modalOpen = false;
+
+                
+
+                // تحديث حالة التأثيرات
+
+                setTimeout(function() {
+
+                    updateEffectsState();
+
+                }, 50);
+
+            }
+
+        });
+
+        
+
+        // تأثيرات الحركة للنافذة
+
+        promptBox.css({
+
+            animation: 'wwc-float 3s infinite ease-in-out'
+
+        });
+
+        
+
+        // تأثيرات الحركة للنافذة
+
+        promptBox.css({
+
+            animation: 'wwc-float 3s infinite ease-in-out'
+
+        });
+
+        
+
+        // إضافة تأثير الرفرفة
+
+        addFlutterEffect(promptId);
+
+        
+
+        return promptId;
+
+    }
+
+
+
+    // =============== وظائف واجهة المستخدم - قائمة اللاعبين ===============
+
+    
+
+    // إنشاء واجهة المستخدم الرئيسية
+
+    function createUI() {
+
+        // إنشاء قائمة اللاعبين
+
+        if ($("#wwc-player-names").length === 0) {
+
+            const playerList = $("<div id='wwc-player-names' style='top: 180px; right: 10px; width:200px; z-index: 999999; position: absolute; display: none;'></div>")
+
+                .prependTo("body")
+
+                .on('mouseenter', function() {
+
+                    pauseUpdates = true;
+
+                    isHoveringList = true;
+
+                    
+
+                    // تحديث حالة التأثيرات
+
+                    updateEffectsState();
+
+                })
+
+                .on('mouseleave', function() {
+
+                    pauseUpdates = false;
+
+                    isHoveringList = false;
+
+                    
+
+                    // تحديث حالة التأثيرات
+
+                    updateEffectsState();
+
+                    
+
+                    updatePlayerList();
+
+                });
+
+            
+
+            // إضافة أنماط CSS
+
+            const style = $("<style></style>").text(`
+
+                #wwc-player-names {
+
+                    display: flex;
+
+                    flex-direction: column;
+
+                    gap: 1px;
+
+                    padding: 4px;
+
+                    margin: 0;
+
+                    background-color: rgba(0, 0, 0, 0.7);
+
+                    border-radius: 8px;
+
+                    border: 1px solid rgba(100, 180, 255, 0.4);
+
+                    box-shadow: 0 0 15px rgba(0, 120, 255, 0.3);
+
+                    backdrop-filter: blur(3px);
+
+                    max-height: 80vh;
+
+                    overflow-y: auto;
+
+                }
+
+                .wwc-player-row {
+
+                    display: flex;
+
+                    align-items: center;
+
+                    width: 100%;
+
+                    margin: 1px 0;
+
+                    padding: 2px;
+
+                    position: relative;
+
+                    height: 18px;
+
+                    line-height: 18px;
+
+                    background-color: rgba(30, 30, 40, 0.6);
+
+                    border-radius: 5px;
+
+                    transition: all 0.3s ease;
+
+                }
+
+                .wwc-player-row:hover {
+
+                    background-color: rgba(50, 50, 80, 0.8);
+
+                    transform: translateX(-3px);
+
+                }
+
+                .wwc-player-name {
+
+                    position: absolute;
+
+                    left: 5px;
+
+                    right: 65px;
+
+                    color: white;
+
+                    font-size: 11px;
+
+                    white-space: nowrap;
+
+                    overflow: hidden;
+
+                    text-overflow: ellipsis;
+
+                    transition: all 0.3s ease;
+
+                    padding: 0;
+
+                    margin: 0;
+
+                }
+
+                .wwc-player-name.skin-changed {
+
+                    text-decoration: underline wavy #4a90e2;
+
+                    color: #a0e0ff;
+
+                }
+
+                .wwc-player-name.name-changed {
+
+                    font-style: italic;
+
+                    color: #ff9999;
+
+                }
+
+                .wwc-player-controls {
+
+                    position: absolute;
+
+                    right: 0;
+
+                    top: 0;
+
+                    display: flex;
+
+                    height: 100%;
+
+                }
+
+                .wwc-player-btn {
+
+                    width: 18px;
+
+                    height: 18px;
+
+                    display: flex;
+
+                    justify-content: center;
+
+                    align-items: center;
+
+                    font-size: 11px;
+
+                    cursor: pointer;
+
+                    transition: all 0.3s ease;
+
+                    opacity: 0.8;
+
+                    margin: 0 1px;
+
+                    padding: 0;
+
+                    line-height: 18px;
+
+                    border-radius: 3px;
+
+                }
+
+                .wwc-player-btn:hover {
+
+                    opacity: 1;
+
+                    transform: scale(1.2);
+
+                }
+
+                .wwc-player-btn.skin-btn { color: #a0d0ff; }
+
+                .wwc-player-btn.reset-btn { color: #a0ffa0; }
+
+                .wwc-player-btn.name-btn { color: #ffa0a0; }
+
+                
+
+                /* تأثيرات النوافذ والحركة */
+
+                .wwc-custom-prompt-overlay {
+
+                    animation: wwc-pulse 3s infinite;
+
+                }
+
+                @keyframes wwc-pulse {
+
+                    0% { background-color: rgba(0,0,0,0); }
+
+                    50% { background-color: rgba(0,0,0,0.05); }
+
+                    100% { background-color: rgba(0,0,0,0); }
+
+                }
+
+                @keyframes wwc-float {
+
+                    0% { transform: translateY(0px); }
+
+                    50% { transform: translateY(-8px); }
+
+                    100% { transform: translateY(0px); }
+
+                }
+
+                
+
+               /* زر التبديل */
+
+                #wwc-toggle-button {
+
+                    position: fixed;
+
+                    top: 140px;
+
+                    right: 10px;
+
+                    width: 30px;
+
+                    height: 30px;
+
+                    border-radius: 50%;
+
+                    background-color: rgba(20, 120, 220, 0.8);
+
+                    color: white;
+
+                    display: none;
+
+                    justify-content: center;
+
+                    align-items: center;
+
+                    cursor: pointer;
+
+                    z-index: 999999;
+
+                    font-size: 16px;
+
+                    box-shadow: 0 0 10px rgba(0, 100, 255, 0.5);
+
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+
+                    transition: all 0.3s ease;
+
+                }
+
+                #wwc-toggle-button:hover {
+
+                    transform: scale(1.1);
+
+                    background-color: rgba(30, 150, 255, 0.9);
+
+                }
+
+            `);
+
+            
+
+            // إضافة زر تبديل الظهور (مخفي في البداية)
+
+            const toggleButton = $("<div>")
+
+                .attr("id", "wwc-toggle-button")
+
+                .html("👁️")
+
+                .attr("title", "إظهار/إخفاء قائمة اللاعبين (اضغط M)")
+
+                .click(function() {
+
+                    togglePlayerList();
+
+                });
+
+            
+
+            $("head").append(style);
+
+            $("body").append(toggleButton);
+
+        }
+
+    }
+
+    
+
+    // =============== وظائف تحديث قائمة اللاعبين ===============
+
+    
+
+    // تبديل إظهار/إخفاء قائمة اللاعبين
+
+    function togglePlayerList() {
+
+        isPlayerListVisible = !isPlayerListVisible;
+
+        
+
+        if (isPlayerListVisible) {
+
+            // حفظ حالة اللاعب الأصلية قبل فتح القائمة
+
+            saveOriginalPlayerState();
+
+            
+
+            $("#wwc-player-names").fadeIn(300);
+
+            updatePlayerList();
+
+            $("#wwc-toggle-button").css("background-color", "rgba(30, 150, 255, 0.9)");
+
+        } else {
+
+            $("#wwc-player-names").fadeOut(300);
+
+            $("#wwc-toggle-button").css("background-color", "rgba(20, 120, 220, 0.8)");
+
+            
+
+            // إعادة تعيين متغير التحويم عند إغلاق القائمة
+
+            isHoveringList = false;
+
+        }
+
+        
+
+        // تحديث حالة التأثيرات
+
+        setTimeout(function() {
+
+            updateEffectsState();
+
+        }, 50);
+
+    }
+
+
+
+    
+
+    // إظهار زر التبديل
+
+    function showToggleButton() {
+
+        if (!isToggleButtonVisible) {
+
+            isToggleButtonVisible = true;
+
+            $("#wwc-toggle-button").css('display', 'flex').fadeIn(300);
+
+        }
+
+    }
+
+    
+
+    // إخفاء زر التبديل
+
+    function hideToggleButton() {
+
+        if (isToggleButtonVisible) {
+
+            isToggleButtonVisible = false;
+
+            $("#wwc-toggle-button").fadeOut(300);
+
+            
+
+            // إخفاء القائمة أيضاً إذا كانت مفتوحة
+
+            if (isPlayerListVisible) {
+
+                isPlayerListVisible = false;
+
+                $("#wwc-player-names").fadeOut(300);
+
+                isHoveringList = false;
+
+                
+
+                // تحديث حالة التأثيرات
+
+                setTimeout(function() {
+
+                    updateEffectsState();
+
+                }, 50);
+
+            }
+
+        }
+
+    }
+
+    
+
+    // تحديث قائمة اللاعبين
+
+    function updatePlayerList() {
+
+        // إذا كان التحديث متوقفاً، لا تقم بالتحديث
+
+        if (pauseUpdates) return;
+
+        
+
+        const playerContainer = $("#wwc-player-names");
+
+        playerContainer.empty();
+
+        
+
+        // التحقق من حالة اللعب
+
+        if (!isInGameState()) {
+
+            playerContainer.hide();
+
+            isPlayerListVisible = false;
+
+            isHoveringList = false;
+
+            
+
+            // تحديث حالة التأثيرات
+
+            updateEffectsState();
+
+            return;
+
+        }
+
+        
+
+        // إظهار القائمة فقط إذا كانت الحالة "مرئية"
+
+        if (isPlayerListVisible) {
+
+            playerContainer.show();
+
+        } else {
+
+            playerContainer.hide();
+
+            return;
+
+        }
+
+        
+
+        // الحصول على اللاعب الحالي
+
+        const currentPlayer = getCurrentPlayer();
+
+        if (!currentPlayer || !currentPlayer.Eh) return;
+
+        
+
+        const currentPlayerId = currentPlayer.Eh.ae;
+
+        const currentPos = currentPlayer.fh();
+
+        
+
+        // إضافة العنوان
+
+        playerContainer.append(
+
+            $("<div>").css({
+
+                color: 'white',
+
+                textAlign: 'center',
+
+                padding: '2px',
+
+                marginBottom: '3px',
+
+                borderBottom: '1px solid rgba(255,255,255,0.3)',
+
+                fontSize: '12px',
+
+                fontWeight: 'bold'
+
+            }).text("قائمة اللاعبين القريبين")
+
+        );
+
+        
+
+        // جمع وترتيب اللاعبين حسب القرب
+
+        const nearbyPlayers = [];
+
+        
+
+        // مرر على جميع اللاعبين في اللعبة
+
+        for (const playerId in window._wwc._anApp.dh.Fh) {
+
+            const player = window._wwc._anApp.dh.Fh[playerId];
+
+            
+
+            // تجاهل اللاعب الحالي
+
+            if (playerId == currentPlayerId) continue;
+
+            
+
+            // تأكد من أن اللاعب موجود ونشط
+
+            if (!player || !player.Eh || !player.xi) continue;
+
+            
+
+            // حساب المسافة بين اللاعبين
+
+            const playerPos = player.fh();
+
+            const distance = Math.sqrt(
+
+                Math.pow(playerPos.x - currentPos.x, 2) + 
+
+                Math.pow(playerPos.y - currentPos.y, 2)
+
+            );
+
+            
+
+            // إضافة اللاعب وتفاصيله إلى القائمة إذا كان ضمن نطاق محدد
+
+            if (distance <= 1000) {
+
+                nearbyPlayers.push({
+
+                    id: playerId,
+
+                    player: player,
+
+                    distance: distance,
+
+                    name: player.Eh.ma || "لاعب مجهول",
+
+                    skin: player.Eh.Hh
+
+                });
+
+            }
+
+        }
+
+        
+
+        // ترتيب اللاعبين حسب القرب
+
+        nearbyPlayers.sort((a, b) => a.distance - b.distance);
+
+        
+
+        // قصر القائمة على عدد محدد من اللاعبين
+
+        const limitedPlayers = nearbyPlayers.slice(0, 8);
+
+        
+
+        // عرض كل لاعب في القائمة
+
+        limitedPlayers.forEach((playerData) => {
+
+            // إنشاء صف للاعب
+
+            const playerRow = $("<div>").addClass("wwc-player-row");
+
+            
+
+            // اسم اللاعب
+
+            const displayName = truncateName(playerData.name);
+
+            const playerName = $("<span>")
+
+                .addClass("wwc-player-name")
+
+                .text(displayName)
+
+                .on('click', function(e) {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    
+
+                    // تغيير السكن عند النقر
+
+                    cycleSkin(playerData.id);
+
+                    
+
+                    // إضافة تأثير
+
+                    $(this).addClass('skin-changed');
+
+                    
+
+                    return false;
+
+                })
+
+                .on('contextmenu', function(e) {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    
+
+                    // تغيير اسم اللاعب بين الخيارات المحددة
+
+                    const newName = cycleNameOption(playerData.id);
+
+                    
+
+                    // تحديث النص المعروض
+
+                    $(this).text(truncateName(newName));
+
+                    $(this).addClass('name-changed');
+
+                    
+
+                    return false;
+
+                });
+
+            
+
+            // تطبيق تأثيرات إضافية على الاسم إذا كان السكن قد تغير - دعم المعرفات المختلطة
+
+            if (playerChanges[playerData.id] && 
+
+                String(playerChanges[playerData.id].originalSkin) !== String(playerData.player.Eh.Hh)) {
+
+                playerName.addClass('skin-changed');
+
+            }
+
+            
+
+            // أزرار التحكم
+
+            const playerControls = $("<div>").addClass("wwc-player-controls");
+
+            
+
+            // زر تغيير الاسم
+
+            const nameBtn = $("<div>")
+
+                .addClass("wwc-player-btn name-btn")
+
+                .html("📝")
+
+                .attr('title', 'تغيير الاسم')
+
+                .click((e) => {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    
+
+                    // فتح نافذة تغيير الاسم مع تفعيل التأثيرات
+
+                    createCustomPrompt("أدخل الاسم المخصص", playerData.player.Eh.ma, function(customName) {
+
+                        if (customName) {
+
+                            setCustomName(playerData.id, customName);
+
+                            playerName.text(truncateName(customName));
+
+                            playerName.addClass('name-changed');
+
+                        }
+
+                    });
+
+                    
+
+                    return false;
+
+                });
+
+            
+
+            // زر تغيير السكن
+
+            const skinBtn = $("<div>")
+
+                .addClass("wwc-player-btn skin-btn")
+
+                .html("🎨")
+
+                .attr('title', 'تغيير السكن')
+
+                .click((e) => {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    
+
+                    // دورة السكن بسرعة
+
+                    cycleSkin(playerData.id);
+
+                    playerName.addClass('skin-changed');
+
+                    
+
+                    return false;
+
+                })
+
+                .on('contextmenu', function(e) {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    
+
+                    // فتح نافذة لإدخال رقم السكن مع تفعيل التأثيرات
+
+                    createCustomPrompt("أدخل رقم السكن (Skin ID)", playerData.player.Eh.Hh, function(skinId) {
+
+                        if (skinId) {
+
+                            setSkinById(playerData.id, skinId);
+
+                            playerName.addClass('skin-changed');
+
+                        }
+
+                    });
+
+                    
+
+                    return false;
+
+                });
+
+            
+
+            // زر إعادة الإعدادات الأصلية
+
+            const resetBtn = $("<div>")
+
+                .addClass("wwc-player-btn reset-btn")
+
+                .html("↩️")
+
+                .attr('title', 'إعادة الإعدادات الأصلية')
+
+                .click((e) => {
+
+                    e.preventDefault();
+
+                    e.stopPropagation();
+
+                    
+
+                    // إعادة السكن والاسم الأصلي
+
+                    resetAllSettings(playerData.id);
+
+                    
+
+                    // تحديث النص المعروض
+
+                    if (playerChanges[playerData.id] && playerChanges[playerData.id].originalName) {
+
+                        playerName.text(truncateName(playerChanges[playerData.id].originalName));
+
+                    }
+
+                    
+
+                    // إزالة التأثيرات
+
+                    playerName.removeClass('skin-changed name-changed');
+
+                    
+
+                    return false;
+
+                });
+
+            
+
+            // تطبيق تأثيرات إضافية على الاسم إذا كان قد تغير
+
+            if (playerChanges[playerData.id] && 
+
+                playerChanges[playerData.id].originalName != playerData.player.Eh.ma) {
+
+                playerName.addClass('name-changed');
+
+            }
+
+            
+
+            // تجميع أزرار التحكم
+
+            playerControls.append(nameBtn, skinBtn, resetBtn);
+
+            
+
+            // تجميع عناصر الصف
+
+            playerRow.append(playerName, playerControls);
+
+            
+
+            // إضافة الصف إلى الحاوية
+
+            playerContainer.append(playerRow);
+
+        });
+
+        
+
+        // إضافة رسالة إذا لم يتم العثور على لاعبين
+
+        if (limitedPlayers.length === 0) {
+
+            playerContainer.append(
+
+                $("<div>").css({
+
+                    color: 'white',
+
+                    textAlign: 'center',
+
+                    padding: '8px',
+
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+
+                    borderRadius: '5px',
+
+                    margin: '3px 0'
+
+                }).text("لا يوجد لاعبين قريبين")
+
+            );
+
+        }
+
+        
+
+        // إضافة تعليمات استخدام
+
+        playerContainer.append(
+
+            $("<div>").css({
+
+                color: 'rgba(255,255,255,0.7)',
+
+                fontSize: '9px',
+
+                textAlign: 'center',
+
+                padding: '3px',
+
+                marginTop: '3px',
+
+                borderTop: '1px solid rgba(255,255,255,0.3)'
+
+            }).html("🎨: تغيير السكن | 📝: تغيير الاسم<br>زر يمين على الاسم: تبديل أسماء جاهزة")
+
+        );
+
+    }
+
+    
+
+    // =============== إعداد التتبع والمراقبة ===============
+
+    
+
+    // إعداد تتبع اللاعبين
+
+    function setupPlayerTracking() {
+
+        const checkInterval = 500; // فحص كل نصف ثانية
+
+        
+
+        let trackingInterval = setInterval(function() {
+
+            // التحقق من حالة اللعب
+
+            const isInGame = isInGameState();
+
+            
+
+            if (isInGame) {
+
+                // تحديث قائمة اللاعبين إذا كانت مرئية
+
+                if (isPlayerListVisible) {
+
+                    updatePlayerList();
+
+                }
+
+                
+
+                // إظهار زر التبديل فقط إذا كان مفعلاً
+
+                if (isToggleButtonVisible) {
+
+                    $("#wwc-toggle-button").show();
+
+                }
+
+            } else {
+
+                // إخفاء القائمة وإيقاف التأثيرات عند الخروج من اللعبة
+
+                $("#wwc-player-names").hide();
+
+                $("#wwc-toggle-button").hide();
+
+                isPlayerListVisible = false;
+
+                isHoveringList = false;
+
+                
+
+                // تحديث حالة التأثيرات
+
+                updateEffectsState();
+
+            }
+
+        }, checkInterval);
+
+        
+
+        // إيقاف التتبع عند مغادرة الصفحة
+
+        $(window).on('beforeunload', function() {
+
+            forceStopEffects();
+
+            clearInterval(trackingInterval);
+
+        });
+
+        
+
+        // إيقاف التأثيرات عند تبديل التبويب
+
+        document.addEventListener('visibilitychange', function() {
+
+            if (document.hidden) {
+
+                isHoveringList = false;
+
+                
+
+                // تحديث حالة التأثيرات
+
+                updateEffectsState();
+
+            }
+
+        });
+
+    }
+
+    
+
+    // =============== تهيئة السكريبت ===============
+
+    
+
+    // وظيفة البداية
+
+    function initialize() {
+
+        // التحقق من وجود jQuery
+
+        if (typeof $ === 'undefined') {
+
+            console.log("في انتظار تحميل jQuery...");
+
+            setTimeout(initialize, 1000);
+
+            return;
+
+        }
+
+        
+
+        // التحقق من وجود كائنات اللعبة
+
+        if (!window._wwc || !window._wwc._anApp) {
+
+            console.log("في انتظار تحميل كائنات اللعبة...");
+
+            setTimeout(initialize, 1000);
+
+            return;
+
+        }
+
+        
+
+        console.log("بدء تهيئة مغير الجلود مع تأثير الطيران فقط...");
+
+        
+
+        // إنشاء واجهة المستخدم
+
+        createUI();
+
+        
+
+        // إعداد تتبع اللاعبين
+
+        setupPlayerTracking();
+
+        
+
+        // معالجة مفتاح M لإظهار/إخفاء القائمة والزر
+
+        let lastKeyPress = 0;
+
+        $(document).on('keydown', function(e) {
+
+            // استخدام keyCode للمفتاح M (77) لدعم جميع اللغات
+
+            if (e.keyCode === 77) { // مفتاح M
+
+                // منع الضغطات المتكررة السريعة
+
+                const now = Date.now();
+
+                if (now - lastKeyPress < 300) {
+
+                    return;
+
+                }
+
+                lastKeyPress = now;
+
+                
+
+                // تبديل حالة ظهور الزر
+
+                if (!isToggleButtonVisible) {
+
+                    // إظهار الزر
+
+                    showToggleButton();
+
+                } else {
+
+                    // إخفاء الزر والقائمة
+
+                    hideToggleButton();
+
+                }
+
+            }
+
+            
+
+            // إيقاف التأثيرات بمفتاح Escape
+
+            if (e.key === 'Escape') {
+
+                forceStopEffects();
+
+                isHoveringList = false;
+
+            }
+
+        });
+
+        
+
+        // رصد كل الأحداث المرتبطة بحقول الإدخال
+
+        $(document).on('focus', 'input, textarea', function() {
+
+            setInputState(true);
+
+        }).on('blur', 'input, textarea', function() {
+
+            // تأخير إلغاء تنشيط الإدخال لتجنب المشاكل عند النقر على الأزرار
+
+            setTimeout(function() {
+
+                if (!modalOpen) {
+
+                    setInputState(false);
+
+                }
+
+            }, 100);
+
+        });
+
+        
+
+        // إضافة مراقب للحركة على مستوى المستند لرصد تحركات الماوس
+
+        $(document).on('mousemove', function(e) {
+
+            // رصد حركة الماوس للتعامل مع حالة اللاعب
+
+            if (isInGameState() && isPlayerListVisible && !modalOpen) {
+
+                const playerListElement = $("#wwc-player-names");
+
+                if (playerListElement.length) {
+
+                    const rect = playerListElement[0].getBoundingClientRect();
+
+                    
+
+                    // تحقق إذا كان المؤشر فوق القائمة
+
+                    const isMouseOverList = (
+
+                        e.clientX >= rect.left &&
+
+                        e.clientX <= rect.right &&
+
+                        e.clientY >= rect.top &&
+
+                        e.clientY <= rect.bottom
+
+                    );
+
+                    
+
+                    // تحديث متغير التحويم
+
+                    if (isMouseOverList !== isHoveringList) {
+
+                        isHoveringList = isMouseOverList;
+
+                        
+
+                        // تحديث حالة التأثيرات
+
+                        updateEffectsState();
+
+                    }
+
+                }
+
+            }
+
+        });
+
+        
+
+        // تسجيل العناصر الأصلية لتشغيل خاصية الماوس
+
+        document.mouseCaptureList = [];
+
+        
+
+        console.log("اكتملت تهيئة مغير الجلود بنجاح مع تأثير الطيران فقط!");
+
+    }
+
+    
+
+    // بدء التهيئة عند اكتمال تحميل الصفحة
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+
+        setTimeout(initialize, 3000);
+
+    } else {
+
+        window.addEventListener('load', function() {
+
+            setTimeout(initialize, 3000);
+
+        });
+
+    }
+
+    
+
+    // التأكد من إيقاف التأثيرات عند إغلاق الصفحة
+
+    window.addEventListener('unload', function() {
+
+        forceStopEffects();
+
+    });
+
+    
+
+})();
+
+
