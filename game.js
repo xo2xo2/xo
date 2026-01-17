@@ -17356,50 +17356,71 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
           })();
         })();
       });
-
-// Additional UI adjustments
-setTimeout(function() {
-    $(".mm-merchant-cont").append("\n \n  ");
-    $(".mm-merchant-cont").css("top", "-10px");
-}, 4500);
-
-$(".description-text").css("height", "300px");
-
-var Ot = function(t) {
-
-document.body.style.backgroundColor = "";
-document.body.style.backgroundImage =
-  "linear-gradient(135deg, rgb(0 255 144 / 39%), rgb(68 53 185 / 70%))";
-document.body.style.backgroundSize = "no-reqeat";
-  document.body.style.backgroundSize = "cover";
-  document.body.style.overflow = "hidden";
-
-  var n = document.getElementById("background-canvas"),
-      o = document.getElementById("game-wrap");
-  if (n) { 
-    n.style.backgroundColor = ""; 
-    n.style.opacity = "0.65"; 
-  }
-  if (o) { 
-    o.style.backgroundColor = "transparent"; 
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      setTimeout(function () {
+        $(".mm-merchant-cont").append("\n \n  ");
+        $(".mm-merchant-cont").css("top", "-10px");
+      }, 4500);
+      $(".description-text").css("height", "300px");
+      var _0x2ec2f7 = "";
+      var _0x3b1baa = function _0x10f32e(_0x1efbb7) {
+        // Animated RGB gradient background with bubble effect
+        var _0x12a642 = URL_CDN + "https://i.imgur.com/yLAoBGS.jpeg";
+        
+        // Create animated gradient with bubble effect
+        var time = Date.now() / 1000;
+        var r1 = Math.floor(Math.sin(time * 0.3) * 127 + 128);
+        var g1 = Math.floor(Math.sin(time * 0.5 + 2) * 127 + 128);
+        var b1 = Math.floor(Math.sin(time * 0.7 + 4) * 127 + 128);
+        var r2 = Math.floor(Math.sin(time * 0.4 + 1) * 127 + 128);
+        var g2 = Math.floor(Math.sin(time * 0.6 + 3) * 127 + 128);
+        var b2 = Math.floor(Math.sin(time * 0.8 + 5) * 127 + 128);
+        
+        document.body.style.backgroundColor = "";
+        document.body.style.backgroundImage = 
+          "radial-gradient(circle at 20% 50%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
+          "radial-gradient(circle at 80% 30%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
+          "radial-gradient(circle at 40% 80%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%)";
+        document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.overflow = "hidden";
+        var _0x31a165 = document.getElementById("background-canvas");
+        var _0x468074 = document.getElementById("game-wrap");
+        if (_0x31a165) { 
+          _0x31a165.style.backgroundColor = ""; 
+          _0x31a165.style.opacity = "0.65"; 
+        }
+        if (_0x468074) { 
+          _0x468074.style.backgroundColor = "transparent"; 
+        }
+      };
+      
+      // Add continuous animation for the bubble background
+      setInterval(function() {
+        var time = Date.now() / 1000;
+        // Slower, more fluid color transitions for bubble effect
+        var r1 = Math.floor(Math.sin(time * 0.3) * 127 + 128);
+        var g1 = Math.floor(Math.sin(time * 0.5 + 2) * 127 + 128);
+        var b1 = Math.floor(Math.sin(time * 0.7 + 4) * 127 + 128);
+        var r2 = Math.floor(Math.sin(time * 0.4 + 1) * 127 + 128);
+        var g2 = Math.floor(Math.sin(time * 0.6 + 3) * 127 + 128);
+        var b2 = Math.floor(Math.sin(time * 0.8 + 5) * 127 + 128);
+        
+        // Create moving bubble effect with multiple radial gradients
+        var posX1 = (Math.sin(time * 0.2) * 30 + 50);
+        var posY1 = (Math.cos(time * 0.15) * 20 + 50);
+        var posX2 = (Math.cos(time * 0.25) * 40 + 50);
+        var posY2 = (Math.sin(time * 0.18) * 30 + 50);
+        var posX3 = (Math.sin(time * 0.17) * 35 + 50);
+        var posY3 = (Math.cos(time * 0.22) * 25 + 50);
+        var posX4 = (Math.cos(time * 0.19) * 45 + 50);
+        var posY4 = (Math.sin(time * 0.16) * 35 + 50);
+        
+        document.body.style.backgroundImage = 
+          "radial-gradient(circle at " + posX1 + "% " + posY1 + "%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
+          "radial-gradient(circle at " + posX2 + "% " + posY2 + "%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%), " +
+          "radial-gradient(circle at " + posX3 + "% " + posY3 + "%, #3a5874 0%, #557e66 35%, #3a2b23 70%, #0e0f18 100%)";
+      }, 50);
+      
       if (_0x4f82c6) {
         _0x4f82c6 = JSON.parse(_0x4f82c6);
         if (_0x4f82c6.background) {
