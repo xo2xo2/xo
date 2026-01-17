@@ -358,8 +358,8 @@ body {
     height: 50px;
     position: fixed !important;
     left: auto !important;
-    right: 110px !important; /* تحريك إلى اليسار - كانت 75px */
-    top: 80% !important; /* تحريك للأسفل أكثر - كانت 70% */
+    right: 339px !important; /* تحريك إلى اليسار - كانت 75px */
+    top: 64% !important; /* تحريك للأسفل أكثر - كانت 70% */
     cursor: pointer;
     z-index: 999 !important;
     background: rgba(0,0,0,0.7) !important;
@@ -372,7 +372,7 @@ body {
 }
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-top #mm-player-info:hover {
   transition:background-color .2s ease,border .2s ease;
-  background:rgba(255,255,255,.15) !important; /* لون التحويم */
+  background:rgb(255, 255, 255) !important; /* لون التحويم */
   border-radius:4px;
 }
 
@@ -540,7 +540,7 @@ body {
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-left .description-text {
     border-radius: 5px;
-    background-image: linear-gradient(#ff00e6, #00d9ff);
+    background-image: linear-gradient(#00f7ff, #ff00f2);
     height: 470px;
     margin: 30px 0;
     overflow: scroll;
@@ -603,6 +603,7 @@ body {
     height: 100%;
     width: 100%;
     right: 240px;
+    top: 33px;
 }
 
 /* شعار اللعبة */
