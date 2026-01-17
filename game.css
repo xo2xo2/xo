@@ -1568,6 +1568,7 @@ body {
     background: rgba(47, 46, 68, .4);
     border-radius: 5px;
     overflow: hidden;
+    top: -8px;
 }
 
 /* رأس النافذة المنبثقة */
