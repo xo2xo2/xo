@@ -17856,7 +17856,7 @@ document.querySelector(".mm-event-cont")?.style.setProperty("display", "none", "
 document.querySelector(".mm-logo")?.style.setProperty("display", "none", "important");
 document.querySelector(".mm-event-cont + span")?.style.setProperty("display", "none", "important");
 
-// Added server initialization code
+// Added server initialization codeee
 var N = window.servers || {};
 window.servers = N;
 (async function() {
