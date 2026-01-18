@@ -854,7 +854,7 @@ body {
 
 /* زر اللعب */
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-actions #mm-action-play {
-    background-image: linear-gradient(rgba(123, 255, 0, 0.267), #8bc34a);
+    background-image: linear-gradient(rgb(74, 153, 0), #8bc34a);
     color: #fff;
     overflow: hidden;
     height: 44px;
