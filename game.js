@@ -7571,7 +7571,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         _0x3c7638.dh.Np();
         _0x129b06();
       };
-      $("<button type=\"button\" id=\"mm-wwc\" style=\"float: right;line-height: 48px;width: 61px;background: #ffffff33;color: #FFF;font-weight: bold;margin-right: 13px; top: 320px;border-radius: 7px; cursor: pointer;\">Set</button>").insertAfter("#mm-store");
+      $("<button type=\"button\" id=\"mm-wwc\" style=\"float: right;line-height: 48px;width: 120px;background: #ffffff33;color: #FFF;font-weight: bold;margin-right: 13px; top: 320px;border-radius: 7px; cursor: pointer;\">Settings</button>").insertAfter("#mm-store");
       $(".store-view-cont").append("<div id=\"idReplaceSkin\"></div>");
       $(".wear-view-cont").append("<div id=\"idWearViewCont\"></div>");
       var _0x4b3be6 = "display:none;position:relative;background:#FFF;padding:15px;max-width:680px;margin:10px auto;";
