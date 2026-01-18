@@ -799,13 +799,13 @@ body {
 /* منتقي وضع اللعبة (ظاهر) */
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-params #mm-params-game-mode {
     position: absolute;
-    top: 47px;
-    left: 31px;
+    top: 0px;
+    left: 300px;
     right: auto;
     width: 100px;
     -webkit-appearance: none;
     text-align-last: center;
-    background-color: #26c6da;
+    background-color: #9ecdd31c;
     color: #fff;
     overflow: hidden;
     height: 37px;
@@ -857,11 +857,13 @@ body {
     background-color: #8bc34a;
     color: #fff;
     overflow: hidden;
-    height: 38px;
+    height: 44px;
     line-height: 1;
+    margin-right: 44px;
+    margin-left: -250px;
     font-size: 25px;
     box-sizing: border-box;
-    margin-top: 55px;
+    margin-top: 53px;
     border-radius: 5px;
     border: 0;
     outline: 0;
