@@ -14758,7 +14758,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               _0x31bb6e.click(function () {
                 _0x5f5d8d.Ci.Be();
                 _0x5f5d8d.Pn(true);
-      $("<input type=\"button\" value=\"RESPAWN\" onclick=\"respawnFn()\" style=\"margin-top:5px;width:100%;background-color:#f7941d;color:#fff;border:0;height:35px;\">").insertAfter(_0x5bfca3);
+      
 
               });
               _0x4893fa.click(function () {
