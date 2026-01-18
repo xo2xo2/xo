@@ -875,7 +875,7 @@ body {
 }
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-actions #mm-action-play:hover {
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 1px 1px 0 rgba(27, 134, 0, 0.664);
     background-color: #ffffff00;
 }
 
