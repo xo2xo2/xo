@@ -8743,7 +8743,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
       w2c2020.containerCountInfo.addChild(w2c2020.label_kill);
       w2c2020.containerCountInfo.addChild(w2c2020.kill);
       w2c2020.containerCountInfo.addChild(w2c2020.killTotal);
-      w2c2020.labelRoom = new PIXI.Text("wxo", w2c2020.fontStyle.amarelo);
+      w2c2020.labelRoom = new PIXI.Text("XCC", w2c2020.fontStyle.amarelo);
       w2c2020.labelRoom.x = -50;
       w2c2020.labelRoom.y = -56;
       w2c2020.addRoom = function (_0x97610d) {
