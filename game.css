@@ -805,7 +805,7 @@ body {
     width: 100px;
     -webkit-appearance: none;
     text-align-last: center;
-    background-color: #9ecdd31c;
+    background-color: #ffffff47;
     color: #fff;
     overflow: hidden;
     height: 37px;
@@ -831,7 +831,7 @@ body {
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-params #mm-params-game-mode:hover {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
-    background-color: #52d1e1;
+    background-color: #a3bdd462;
 }
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-params #mm-params-game-mode:focus {
@@ -854,7 +854,7 @@ body {
 
 /* زر اللعب */
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-actions #mm-action-play {
-    background-color: #8bc34a;
+    background-image: linear-gradient(rgba(123, 255, 0, 0.267), #8bc34a);
     color: #fff;
     overflow: hidden;
     height: 44px;
@@ -867,16 +867,16 @@ body {
     border-radius: 5px;
     border: 0;
     outline: 0;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0);
     text-align: center;
-    text-shadow: 0 0 1px #000;
+    text-shadow: 0 0 1px #ffffff00;
     cursor: pointer;
     transition: background-color .5s ease;
 }
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-actions #mm-action-play:hover {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .5);
-    background-color: #a4d070;
+    background-color: #ffffff00;
 }
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-actions #mm-action-play:focus {
