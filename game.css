@@ -358,7 +358,7 @@ body {
     height: 50px;
     position: fixed !important;
     left: auto !important;
-    right: 339px !important; /* تحريك إلى اليسار - كانت 75px */
+    right: 300px !important; /* تحريك إلى اليسار - كانت 75px */
     top: 64% !important; /* تحريك للأسفل أكثر - كانت 70% */
     cursor: pointer;
     z-index: 999 !important;
@@ -602,7 +602,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    right: 240px;
+    right: 200px;
     top: 33px;
 }
 
