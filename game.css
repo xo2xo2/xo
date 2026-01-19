@@ -1361,7 +1361,7 @@ body {
     text-align: center;
     cursor: pointer;
     min-width: 50px; /* تصغير العرض */
-    width: 50px !important; /* عرض ثابت أصغر */
+    width: 150px !important; /* عرض ثابت أصغر */
     display: block; /* تغيير إلى block للعرض العمودي */
     float: none; /* إزالة الطفو */
     margin-right: 0;
@@ -1389,7 +1389,7 @@ body {
     background: rgba(255, 255, 255, 0.15) !important;
     border: 2px solid rgba(255, 255, 255, 1) !important; /* حد أبيض أقوى عند التحويم */
     border-right: none !important;
-    width: 110px !important;
+    width: 160px !important;
     min-width: 110px !important;
     padding: 0 8px !important; /* زيادة padding لمنع الالتصاق */
     text-align: center !important; /* تغيير المحاذاة إلى المنتصف */
@@ -1421,7 +1421,7 @@ body {
     text-align: center;
     cursor: pointer;
     min-width: 50px; /* تصغير العرض */
-    width: 50px !important; /* عرض ثابت أصغر */
+    width: 150px !important; /* عرض ثابت أصغر */
     display: block; /* تغيير إلى block للعرض العمودي */
     margin-right: 0;
     margin-bottom: 10px; /* مسافة عادية */
@@ -1448,7 +1448,7 @@ body {
     background: rgba(255, 255, 255, 0.15) !important;
     border: 2px solid rgba(255, 255, 255, 1) !important; /* حد أبيض أقوى عند التحويم */
     border-right: none !important;
-    width: 110px !important;
+    width: 160px !important;
     min-width: 110px !important;
     padding: 0 8px !important; /* زيادة padding لمنع الالتصاق */
     text-align: center !important; /* تغيير المحاذاة إلى المنتصف */
@@ -1480,7 +1480,7 @@ body {
     text-align: center;
     cursor: pointer;
     min-width: 50px; /* تصغير العرض */
-    width: 50px !important; /* عرض ثابت أصغر */
+    width: 150px !important; /* عرض ثابت أصغر */
     display: block; /* تغيير إلى block للعرض العمودي */
     margin-right: 0;
     margin-left: 0;
@@ -1508,7 +1508,7 @@ body {
     background: rgba(255, 255, 255, 0.15) !important;
     border: 2px solid rgba(255, 255, 255, 1) !important; /* حد أبيض أقوى عند التحويم */
     border-right: none !important;
-    width: 110px !important;
+    width: 160px !important;
     min-width: 110px !important;
     padding: 0 8px !important; /* زيادة padding لمنع الالتصاق */
     text-align: center !important; /* تغيير المحاذاة إلى المنتصف */
