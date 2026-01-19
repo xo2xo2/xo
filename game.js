@@ -10106,6 +10106,17 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               this.yb = new _0x3819e1.la("flex_ability", _0xe4687a, 158, 4, 87, 74, 203, 63.5, 128, 128);
               var _0x38fec3 = _0x4efbaa.BaseTexture.from("https://wormup.in/assets/images/zigzagability1.png");
               this.pwrFlex = new _0x3819e1.la("flex_ability", _0x38fec3, 158, 4, 87, 74, 203, 63.5, 128, 128);
+
+
+                            // Zigzag 2: Second custom image (LvJ1RxC - working)
+              var newTexture2 = _0x429afb.BaseTexture.from("https://i.imgur.com/LvJ1RxC.png");
+              this.pwrFlex2 = new _0x232886.la("flex_ability2", newTexture2, 156, 4, 87, 74, 285, 63.5, 128, 128);
+
+                            // Zigzag 3: Third custom image
+              var newTexture3 = _0x429afb.BaseTexture.from("https://wormup.in/assets/images/zigzagability1.png");
+              this.pwrFlex3 = new _0x232886.la("flex_ability3", newTexture3, 158, 4, 87, 74, 203, 63.5, 128, 128);
+
+
               var _0x46b3a0 = _0x4efbaa.BaseTexture.from("/images/def-look.png");
               var _0x5265da = new _0x3819e1.la("def_eyes", _0x46b3a0, 0, 0, 42, 80, 75, 64, 128, 128);
               var _0x2b34d9 = new _0x3819e1.la("def_mouth", _0x46b3a0, 46, 0, 20, 48, 109, 63, 128, 128);
@@ -10444,6 +10455,36 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               };
               return _0x5a8157;
             }();
+
+
+                this.pwr_flex = new _0x232886.sc();
+
+                (function(){
+                  try {
+                    var z = String(((window.bbsConfig||window.bbs||{}).zigzag)||'0');
+                    console.log('Game loading zigzag config:', z);
+                    var set = _0x5d39d0().Lc;
+                    var tex = set.pwrFlex1 || set.yb; // Default/Normal zigzag
+                    if (z === '1') tex = set.pwrFlex || set.pwrFlex1;
+                    else if (z === '2') tex = set.pwrFlex2 || set.pwrFlex;
+                    else if (z === '3') tex = set.pwrFlex3 || set.pwrFlex2 || set.pwrFlex;
+                    console.log('Selected zigzag texture:', tex);
+                    this.pwr_flex.Bc(tex);
+                  } catch (err) {
+                    console.error('Error loading zigzag:', err);
+                    this.pwr_flex.Bc(_0x5d39d0().Lc.pwrFlex);
+                  }
+                }).call(this);
+
+                this.pwr_flex.xc.zIndex = 0.001;
+
+                this.addChild(this.pwr_flex.xc);
+
+                this.disableFlex();                  
+
+                                
+
+
             _0xf27b66.prototype.Yc = function (_0x243286) {
               return this.uc + this.vc * Math.sin(_0x243286 * _0x51340d - this.tc);
             };
