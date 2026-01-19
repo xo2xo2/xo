@@ -17795,7 +17795,2755 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
       console.log("📥 استجابة من:", _0x18e741);
       if (_0x18e741.includes("/extension/set-worm-world") || _0x18e741.includes("/set-worm-world")) {
         console.log("🎯 اعتراض set-worm-world");
-        const _0xe4e378 = "<style>\n  .news-box-wormworld {\n    background-color: #ffffff;\n    padding: 10px;\n    border: 2px solid #ff0000;\n    border-radius: 5px;\n    margin-bottom: 10px;\n    width: 100%;\n    height: 86%;\n    position: relative;\n    z-index: 1;\n    overflow-y: scroll;\n  }\n\n  .news-box-wormworld .news-content {\n    width: 100%;\n    height: 85%;\n    overflow-y: auto;\n    padding: 10px;\n    border: 1px solid #eb0000;\n    box-sizing: border-box;\n  }\n\n  .news-box-wormworld .news-button {\n    position: absolute;\n    bottom: 20px;\n    display: flex;\n    align-items: center;\n    gap: 5px;\n    width: 100%;\n  }\n\n  .news-box-wormworld .close-button {\n    position: absolute;\n    right: 33px;\n    background-color: #f44336;\n    color: white;\n    border: none;\n    padding: 5px 10px;\n    cursor: pointer;\n    font-size: 12px;\n    top: -24px;\n    width: 100px;\n    height: 50px;\n  }\n\n  #idwormworld a {\n    color: #fff;\n  }\n\n  .wwc-joystick div {\n    min-width: 100px;\n    display: inline-block;\n  }\n\n  #game-wrap #game-cont #stretch-box #main-menu-view .line-bottom #mm-wwc {\n    background-color: #ff2020;\n    color: #fff;\n    overflow: hidden;\n    height: 50px;\n    line-height: 50px;\n    font-size: 20px;\n    padding: 0 10px;\n    box-sizing: border-box;\n    border-radius: 5px;\n    border: 0;\n    outline: 0;\n    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 20%);\n    text-align: center;\n    text-shadow: 0 0 1px #000;\n    cursor: pointer;\n    transition: background-color 0.5s ease;\n    min-width: 120px;\n    display: inline-block;\n    margin: 0 3px;\n  }\n\n  .group-tab-button {\n    display: flex;\n    margin-top: 7px;\n  }\n\n  .tab-button {\n    cursor: pointer;\n    padding: 5px 15px;\n    background-color: #eee;\n    border: 1px solid #ccc;\n    border-radius: 5px 5px 0 0;\n  }\n\n  .tab-button:hover {\n    background-color: #000;\n    color: #fff;\n  }\n\n  .tab-button.active {\n    background-color: #fff;\n    color: #ff0000;\n  }\n\n  .tab-content {\n    display: none;\n    padding: 5px 10px 0 10px;\n    border-radius: 0 0 5px 5px;\n  }\n\n  .active-tab {\n    display: block;\n  }\n\n  .sub-title {\n    font-size: 14px;\n    font-weight: bold;\n    display: block;\n    color: rgb(0, 0, 0);\n    border-bottom: 1px solid;\n    margin: 10px 0;\n  }\n\n  #idReplaceSkin button {\n    font-size: small;\n    padding: 5px 15px;\n    z-index: 1;\n    position: absolute;\n    background-color: transparent;\n    color: #FFF;\n    border: 1px solid #eb991c;\n    border-radius: 15px;\n  }\n\n  #idReplaceSkin button:hover {\n    background-color: #eb991c;\n    color: #000;\n    border: 1px solid #cfcfcf;\n  }\n</style>\n\n<div style=\"position: relative\">\n  <button style=\"background-color: #ff2020; color: #fff; border: none; float: right\" id=\"mm-wwc-close\">\n    CLOSE\n  </button>\n  <div style=\"margin-bottom: 10px\">\n    ID: <input type=\"text\" value=\"" + bbs.userId + "\" id=\"wormate_id\" />\n<button onclick=\"navigator.clipboard.writeText('" + bbs.userId + "')\">COPY</button>\n  </div>\n  \n    \n      <form name=\"formSkin\" method=\"POST\" enctype=\"multipart/form-data\">\n        FILE.json:\n        <input id=\"fileSkin\" type=\"file\" accept=\"application/json\" />\n      </form>\n      \n        <div class=\"page-set-worm-world\">\n          <div class=\"group-tab-button\">\n            <div id=\"tab_b1\" class=\"tab-button active\" onclick=\"changeTab(0)\">\n              SET\n            </div>\n            <div id=\"tab_b3\" class=\"tab-button\" onclick=\"changeTab(2)\">Account</div>\n            <div id=\"tab_b4\" class=\"tab-button\" onclick=\"changeTab(3)\">HELP</div>\n            <div id=\"tab_b5\" class=\"tab-button\" onclick=\"changeTab(4)\">CUSTOM</div>\n            <div id=\"tab_b6\" class=\"tab-button\" onclick=\"changeTab(5)\">SET ZOOM</div>\n            <div id=\"tab_b7\" class=\"tab-button\" onclick=\"changeTab(6)\">SKIN SWAP</div>\n            <div id=\"tab_b8\" class=\"tab-button\" onclick=\"changeTab(7)\">JOYSTICK</div>\n          </div>\n\n          <div id=\"tab1\" class=\"tab-content active-tab\">\n            \n              <div style=\"display: flex\">\n    <div style=\"width: 33%\">\n        <label>SAVE Kill:</label>\n        <input type=\"checkbox\" id=\"saveGame\" />\n    </div>\n    <div style=\"width: 33%\">\n        <label>Background:</label>\n        <select id=\"backgroundArena\"></select>\n    </div>\n\n    <div style=\"width: 34%\">\n        <label>Replace SKIN:</label>\n        <input style=\"width: 60px\" type=\"text\" name=\"inputReplaceSkin\" id=\"inputReplaceSkin\" value=\"35\" maxlength=\"4\"\n            onchange=\"setIdReplaceSkin(this)\" />\n    </div>\n</div>\n<div style=\"display: grid;\n          grid-template-columns: repeat(3, 1fr);\n          grid-template-rows: 1fr;\n          grid-column-gap: 0px;\n          grid-row-gap: 0px;\n          margin-top: 10px;\">\n    <div>\n        <label>TOP HS (\"9\")</label>\n        <input type=\"checkbox\" id=\"showTophs\" />\n    </div>\n    <div>\n        <label>Record HS (\"0\")</label>\n        <input type=\"checkbox\" id=\"showRechs\" />\n    </div>\n    <div>\n        <label>3 TOP SCORE</label>\n        <input type=\"checkbox\" id=\"onlytop\" />\n    </div>\n</div>\n<div style=\"display: grid;\n          grid-template-columns: repeat(2, 1fr);\n          grid-template-rows: 1fr;\n          grid-column-gap: 0px;\n          grid-row-gap: 0px;\n          margin-top: 10px;\">\n    <div>\n        <label>MODO STREAMER:</label>\n        <input type=\"checkbox\" id=\"modoSTREAMER\" /> - <a href=\"https://wormworld.io/customizer\"> USE CUSTOM\n            FILE</a>\n    </div>\n</div>\n<div style=\"margin-bottom: 5px\">\n    <strong class=\"sub-title\">Joystick Settings</strong>\n    <div class=\"wwc-joystick\">\n        <div>\n            <label style=\"display: block\">Active</label>\n            <input type=\"checkbox\" id=\"joystick_checked\" onclick=\"setconfigjoystick_checked(this)\" />\n        </div>\n        <div>\n            <label style=\"display: block\">Color</label>\n            <select id=\"joystick_color\" onchange=\"setconfigjoystick_color(this)\">\n                <option value=\"red\">RED</option>\n                <option value=\"blue\">BLUE</option>\n                <option value=\"white\">WHITE</option>\n                <option value=\"black\">Black</option>\n            </select>\n        </div>\n        <div>\n            <label style=\"display: block\">Mode</label>\n            <select id=\"joystick_mode\" onchange=\"setconfigjoystick_mode(this)\">\n                <option value=\"dynamic\">Dynamic</option>\n                <option value=\"static\">Static</option>\n            </select>\n        </div>\n        <div>\n            <label style=\"display: block\">Position</label>\n            <select id=\"joystick_position\" onchange=\"setconfigjoystick_position(this)\">\n                <option value=\"R\">Right</option>\n                <option value=\"L\">Left</option>\n            </select>\n        </div>\n        <div>\n            <label style=\"display: block\">Size</label>\n            <select id=\"joystick_size\" onchange=\"setconfigjoystick_size(this)\">\n                <option value=\"110\">110</option>\n                <option value=\"100\">100</option>\n                <option value=\"90\">90</option>\n                <option value=\"80\">80</option>\n                <option value=\"75\">75</option>\n                <option value=\"70\">70</option>\n            </select>\n        </div>\n    </div>\n</div>\n<strong class=\"sub-title\">Plus</strong>\n<div style=\"\n          display: grid;\n          grid-template-columns: repeat(4, 1fr);\n          grid-template-rows: 1fr;\n          grid-column-gap: 0px;\n          grid-row-gap: 0px;\n          margin-top: 10px;\n        \">\n    <div>\n        <label>Bad Language</label>\n        <input type=\"checkbox\" id=\"activeBadLang\" />\n    </div>\n    <div>\n        <label>SOUNDS:</label>\n        <input type=\"checkbox\" id=\"activeSounds\" />\n    </div>\n</div>\n                \n          </div>\n          <div id=\"tab2\" class=\"tab-content\">\n            em construção\n          </div>\n          <div id=\"tab3\" class=\"tab-content\">\n            <style>\n  .tabLabel {\n    display: block;\n    font-size: 12px;\n  }\n</style>\n<div>\n  <div style=\"margin: 10px 0;border-bottom: 1px  solid #CCC;padding-bottom: 5px;\">\n    <button id=\"toShareRank\" onclick=\"toShareRank()\">To Share in data e Rank</button>\n  </div>\n  <div style=\"margin: 10px 0;border-bottom: 1px  solid #CCC;padding-bottom: 5px;\">\n    The data is updated manually only due to data sharing regulations.\n    <div style=\"margin: 10px 0;\">\n      <button id=\"btnGenerateToken\" type=\"button\" onclick=\"onOpen()\"\n        style=\"width: 100%;background-color: #54fd36;padding: 6px;font-size: 20px;\">\n        Open Account\n      </button>\n    </div>\n  </div>\n  <br />\n  <div style=\"margin-top: 5px;\">\n    <div style=\"display: flex;gap: 10px;justify-content: space-between;align-items: center;\">\n      <div>\n        <label for=\"sharedLocation\">CONNECT IN</label>\n        <input type=\"text\" placeholder=\"ROOM CODE\" id=\"roomCode\" name=\"roomCode\" />\n        <div style=\"display: flex;justify-content: space-between;gap: 5px;margin: 5px 0;\">\n          <button style=\"width: 100%;\" onclick=\"setRoomCode(true)\">CONNECT</button>\n          <button style=\"width: 100%;\" onclick=\"setRoomCode(false)\">DISCONNECT</button>\n        </div>\n      </div>\n      \n    </div>\n  </div>\n</div>\n<script>\n  const serverGame = JSON.parse(localStorage.getItem(\"serverGame\") || \"{}\");\n  const url_token = \"https://wormworld.io/extension\";\n  \n  // ✅ استخدام التوكن المحفوظ\n  var token = localStorage.getItem(\"wormworld_token\") || bbs.tk;\n  var idwormate = bbs.userId;\n\n  (async function () {\n    if (document.getElementById(\"code\")) {\n      document.getElementById(\"code\").value = serverGame.code || \"\";\n    }\n    document.getElementById(\"roomCode\").value = serverGame.roomCode || \"\";\n    _wwcio.player.teamRoom = serverGame.roomCode || \"\";\n\n    console.log(_wwcio.player);\n  })();\n\n  function copyToken(e) {\n    const copyText = document.getElementById(\"code\");\n    copyText.select();\n    copyText.setSelectionRange(0, 99999);\n    document.execCommand(\"copy\");\n    alert(\"Copied the text: \" + copyText.value);\n  }\n\n  function onOpen() {\n    var newWindow = window.open(\"\", \"_blank\");\n    onGenerateToken(function () {\n      newWindow.location.href = \"https://wormworld.io/admin?page=login&token=\" + token;\n    });\n  }\n\n  function createRoom() {\n    const oldCode = document.getElementById(\"code\").value;\n    serverGame.code = window.gerarCodigoUnico();\n    document.getElementById(\"code\").value = serverGame.code;\n    serverGame.roomCode = serverGame.code;\n    localStorage.setItem(\"serverGame\", JSON.stringify(serverGame));\n    alert(\"Room created successfully!\");\n  }\n\n  function setRoomCode(connect) {\n    try {\n\n      serverGame.roomCode = connect ? document.getElementById(\"roomCode\").value : \"\";\n      _wwcio.player.teamRoom = serverGame.roomCode;\n      localStorage.setItem(\"serverGame\", JSON.stringify(serverGame));\n      alert(\"Room \" + (connect ? \"connected\" : \"disconnected\") + \" successfully!\");\n\n    } catch (e) {\n      console.log(e);\n    }\n  }\n\n  function onChangeCode() {\n    serverGame.code = document.getElementById(\"code\").value;\n    localStorage.setItem(\"serverGame\", JSON.stringify(serverGame));\n  }\n\n  function onGenerateToken(fn) {\n    fetch(url_token + \"/account/gen\", {\n      method: \"POST\",\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      body: JSON.stringify({\n        tk: token, // ✅ استخدام التوكن المحفوظ\n        wuid: bbs.wuid,\n      }),\n    }).then(async function (response) {\n      const json = await response.json();\n      token = json.tk;\n      // ✅ حفظ التوكن الجديد\n      localStorage.setItem(\"wormworld_token\", token);\n      if (fn) {\n        fn();\n      }\n    });\n  }\n\n  function toShareRank() {\n    if (!confirm(\"Are you sure you want to share your rank?\")) {\n      return;\n    }\n    const url_token = \"https://gateway.wormate.io/pub/wuid/\" + bbs.wuid + \"/consent/change?value=true\";\n\n    fetch(url_token).then(async function (response) {\n      alert(\"To Share Rank Success!\");\n      window.location.reload();\n    });\n  }\n</script>\n          </div>\n          <div id=\"tab4\" class=\"tab-content\">\n            \n              <strong class=\"sub-title\">KEYBOARD</strong>\n<div style=\"padding: 5px; margin-top: 5px; border: #eb991c 1px solid; display: flex;\">\n  <ul>\n    <li>0 - SHOW/HIDE RECORD HS</li>\n    <li>1 - SKIN REPLACE</li>\n    <li>9 - SHOW/HIDE TOP HS</li>\n    <li>8 - AUTOMATIC LOOP</li>\n    <li>7 - AUTOMATIC SPIRAL</li>\n    <li>6 - SHOW/HIDE NAMES TOP(1 SEG RUN)</li>\n  </ul>\n  <ul>\n    <li>5 - RESPAWN</li>\n    <li>4 - LASER</li>\n    <li>3 - BACKGROUND</li>\n    <li>&lt;|, - ZOOM(+ 0.25)</li>\n    <li>&gt;|. - ZOOM(- 0.25)</li>\n    <li>Z = ZOOM(1)</li>\n    <li>C = CLOSE-UP(0.5)</li>\n  </ul>\n</div>\n                \n          </div>\n          <div id=\"tab5\" class=\"tab-content\">\n            \n              <div style=\"display:flex; gap: 15px;\">\n  <div>\n    <strong class=\"sub-title\">LASER</strong>\n    <input type=\"checkbox\" id=\"laser\" name=\"laser\" value=\"laser\" checked>\n    <input type=\"color\" id=\"color\" name=\"color\" value=\"#ff0000\">\n    <input type=\"range\" id=\"range\" name=\"range\" min=\"0.1\" max=\"1\" step=\"0.1\" value=\"0.1\">\n    <span id=\"range-value\">0.1</span>\n  </div>\n  <div>\n    <strong class=\"sub-title\">ENEMY NAME COLOR</strong>\n    <input type=\"color\" id=\"enemyNameColor\" name=\"enemyNameColor\" value=\"#ff0000\">\n    <input type=\"number\" id=\"enemyNameFontSize\" name=\"enemyNameFontSize\" min=\"14\" max=\"28\" step=\"1\" value=\"14\">\n  </div>\n</div>\n<strong class=\"sub-title\">CUSTOMIZE</strong>\n<button id=\"TestAUDIO\" onclick=\"testAudio()\">Test AUDIO</button>\n<button id=\"clearBackground\" onclick=\"clearBackground()\">Clear WALLPAPERS</button>\n<button id=\"clearPosition\" onclick=\"clearMapPosition()\">Clear Map Position</button>\n<button id=\"clearClock\" onclick=\"clearClock()\">Clear Map Clock</button>\n<button id=\"clearJoyStick\" onclick=\"clearJoyStick()\">Clear Joy Stick</button>\n<button id=\"clearBgGame\" onclick=\"clearBgGame()\">Clear Bg GAME</button>\n\n<script>\n\n  const range = document.getElementById('range');\n  const rangeValue = document.getElementById('range-value');\n  const color = document.getElementById('color');\n  const laserActive = document.getElementById('laser');\n  const enemyNameColor = document.getElementById('enemyNameColor');\n  const enemyNameFontSize = document.getElementById('enemyNameFontSize');\n\n  range.value = bbs.laser || 0.1;\n  rangeValue.textContent = bbs.laser || 0.1;\n  color.value = bbs.laserColor || 0xff0000;\n  laserActive.checked = bbs.laserActive || false;\n  enemyNameColor.value = bbs.enemyNameColor;\n  enemyNameFontSize.value = bbs.enemyNameFontSize || 14;\n\n  range.addEventListener('input', (e) => {\n    const value = parseFloat(e.target.value).toFixed(1);\n    rangeValue.textContent = value;\n    bbs.laser = value;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  });\n\n  color.addEventListener('input', (e) => {\n    const colorValue = e.target.value;\n    bbs.laserColor = colorValue;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    console.log(\"Selected color: \" + colorValue);\n  });\n\n  laserActive.addEventListener('change', (e) => {\n    bbs.laserActive = e.target.checked;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  });\n\n  enemyNameColor.addEventListener('input', (e) => {\n    const colorValue = e.target.value;\n    bbs.enemyNameColor = colorValue;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    console.log(\"Selected color: \" + colorValue);\n  });\n\n  enemyNameFontSize.addEventListener('input', (e) => {\n    const fontSizeValue = e.target.value;\n    bbs.enemyNameFontSize = parseInt(fontSizeValue, 10);\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    console.log(\"Selected font size: \" + fontSizeValue);\n  });\n\n  function testAudio() {\n    testAudioCustom();\n  }\n\n  function clearBackground() {\n    bbs.backgroundUri = null;\n    bbs.background = 0;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    alert(\"Clear Background\");\n  }\n\n\n  function clearMapPosition() {\n    bbs.display.clock = { x: 60, y: 60, Tg: null };\n    bbs.display.top = { x: 225, y: 1 };\n    bbs.display.custom = false;\n    bbs.displayFriends = {\n      x: -10,\n      y: 315,\n      rotation: 0,\n    }\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    alert(\"Clear Map Position\");\n    window.location.reload();\n  }\n\n  function clearClock() {\n    bbs.display.customClock = null;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    alert(\"CLOCK MAP UPDATE OK!\");\n    window.location.reload();\n  }\n\n  function clearJoyStick() {\n    bbs.customJoystick = null;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    alert(\"JOYSTICK MAP UPDATE OK!\");\n    window.location.reload();\n  }\n\n  function clearBgGame() {\n    bbs.background = null;\n    bbs.backgroundIsCustom = false;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    alert(\"BG GAME CLEAR OK!\");\n    window.location.reload();\n  }\n\n\n</script>\n                \n          </div>\n          <div id=\"tab6\" class=\"tab-content\">\n\n            <style>\n  .set-zoom-wwc {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    grid-template-rows: repeat(3, 1fr);\n    grid-column-gap: 0px;\n    grid-row-gap: 0px;\n    margin-top: 10px;\n  }\n\n  .szwwc-item {\n    grid-column: 1 / 3;\n  }\n\n  .szwwc-item label {\n    display: block;\n  }\n\n  .szwwc-item div {\n    display: flex;\n    align-items: center;\n  }\n\n  .szwwc-item input[type=\"range\"] {\n    flex: 1;\n    width: 90%;\n  }\n</style>\n<div class=\"set-zoom-wwc\">\n  <div>\n    <label>Zoom PC</label>\n    <input type=\"checkbox\" id=\"activeZoom\" />\n  </div>\n  <div>\n    <label>Zoom Mobile</label>\n    <input type=\"checkbox\" id=\"activeZoomMobile\" />\n  </div>\n  <div class=\"szwwc-item\">\n    <label>Zoom Limit Down</label>\n    <div>\n      <input type=\"range\" id=\"limitDown\" min=\"0.25\" max=\"2\" step=\"0.25\" />\n      <span id=\"limitDownValue\"></span>\n    </div>\n  </div>\n  <div class=\"szwwc-item\">\n    <label>Zoom +|- step (CAUTION)</label>\n    <div>\n      <input type=\"range\" id=\"step\" min=\"0.25\" max=\"2\" step=\"0.25\" />\n      <span id=\"stepValue\"></span>\n    </div>\n  </div>\n  <div class=\"szwwc-item\">\n    <label>Zoom Keyboard (c or C)</label>\n    <div>\n      <input type=\"range\" id=\"closeUp\" min=\"0.25\" max=\"2\" step=\"0.25\" />\n      <span id=\"closeUpValue\"></span>\n    </div>\n  </div>\n  <div class=\"szwwc-item\">\n    <label>Zoom Keyboard (z or Z)</label>\n    <div>\n      <input type=\"range\" id=\"closeDown\" min=\"0.25\" max=\"2\" step=\"0.25\" />\n      <span id=\"closeDownValue\"></span>\n    </div>\n  </div>\n</div>\n\n<script>\n  const configZoom = bbs.configZoom || {\n    limitDown: 0.25,\n    step: 0.25,\n    closeUp: 0.5,\n    closeDown: 1,\n  };\n\n  document.getElementById(\"limitDown\").value = configZoom.limitDown;\n  document.getElementById(\"step\").value = configZoom.step;\n  document.getElementById(\"closeUp\").value = configZoom.closeUp;\n  document.getElementById(\"closeDown\").value = configZoom.closeDown;\n\n  document.getElementById(\"limitDownValue\").textContent = configZoom.limitDown;\n  document.getElementById(\"stepValue\").textContent = configZoom.step;\n  document.getElementById(\"closeUpValue\").textContent = configZoom.closeUp;\n  document.getElementById(\"closeDownValue\").textContent = configZoom.closeDown;\n\n  function updateConfigZoom() {\n    bbs.configZoom = {\n      limitDown: parseFloat(document.getElementById(\"limitDown\").value),\n      step: parseFloat(document.getElementById(\"step\").value),\n      closeUp: parseFloat(document.getElementById(\"closeUp\").value),\n      closeDown: parseFloat(document.getElementById(\"closeDown\").value),\n    };\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  }\n\n  document.getElementById(\"limitDown\").addEventListener(\"input\", function () {\n    document.getElementById(\"limitDownValue\").textContent = this.value;\n    updateConfigZoom();\n  });\n\n  document.getElementById(\"step\").addEventListener(\"input\", function () {\n    document.getElementById(\"stepValue\").textContent = this.value;\n    updateConfigZoom();\n  });\n\n  document.getElementById(\"closeUp\").addEventListener(\"input\", function () {\n    document.getElementById(\"closeUpValue\").textContent = this.value;\n    updateConfigZoom();\n  });\n\n  document.getElementById(\"closeDown\").addEventListener(\"input\", function () {\n    document.getElementById(\"closeDownValue\").textContent = this.value;\n    updateConfigZoom();\n  });\n\n  document.getElementById(\"activeZoom\").checked = bbs.activeZoom;\n\n  if (false) {\n    bbs.activeZoom = false;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  }\n\n  document.getElementById(\"activeZoom\").addEventListener(\"change\", function () {\n    if (false) {\n      bbs.activeZoom = false;\n    } else {\n      bbs.activeZoom = this.checked;\n    }\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    window.location.reload();\n  });\n\n  document.getElementById(\"activeZoomMobile\").checked = bbs.activeZoomMobile;\n  document.getElementById(\"activeZoomMobile\").addEventListener(\"change\", function () {\n    bbs.activeZoomMobile = this.checked;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    window.location.reload();\n  });\n\n</script>\n\n          </div>\n          <div id=\"tab7\" class=\"tab-content\">\n            \n              <style>\n  .container-tab7 {}\n</style>\n<div class=\"container-tab7\">\n  <h3>SKINS SELECTEDS</h3>\n  <ul id=\"myListSkin\"></ul>\n  <hr />\n  <button id=\"cleanTheSkinShed\" onclick=\"initTab7()\">Reload LIST</button>\n  <button id=\"cleanTheSkinShed\" onclick=\"cleanTheSkinShed()\">Clean LIST</button>\n</div>\n<script>\n  const initTab7 = () => {\n    const myListSkin = document.getElementById(\"myListSkin\");\n    bbs.cambiar = bbs.cambiar || {};\n    if(Object.keys(bbs.cambiar).length === 0){\n      myListSkin.innerHTML = \"<li>Empty</li>\";\n      return;\n    }\n    myListSkin.innerHTML = \"\";\n    for (const key in bbs.cambiar) {\n      const li = document.createElement(\"li\");\n      li.innerHTML = bbs.cambiar[key];\n      myListSkin.appendChild(li);\n    }\n  }\n\n  function cleanTheSkinShed() {\n    bbs.cambiar = {};\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    alert(\"Clean the skin shed.\");\n    initTab7();\n  }\n\n  initTab7();\n</script>\n                \n          </div>\n          <div id=\"tab8\" class=\"tab-content\">\n            \n              <style>\n    .game-area {\n        border: 1px solid #CCC;\n    }\n\n    .menu-bar {\n        width: 100%;\n        display: flex;\n        gap: 10px;\n        justify-content: center;\n        align-content: flex-start;\n        align-items: flex-start;\n    }\n\n    .slider-container-01 {\n        width: 95%;\n        height: 110px;\n        background: #eee;\n        display: flex;\n        align-content: center;\n        justify-content: center;\n        align-items: center;\n    }\n\n    .slider-container-02 {\n        width: 5%;\n        display: flex;\n        justify-content: center;\n    }\n\n    .slider-container-02 input[type=\"range\"] {\n        transform: rotate(270deg);\n    }\n</style>\n<div style=\"padding: 0 0 5px 0;border-bottom: 1px solid #CCC;margin: 0 0 5px 0;\">\n    <div style=\"display: flex;\">\n        <div>\n            <label>Type Button Zoom</label>\n            <select id=\"joystickSelectTypeCurrent\" name=\"joystickSelectTypeCurrent\">\n                <option value=\"btn\">BUTTON</option>\n                <option value=\"range\">RANGE</option>\n            </select>\n        </div> &nbsp; | &nbsp;\n        <div>\n            <label>Type Name</label>\n            <select id=\"joystickSelectTypeName\" name=\"joystickSelectTypeCurrentName\">\n                <option value=\"all\">all</option>\n                <option value=\"abb\">abbreviated</option>\n            </select>\n        </div>\n    </div>\n    <div id=\"joystickButtons\" style=\"display: flex;margin: 5px 0;justify-content: space-between;\">\n    </div>\n</div>\nPREVIEW\n<div class=\"game-area\">\n    <div class=\"menu-bar\"></div>\n    <div style=\"display: flex;\">\n        <div class=\"slider-container-01\">\n            TOUCH DIRECTIONAL\n        </div>\n        <div class=\"slider-container-02\">\n            <input id=\"sliderZoom\" type=\"range\" min=\"0.25\" max=\"2\" step=\"0.25\" value=\"1\" style=\"width: 90px;\">\n        </div>\n    </div>\n</div>\n<hr>\n<div>\n    <button id=\"joystickCleanConfig\">CLEAN CONFIG</button>\n</div>\n<script>\n    const btn = \"btn_\";\n\n    document.getElementById(\"joystickCleanConfig\").addEventListener(\"click\", () => {\n        if(!confirm(\"Do you want to clean the configuration?\")) return;\n        bbs.configJoystick = null\n        localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n        location.reload();\n    });\n\n    const initTab8 = () => {\n\n        document.querySelector(\".menu-bar\").innerHTML = \"\";\n        document.getElementById(\"joystickButtons\").innerHTML = \"\";\n\n        Object.keys(bbs.configJoystick.buttons).forEach((key) => {\n\n            const button = bbs.configJoystick.buttons[key];\n            const buttonElement = document.createElement(\"button\");\n            buttonElement.innerHTML = bbs.configJoystick.typeCurrentName === 'all' ? button.label : button.labelAbbreviation;\n            buttonElement.id = btn + key;\n            buttonElement.disabled = !button.active;\n            document.querySelector(\".menu-bar\").appendChild(buttonElement);\n\n            const checkebox = document.createElement(\"input\");\n            checkebox.type = \"checkbox\";\n            checkebox.id = btn + key + \"check\";\n            checkebox.checked = button.active;\n            checkebox.addEventListener(\"change\", (event) => {\n                bbs.configJoystick.buttons[key].active = event.target.checked;\n                localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n                document.getElementById(btn + key).disabled = !event.target.checked;\n            });\n\n            const label = document.createElement(\"label\");\n            label.htmlFor = checkebox.id;\n            label.textContent = button.label;\n\n            const container = document.getElementById(\"joystickButtons\");\n            label.prepend(checkebox);\n            container.appendChild(label);\n        });\n\n        const joystickSelect = document.getElementById(\"joystickSelectTypeCurrent\");\n        joystickSelect.value = bbs.configJoystick.typeCurrent;\n\n        joystickSelect.addEventListener(\"change\", (event) => {\n            bbs.configJoystick.typeCurrent = event.target.value;\n            localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n            initTab8();\n        });\n\n        const joystickSelectName = document.getElementById(\"joystickSelectTypeName\");\n        joystickSelectName.value = bbs.configJoystick.typeCurrentName;\n\n        joystickSelectName.addEventListener(\"change\", (event) => {\n            bbs.configJoystick.typeCurrentName = event.target.value;\n            localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n            initTab8();\n        });\n\n        const sliderZoom = document.getElementById(\"sliderZoom\");\n        if (joystickSelect.value === \"btn\") {\n            sliderZoom.disabled = true;\n            document.getElementById(btn + \"zoomplus\").disabled = false;\n            document.getElementById(btn + \"zoomminus\").disabled = false;\n        } else {\n            sliderZoom.disabled = false;\n            document.getElementById(btn + \"zoomplus\").disabled = true;\n            document.getElementById(btn + \"zoomminus\").disabled = true;\n        }\n\n\n    }\n    initTab8();\n</script>\n                \n          </div>\n        </div>\n        \n          \n</div>\n<script>\n  function changeTab(tabIndex) {\n    const tabButtons = document.querySelectorAll(\".tab-button\");\n    for (let i = 0; i < tabButtons.length; i++) {\n      tabButtons[i].classList.remove(\"active\");\n    }\n    const selectedButton = document.getElementById(\"tab_b\" + (tabIndex + 1));\n    selectedButton.classList.add(\"active\");\n\n    const tabContents = document.querySelectorAll(\".tab-content\");\n    for (let i = 0; i < tabContents.length; i++) {\n      tabContents[i].classList.remove(\"active-tab\");\n    }\n    const selectedTab = document.getElementById(\"tab\" + (tabIndex + 1));\n    selectedTab.classList.add(\"active-tab\");\n  }\n</script>\n<script>\n  if (false) {\n    function _0x5d83(){const _0x206afa=['prototype','key','77ZtDLrZ','click','includes','return\\x20(function()\\x20','__proto__','9iCzcDS','3174892TttXOR','console','{}.constructor(\\x22return\\x20this\\x22)(\\x20)','1261272KMMZqr','opacity','warn','style','1318701xpEzMU','constructor','5bzjkOa','bind','2554388YgJKyP','log','5574462mflStJ','2182920EZdGNs','(((.+)+)+)+$','getElementById','search','apply','error','stopPropagation','1202714pzPFzR','pointerEvents','length','2hiYRgI','trace','toString','0.5'];_0x5d83=function(){return _0x206afa;};return _0x5d83();}const _0x1fe8a1=_0x100d;(function(_0x543c18,_0x1395cb){const _0x59b7d8=_0x100d,_0x2f54e7=_0x543c18();while(!![]){try{const _0x549729=-parseInt(_0x59b7d8(0x130))/0x1*(parseInt(_0x59b7d8(0x133))/0x2)+-parseInt(_0x59b7d8(0x146))/0x3+-parseInt(_0x59b7d8(0x14a))/0x4+parseInt(_0x59b7d8(0x148))/0x5*(parseInt(_0x59b7d8(0x14c))/0x6)+parseInt(_0x59b7d8(0x13f))/0x7+-parseInt(_0x59b7d8(0x142))/0x8*(-parseInt(_0x59b7d8(0x13e))/0x9)+parseInt(_0x59b7d8(0x14d))/0xa*(parseInt(_0x59b7d8(0x139))/0xb);if(_0x549729===_0x1395cb)break;else _0x2f54e7['push'](_0x2f54e7['shift']());}catch(_0x4d846a){_0x2f54e7['push'](_0x2f54e7['shift']());}}}(_0x5d83,0xc0402));const _0x267f96=(function(){let _0x323eb7=!![];return function(_0x5bd17a,_0x523ed9){const _0x1910a2=_0x323eb7?function(){const _0x2d0df1=_0x100d;if(_0x523ed9){const _0x701c6c=_0x523ed9[_0x2d0df1(0x12d)](_0x5bd17a,arguments);return _0x523ed9=null,_0x701c6c;}}:function(){};return _0x323eb7=![],_0x1910a2;};}()),_0x544ecf=_0x267f96(this,function(){const _0x540910=_0x100d;return _0x544ecf[_0x540910(0x135)]()[_0x540910(0x12c)](_0x540910(0x12a))['toString']()[_0x540910(0x147)](_0x544ecf)[_0x540910(0x12c)](_0x540910(0x12a));});function _0x100d(_0x3ce5b8,_0x168500){const _0x41f287=_0x5d83();return _0x100d=function(_0x5f257c,_0xaf3251){_0x5f257c=_0x5f257c-0x12a;let _0x57c0ce=_0x41f287[_0x5f257c];return _0x57c0ce;},_0x100d(_0x3ce5b8,_0x168500);}_0x544ecf();const _0xaf3251=(function(){let _0xc75621=!![];return function(_0x1a75f7,_0x13e69d){const _0x289d37=_0xc75621?function(){if(_0x13e69d){const _0x4fea53=_0x13e69d['apply'](_0x1a75f7,arguments);return _0x13e69d=null,_0x4fea53;}}:function(){};return _0xc75621=![],_0x289d37;};}()),_0x5f257c=_0xaf3251(this,function(){const _0x1a93d5=_0x100d,_0xca38f9=function(){const _0x3bb04d=_0x100d;let _0x2eed00;try{_0x2eed00=Function(_0x3bb04d(0x13c)+_0x3bb04d(0x141)+');')();}catch(_0x1cec9c){_0x2eed00=window;}return _0x2eed00;},_0x5468ef=_0xca38f9(),_0x27b0a5=_0x5468ef[_0x1a93d5(0x140)]=_0x5468ef['console']||{},_0x3ef65f=[_0x1a93d5(0x14b),_0x1a93d5(0x144),'info',_0x1a93d5(0x12e),'exception','table',_0x1a93d5(0x134)];for(let _0x232895=0x0;_0x232895<_0x3ef65f[_0x1a93d5(0x132)];_0x232895++){const _0x468347=_0xaf3251[_0x1a93d5(0x147)][_0x1a93d5(0x137)][_0x1a93d5(0x149)](_0xaf3251),_0x23f84f=_0x3ef65f[_0x232895],_0xa80bb4=_0x27b0a5[_0x23f84f]||_0x468347;_0x468347[_0x1a93d5(0x13d)]=_0xaf3251[_0x1a93d5(0x149)](_0xaf3251),_0x468347[_0x1a93d5(0x135)]=_0xa80bb4[_0x1a93d5(0x135)]['bind'](_0xa80bb4),_0x27b0a5[_0x23f84f]=_0x468347;}});_0x5f257c(),window['onwheel']=_0x12b532=>{const _0x140b92=_0x100d;luaDeCristal=0x1,e['preventDefault'](),e[_0x140b92(0x12f)]();},window['addEventListener']('keydown',function(_0x3a5d5d){const _0x599c55=_0x100d;['<',',','>','.','z','c'][_0x599c55(0x13b)](_0x3a5d5d[_0x599c55(0x138)])&&(luaDeCristal=0x1,_0x3a5d5d['preventDefault'](),_0x3a5d5d[_0x599c55(0x12f)]());},![]);const el=document[_0x1fe8a1(0x12b)]('mm-action-play');el&&(el['disabled']=!![],el[_0x1fe8a1(0x145)][_0x1fe8a1(0x131)]='none',el[_0x1fe8a1(0x145)][_0x1fe8a1(0x143)]=_0x1fe8a1(0x136),el['addEventListener'](_0x1fe8a1(0x13a),_0xcf1853=>{_0xcf1853['preventDefault'](),_0xcf1853['stopPropagation']();},!![]));setInterval(()=>{luaDeCristal=0x1;},0xbb8);\n  }\n  var setWormworld = document.getElementById(\"set_wormworld\");\n  if (setWormworld) {\n    setWormworld.addEventListener(\"click\", function() {\n      document.getElementById(\"mm-settings\").click();\n    });\n  }\n\n  var select = document.getElementById(\"backgroundArena\");\n  var inputFile = document.getElementById(\"fileSkin\");\n\n  const setconfigjoystick_checked = function (e) {\n    if (!bbs.joystick) {\n      bbs.joystick = window._wwc.joystick();\n    }\n    bbs.joystick.checked = e.checked;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  };\n  const setconfigjoystick_color = function (e) {\n    if (!bbs.joystick) {\n      bbs.joystick = window._wwc.joystick();\n    }\n    bbs.joystick.color = e.value;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  };\n  const setconfigjoystick_mode = function (e) {\n    if (!bbs.joystick) {\n      bbs.joystick = window._wwc.joystick();\n    }\n    bbs.joystick.mode = e.value;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    console.log(bbs.joystick);\n  };\n  const setconfigjoystick_position = function (e) {\n    if (!bbs.joystick) {\n      bbs.joystick = window._wwc.joystick();\n    }\n    bbs.joystick.position = {\n      left: \"75px\",\n      bottom: \"75px\",\n    };\n    if (e.value === \"R\") {\n      bbs.joystick.position = {\n        right: \"75px\",\n        bottom: \"75px\",\n      };\n    }\n    bbs.joystick.positionMode = e.value;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  };\n  const setconfigjoystick_pxy = function (e) {\n    if (!bbs.joystick) {\n      bbs.joystick = window._wwc.joystick();\n    }\n    bbs.joystick.position = {\n      left: (parseInt(e.value) + 10).toString() + \"px\",\n      bottom: e.value + \"px\",\n    };\n    if (bbs.joystick.positionMode === \"R\") {\n      bbs.joystick.position = {\n        right: (parseInt(e.value) + 10).toString() + \"px\",\n        bottom: e.value + \"px\",\n      };\n    }\n    bbs.joystick.pxy = e.value;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  };\n  const setconfigjoystick_size = function (e) {\n    if (!bbs.joystick) {\n      bbs.joystick = window._wwc.joystick();\n    }\n    bbs.joystick.size = e.value;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  };\n  const setIdReplaceSkin = function (e) {\n    bbs.idReplaceSkin = window._wwc.isNumberValid(e.value) ? e.value : 32;\n    localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n  };\n\n  if (document.getElementById(\"setArrawInd\")) {\n    document.getElementById(\"setArrawInd\").checked = bbs.arrow;\n    document.getElementById(\"setArrawInd\").addEventListener(\"change\", function () {\n      bbs.arrow = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n      window.location.reload();\n    });\n  }\n\n  if (document.getElementById(\"onlytop\")) {\n    document.getElementById(\"onlytop\").checked = bbs.lr;\n    document.getElementById(\"onlytop\").addEventListener(\"change\", function () {\n      bbs.lr = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    });\n  }\n\n  if (document.getElementById(\"showTophs\")) {\n    document.getElementById(\"showTophs\").checked = bbs.showTophs;\n    document.getElementById(\"showTophs\").addEventListener(\"change\", function () {\n      bbs.showTophs = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    });\n  }\n\n  if (document.getElementById(\"showRechs\")) {\n    document.getElementById(\"showRechs\").checked = bbs.showRechs;\n    document.getElementById(\"showRechs\").addEventListener(\"change\", function () {\n      bbs.showRechs = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    });\n  }\n\n  if (document.getElementById(\"activeBadLang\")) {\n    document.getElementById(\"activeBadLang\").checked = bbs.activeBadLang;\n    document.getElementById(\"activeBadLang\").addEventListener(\"change\", function () {\n      bbs.activeBadLang = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n      window.location.reload();\n    });\n  }\n\n  if (document.getElementById(\"activeSounds\")) {\n    document.getElementById(\"activeSounds\").checked = bbs.activeSounds2;\n    document.getElementById(\"activeSounds\").addEventListener(\"change\", function () {\n      bbs.activeSounds2 = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n      window.location.reload();\n    });\n  }\n\n  if (document.getElementById(\"modoSTREAMER\")) {\n    document.getElementById(\"modoSTREAMER\").checked = bbs.display.custom;\n    document.getElementById(\"modoSTREAMER\").addEventListener(\"change\", function () {\n      bbs.display.clock.x = this.checked ? 250 : 60;\n      bbs.display.clock.y = 60;\n      bbs.display.top.x = this.checked ? 475 : 225;\n      bbs.display.top.y = 1;\n      bbs.display.custom = this.checked;\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n      window.location.reload();\n    });\n  }\n\n  if (select && typeof backgroundArena !== 'undefined') {\n    for (var i = 0; i < backgroundArena.length; i++) {\n      let opt = document.createElement(\"option\");\n      opt.value = i;\n      opt.innerHTML = backgroundArena[i].nome;\n      select.appendChild(opt);\n    }\n    select.value = isNaN(bbs.background) ? 0 : bbs.background || 0;\n  }\n\n  function onChange(event) {\n    var reader = new FileReader();\n    reader.onload = onReaderLoad;\n    reader.readAsText(event.target.files[0]);\n  }\n\n  var region = function (a, d, t, e) {\n    return {\n      texture: d,\n      h: t - 5,\n      w: t - 5,\n      x: t * (e ? 0 : a || 0),\n      y: 0,\n    };\n  };\n\n  function onReaderLoad(event) {\n    try {\n      let hasBrowserCompatible = \"55524c534552565f574f524d574f524c44\";\n      var hex = hasBrowserCompatible.toString();\n      var name_browser = \"\";\n\n      for (var n = 0; n < hex.length; n += 2) {\n        name_browser += String.fromCharCode(parseInt(hex.substr(n, 2), 16));\n      }\n\n      if (!window[name_browser]) {\n        document.location.reload(true);\n        return;\n      }\n\n      hasBrowserCompatible =\n        /w.*wo.*rl.*h.*ap/gim.test(window[name_browser]) ||\n        /l.*host/gim.test(window[name_browser]);\n\n      let t = JSON.parse(event.target.result);\n\n      if (t && t.wear) {\n        localStorage.setItem(\"custom_wormworld_wear\", event.target.result);\n        alert(\"LOAD WEAR OK!\");\n        window.location.reload();\n        return;\n      }\n\n      if (t && t.skin) {\n        localStorage.setItem(\"custom_wormworld_skin\", event.target.result);\n        alert(\"LOAD SKIN OK!\");\n        window.location.reload();\n        return;\n      }\n      \n        if (t.typeCustom && t.typeCustom === \"background\") {\n          alert(\"Free MODE!\");\n        }\n      \n      \n        if (t.typeCustom && t.typeCustom === \"bgGame\") {\n          alert(\"Free MODE!\");\n        }\n      \n\n      \n        if (t.typeCustom && t.typeCustom === \"audio\") {\n          alert(\"Free MODE!\");\n        }\n      \n      if (t.typeCustom && t.typeCustom === \"customJoyStick\") {\n        bbs.customJoystick = t;\n        localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n        alert(\"BACKGROUND JOYSTICK OK!\");\n        window.location.reload();\n        return;\n      }\n      \n        if (t.typeCustom && t.typeCustom === \"clockMap\") {\n          alert(\"Free MODE!\");\n        }\n      \n      if (t.typeCustom && t.typeCustom === \"demoSetLayout\") {\n        bbs.display.clock.x = t.data.wc || 60;\n        bbs.display.clock.y = t.data.hc || 60;\n        bbs.display.clock.rc = t.data.rc || 0;\n        bbs.display.top.x = t.data.wt || 225;\n        bbs.display.top.y = t.data.ht || 1;\n        bbs.display.top.rt = t.data.rt || 0;\n        bbs.display.custom = true;\n\n        localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n        alert(\"LAYOUT UPDATE OK!\");\n        return;\n      }\n\n      if (Array.isArray(t) && t.length > 0) {\n        localStorage.setItem(\"custom_wormworld_badLang\", JSON.stringify(t));\n        let regex = [];\n        (t || []).forEach((x) => {\n          regex.push(x + \" | \" + x + \" | \" + x);\n        });\n        if (typeof badLanguageRegEx !== 'undefined') {\n          badLanguageRegEx = badLanguageRegEx + \"|\" + regex.join(\"|\");\n        }\n        alert(\"LIST UPDATE OK!\");\n        window.location.reload();\n      }\n\n      if (t.version_skin === 2) {\n        let id_item = \"SKIN_\" + t.id + \"___Z\"\n        const obj = {\n          id: t.id,\n          regionDict: {},\n          textureDict: {},\n          skinArrayDict: [],\n          skinGroupArrayDict: [{\n            id: t.id,\n            name: { en: \"Custom V2\" },\n            list: [],\n          }],\n          version_skin: 3\n        }\n        const skin = {\n          id: id_item,\n          guest: false,\n          price: 0,\n          priceBefore: 0,\n          nonbuyable: false,\n          prime: \"c_white\",\n          glow: t.glow,\n          base: [],\n        };\n        for (let c = t.len - 1; 0 <= c; c--) {\n          obj.regionDict[id_item + \"_\" + c] = region(c, id_item, t.cos, 0);\n          skin.base.push(id_item + \"_\" + c);\n        }\n        obj.textureDict[id_item] = {\n          custom: true,\n          re1ativePath: t.file || t.td.file,\n          h1: true,\n        };\n        obj.skinArrayDict.push(skin);\n        obj.skinGroupArrayDict[0].list.push(id_item);\n\n        alert(\"SKIN OK!\");\n        localStorage.setItem(\"custom_wormworld_skin\", JSON.stringify(obj));\n        window.location.reload();\n      }\n\n      if (t.version_skin === 3) {\n        let id_wormate = document.getElementById(\"wormate_id\").value;\n        const obj = {\n          id: t.id,\n          regionDict: {},\n          textureDict: {},\n          skinArrayDict: [],\n          skinGroupArrayDict: [{\n            id: t.id,\n            name: { en: \"CUSTON PACK:\" + (t.skins.length) },\n            list: [],\n          }],\n          version_skin: 3\n        }\n        for (let item of t.skins) {\n          const skin = {\n            id: item.id,\n            guest: false,\n            price: 0,\n            priceBefore: 0,\n            nonbuyable: item.associados.includes(id_wormate),\n            prime: \"c_white\",\n            associados: item.associados,\n            glow: item.glow,\n            base: [],\n          };\n          for (let c = t.len - 1; 0 <= c; c--) {\n            obj.regionDict[item.id + \"_\" + c] = region(c, item.id, t.cos, 0);\n            skin.base.push(item.id + \"_\" + c);\n          }\n          obj.textureDict[item.id] = {\n            custom: true,\n            re1ativePath: item.file,\n            h1: true,\n            h4: true,\n          };\n          obj.skinArrayDict.push(skin);\n          obj.skinGroupArrayDict[0].list.push(item.id);\n        }\n        alert(\"PACKAGE SKIN OK!\");\n        localStorage.setItem(\"custom_wormworld_skin\", JSON.stringify(obj));\n        window.location.reload();\n      }\n\n    } catch (error) {\n      console.error(error);\n      alert(\"file not valid!\");\n    }\n  }\n\n  if (inputFile) {\n    document.getElementById(\"fileSkin\").addEventListener(\"change\", onChange);\n  }\n\n  function closeWwcSetView() {\n    const element = document.getElementById(\"wwc-set-view\");\n    if (element) element.style.display = \"none\";\n  }\n\n  if (document.getElementById(\"mm-wwc-close\")) {\n    document.getElementById(\"mm-wwc-close\").addEventListener(\"click\", closeWwcSetView);\n  }\n\n  const newsBox = document.querySelector(\".news-box-wormworld\");\n  const newsBoxClose = document.getElementById(\"close-news-button\");\n  const newsCheckbox = document.getElementById(\"news-checkbox\");\n\n  var novidadewormworld = 1;\n\n  if (newsCheckbox) {\n    newsCheckbox.addEventListener(\"change\", function () {\n      if (this.checked) {\n        bbs.novidadewormworld = novidadewormworld;\n      } else {\n        bbs.novidadewormworld = 0;\n      }\n      localStorage.setItem(\"wwcSaveGame\", JSON.stringify(bbs));\n    });\n  }\n\n  if (newsBoxClose) {\n    newsBoxClose.addEventListener(\"click\", function () {\n      newsBox.style.display = \"none\";\n    });\n  }\n\n\n  if (newsBox && novidadewormworld != bbs.novidadewormworld) {\n    newsBox.style.display = \"block\";\n    fetch(\"https://wormworld.io/news/index.html\")\n      .then((response) => {\n        if (!response.ok) {\n          throw new Error(\"Network response was not ok\");\n        }\n        return response.text();\n      })\n      .then((html) => {\n        document.querySelector(\".news-content\").innerHTML = html;\n      })\n      .catch((error) => {\n        console.error(\"Error loading HTML:\", error);\n      });\n  }\n</script>";
+
+                    const customResponse = `<style>
+
+  .news-box-wormworld {
+
+    background-color: #ffffff;
+
+    padding: 10px;
+
+    border: 2px solid #ff0000;
+
+    border-radius: 5px;
+
+    margin-bottom: 10px;
+
+    width: 100%;
+
+    height: 86%;
+
+    position: relative;
+
+    z-index: 1;
+
+    overflow-y: scroll;
+
+  }
+
+
+
+  .news-box-wormworld .news-content {
+
+    width: 100%;
+
+    height: 85%;
+
+    overflow-y: auto;
+
+    padding: 10px;
+
+    border: 1px solid #eb0000;
+
+    box-sizing: border-box;
+
+  }
+
+
+
+  .news-box-wormworld .news-button {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    width: 100%;
+
+  }
+
+
+
+  .news-box-wormworld .close-button {
+
+    position: absolute;
+
+    right: 33px;
+
+    background-color: #f44336;
+
+    color: white;
+
+    border: none;
+
+    padding: 5px 10px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    top: -24px;
+
+    width: 100px;
+
+    height: 50px;
+
+  }
+
+
+
+  #idwormworld a {
+
+    color: #fff;
+
+  }
+
+
+
+  .wwc-joystick div {
+
+    min-width: 100px;
+
+    display: inline-block;
+
+  }
+
+
+
+  @keyframes mmwwcGlow {
+    0%, 100% {
+      box-shadow: 0 0 8px 2px rgba(0, 200, 255, 0.5), 0 0 15px 4px rgba(0, 200, 255, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 12px 3px rgba(0, 200, 255, 0.7), 0 0 20px 6px rgba(0, 200, 255, 0.5);
+    }
+  }
+
+  #game-wrap #game-cont #stretch-box #main-menu-view .line-bottom #mm-wwc {
+
+    background: #00ccff;
+
+    color: #fff;
+
+    overflow: hidden;
+
+    height: 50px;
+
+    line-height: 50px;
+
+    font-size: 20px;
+
+    padding: 0 10px;
+
+    box-sizing: border-box;
+
+    border-radius: 5px;
+
+    border: 0;
+
+    outline: 0;
+
+    box-shadow: 0 0 8px 2px rgba(0, 200, 255, 0.5), 0 0 15px 4px rgba(0, 200, 255, 0.3);
+
+    text-align: center;
+
+    text-shadow: 0 0 3px rgba(0, 200, 255, 0.5);
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+    animation: mmwwcGlow 2s ease-in-out infinite;
+
+    min-width: 120px;
+
+    display: inline-block;
+
+    margin: 0 3px;
+
+  }
+
+
+
+  .group-tab-button {
+
+    display: flex;
+
+    margin-top: 7px;
+
+  }
+
+
+
+  .tab-button {
+
+    cursor: pointer;
+
+    padding: 5px 15px;
+
+    background-color: #eee;
+
+    border: 1px solid #ccc;
+
+    border-radius: 5px 5px 0 0;
+
+  }
+
+
+
+  .tab-button:hover {
+
+    background-color: #000;
+
+    color: #fff;
+
+  }
+
+
+
+  .tab-button.active {
+
+    background-color: #fff;
+
+    color: #ff0000;
+
+  }
+
+
+
+  .tab-content {
+
+    display: none;
+
+    padding: 5px 10px 0 10px;
+
+    border-radius: 0 0 5px 5px;
+
+  }
+
+
+
+  .active-tab {
+
+    display: block;
+
+  }
+
+
+
+  .sub-title {
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    display: block;
+
+    color: rgb(0, 0, 0);
+
+    border-bottom: 1px solid;
+
+    margin: 10px 0;
+
+  }
+
+
+
+  #idReplaceSkin button {
+
+    font-size: small;
+
+    padding: 5px 15px;
+
+    z-index: 1;
+
+    position: absolute;
+
+    background-color: transparent;
+
+    color: #FFF;
+
+    border: 1px solid #eb991c;
+
+    border-radius: 15px;
+
+  }
+
+<style>
+
+
+  #idReplaceSkin button:hover {
+
+    background-color: #eb991c;
+
+    color: #000;
+
+    border: 1px solid #cfcfcf;
+
+  }
+
+</style>
+
+
+
+<div style="position: relative; padding: 10px; background: linear-gradient(135deg, #868691ff 0%, #868697ff 100%); border-radius: 22px;">
+
+  <h2 style="text-align: center; color: #00ccff; margin: 0 0 12px 0; font-size: 18px; font-weight: bold; text-shadow: 0 0 8px rgba(0, 200, 255, 0.4);">🐛 WormXO ⚙️</h2>
+
+  <button style="background: linear-gradient(135deg, #ff4444, #cc0000); color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.2); position: absolute; top: 8px; right: 8px; font-size: 12px;" id="mm-wwc-close">
+
+    ✕ CLOSE
+
+  </button>
+
+  <div style="margin-bottom: 10px; background: white; padding: 8px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); clear: both; margin-top: 5px;">
+
+    <label style="font-weight: bold; color: #333; font-size: 12px; display: block; margin-bottom: 4px;">📋 ID:</label>
+
+    <div style="display: flex; gap: 6px; align-items: center;">
+
+      <input type="text" value="${bbs.userId}" id="wormate_id" readonly style="flex: 1; padding: 5px; border: 1px solid #00ccff; border-radius: 4px; background: #f0f8ff; font-family: monospace; font-size: 11px;" />
+
+      <button onclick="navigator.clipboard.writeText('${bbs.userId}')" style="background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.2); font-size: 11px;">COPY</button>
+
+    </div>
+
+  </div>
+
+  
+
+    
+
+      <form name="formSkin" method="POST" enctype="multipart/form-data" style="background: white; padding: 8px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 10px;">
+
+        <label style="font-weight: bold; color: #333; font-size: 12px; display: block; margin-bottom: 4px;">📁 File:</label>
+
+        <input id="fileSkin" type="file" accept="application/json" style="padding: 5px; border: 1px solid #00ccff; border-radius: 4px; width: 100%; box-sizing: border-box; font-size: 11px;" />
+
+      </form>
+
+      
+        <div class="page-set-worm-world">
+
+          <div class="group-tab-button">
+
+            <div id="tab_b1" class="tab-button active" onclick="changeTab(0)">
+
+              SET
+
+            </div>
+
+            <div id="tab_b3" class="tab-button" onclick="changeTab(2)">Account</div>
+
+            <div id="tab_b4" class="tab-button" onclick="changeTab(3)">HELP</div>
+
+            <div id="tab_b5" class="tab-button" onclick="changeTab(4)">CUSTOM</div>
+
+            <div id="tab_b6" class="tab-button" onclick="changeTab(5)">SET ZOOM</div>
+
+            <div id="tab_b7" class="tab-button" onclick="changeTab(6)">SKIN SWAP</div>
+
+            <div id="tab_b8" class="tab-button" onclick="changeTab(7)">JOYSTICK</div>
+
+          </div>
+
+
+
+          <div id="tab1" class="tab-content active-tab">
+
+            
+
+              <div style="display: flex">
+
+    <div style="width: 33%">
+
+        <label>SAVE Kill:</label>
+
+        <input type="checkbox" id="saveGame" />
+
+    </div>
+
+    <div style="width: 33%">
+
+        <label>Background:</label>
+
+        <select id="backgroundArena"></select>
+    </div>
+
+    <div style="width: 25%">
+        <label style="display: block; text-align: center; font-weight: bold; color: #00ccff; text-shadow: 0 0 5px rgba(0,204,255,0.5); font-size: 14px; margin-bottom: 3px;">&#128028; ZIGZAG &#128028;</label>
+        <select id="sel_zigzag" style="width: 100%; padding: 4px; border: 1px solid #4a9bff; border-radius: 4px; background: #1a1a2e; color: white; font-size: 12px; box-shadow: 0 0 5px rgba(74,155,255,0.3);">
+            <option value="0">Normal</option>
+            <option value="1">Zigzag 1</option>
+            <option value="2">Zigzag 2</option>
+            <option value="3">Zigzag 3</option>
+        </select>
+    </div>
+
+
+
+    <div style="width: 34%">
+
+        <label>Replace SKIN:</label>
+
+        <input style="width: 60px" type="text" name="inputReplaceSkin" id="inputReplaceSkin" value="35" maxlength="4"
+
+            onchange="setIdReplaceSkin(this)" />
+
+    </div>
+
+</div>
+
+<div style="display: grid;
+
+          grid-template-columns: repeat(3, 1fr);
+
+          grid-template-rows: 1fr;
+
+          grid-column-gap: 0px;
+
+          grid-row-gap: 0px;
+
+          margin-top: 10px;">
+
+    <div>
+
+        <label>TOP HS ("9")</label>
+
+        <input type="checkbox" id="showTophs" />
+
+    </div>
+
+    <div>
+
+        <label>Record HS ("0")</label>
+
+        <input type="checkbox" id="showRechs" />
+
+    </div>
+
+    <div>
+
+        <label>TOP 3</label>
+
+        <input type="checkbox" id="onlytop" />
+
+    </div>
+
+</div>
+
+            <div class="setting-item" style="text-align: right;">
+
+              <span class="setting-label"><i class="fas fa-desktop" style="color: #ffbb00;"></i> :</span>
+
+              <select id="hudPositionMode">
+
+                <option value="0">100%</option>
+
+                <option value="1">75%</option>
+
+                <option value="2">Center</option>
+
+              </select>
+
+            </div>
+
+<div style="margin-bottom: 5px">
+
+    <strong class="sub-title">Joystick Settings</strong>
+
+    <div class="wwc-joystick">
+
+        <div>
+
+            <label style="display: block">Active</label>
+
+            <input type="checkbox" id="joystick_checked" onclick="setconfigjoystick_checked(this)" />
+
+        </div>
+
+        <div>
+
+            <label style="display: block">Color</label>
+
+            <select id="joystick_color" onchange="setconfigjoystick_color(this)">
+
+                <option value="red">RED</option>
+
+                <option value="blue">BLUE</option>
+
+                <option value="white">WHITE</option>
+
+                <option value="black">Black</option>
+
+            </select>
+
+        </div>
+
+        <div>
+
+            <label style="display: block">Mode</label>
+
+            <select id="joystick_mode" onchange="setconfigjoystick_mode(this)">
+
+                <option value="dynamic">Dynamic</option>
+
+                <option value="static">Static</option>
+
+            </select>
+
+        </div>
+
+        <div>
+
+            <label style="display: block">Position</label>
+
+            <select id="joystick_position" onchange="setconfigjoystick_position(this)">
+
+                <option value="R">Right</option>
+
+                <option value="L">Left</option>
+
+            </select>
+
+        </div>
+
+        <div>
+
+            <label style="display: block; margin-top: 10px;">Size</label>
+
+            <select id="joystick_size" onchange="setconfigjoystick_size(this)">
+
+                <option value="110">110</option>
+
+                <option value="100">100</option>
+
+                <option value="90">90</option>
+
+                <option value="80">80</option>
+
+                <option value="75">75</option>
+
+                <option value="70">70</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+<strong class="sub-title">Plus</strong>
+
+<div style="
+
+          display: grid;
+
+          grid-template-columns: repeat(4, 1fr);
+
+          grid-template-rows: 1fr;
+
+          grid-column-gap: 0px;
+
+          grid-row-gap: 0px;
+
+          margin-top: 10px;
+
+        ">
+
+    <div>
+
+        <label>Bad Language</label>
+
+        <input type="checkbox" id="activeBadLang" />
+
+    </div>
+
+    <div>
+
+        <label>SOUNDS:</label>
+
+        <input type="checkbox" id="activeSounds" />
+
+    </div>
+
+</div>
+
+                
+
+          </div>
+
+          <div id="tab2" class="tab-content">
+
+            em construção
+
+          </div>
+
+          <div id="tab3" class="tab-content">
+
+            <style>
+
+  .tabLabel {
+
+    display: block;
+
+    font-size: 12px;
+
+  }
+
+</style>
+
+<div style="position: relative; padding: 30px; background: linear-gradient(to bottom, #00f0ff, #c285ff); border-radius: 20px; width: 400px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); color: #fff;">
+
+  <div style="text-align: center;">
+
+    <span style="float: right; cursor: pointer; font-size: 24px; font-weight: bold; color: #fff;" id="mm-wwc-close">&times;</span>
+
+    <h2 style="margin: 0 0 20px 0; font-size: 32px;">⚙️</h2>
+
+  </div>
+
+  
+  <div style="margin-bottom: 15px;">
+
+    <label for="wormate_id" style="display: block; margin-bottom: 8px; font-weight: bold;">📋 Account ID</label>
+
+    <div style="display: flex; gap: 10px;">
+
+      <input value="${bbs.userId}" type="text" id="wormate_id" readonly style="padding: 8px; border: none; border-radius: 8px; flex: 1; box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);" />
+
+      <button onclick="navigator.clipboard.writeText('${bbs.userId}')" style="background-color: #910e91; color: white; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; font-weight: bold; box-shadow: 0 0 10px #f0f; transition: 0.3s ease;" onmouseover="this.style.backgroundColor='#b91ab9'; this.style.boxShadow='0 0 20px #f0f'" onmouseout="this.style.backgroundColor='#910e91'; this.style.boxShadow='0 0 10px #f0f'">COPY</button>
+
+    </div>
+
+  </div>
+
+  
+
+  <div style="margin-bottom: 15px;">
+
+    <label for="fileSkin" style="display: block; margin-bottom: 8px; font-weight: bold;">📁 Skin_Wear_file (.json)</label>
+
+    <div style="display: flex; gap: 10px;">
+
+      <input type="file" accept=".json" id="fileSkin" style="padding: 8px; border: none; border-radius: 8px; flex: 1; box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);" />
+
+      <button onclick="document.getElementById('fileSkin').value=''" style="background-color: #910e91; color: white; border: none; border-radius: 8px; padding: 8px 12px; cursor: pointer; font-weight: bold; box-shadow: 0 0 10px #f0f; transition: 0.3s ease;" onmouseover="this.style.backgroundColor='#b91ab9'; this.style.boxShadow='0 0 20px #f0f'" onmouseout="this.style.backgroundColor='#910e91'; this.style.boxShadow='0 0 10px #f0f'">Clear</button>
+
+    </div>
+
+  </div>
+
+  <br>
+
+      
+  <div style="margin: 10px 0;border-bottom: 1px  solid #CCC;padding-bottom: 5px;">
+
+    <button id="toShareRank" onclick="toShareRank()">To Share in data e Rank</button>
+
+  </div>
+
+  <div style="margin: 10px 0;border-bottom: 1px  solid #CCC;padding-bottom: 5px;">
+
+    The data is updated manually only due to data sharing regulations.
+
+    <div style="margin: 10px 0;">
+
+      <button id="btnGenerateToken" type="button" onclick="onOpen()"
+
+        style="width: 100%;background-color: #54fd36;padding: 6px;font-size: 20px;">
+
+        Open Account
+
+      </button>
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <div style="margin-top: 5px;">
+
+    <div style="display: flex;gap: 10px;justify-content: space-between;align-items: center;">
+
+      <div>
+
+        <label for="sharedLocation">CONNECT IN</label>
+
+        <input type="text" placeholder="ROOM CODE" id="roomCode" name="roomCode" />
+
+        <div style="display: flex;justify-content: space-between;gap: 5px;margin: 5px 0;">
+
+          <button style="width: 100%;" onclick="setRoomCode(true)">CONNECT</button>
+
+          <button style="width: 100%;" onclick="setRoomCode(false)">DISCONNECT</button>
+
+        </div>
+
+      </div>
+
+      
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+  const serverGame = JSON.parse(localStorage.getItem("serverGame") || "{}");
+
+  const url_token = "https://wormworld.io/extension";
+
+  
+
+  // ✅ استخدام التوكن المحفوظ
+
+  var token = localStorage.getItem("wormworld_token") || bbs.tk;
+
+  var idwormate = bbs.userId;
+
+
+
+  (async function () {
+
+    if (document.getElementById("code")) {
+
+      document.getElementById("code").value = serverGame.code || "";
+
+    }
+
+    document.getElementById("roomCode").value = serverGame.roomCode || "";
+
+    _wwcio.player.teamRoom = serverGame.roomCode || "";
+
+
+
+    console.log(_wwcio.player);
+
+  })();
+
+
+
+  function copyToken(e) {
+
+    const copyText = document.getElementById("code");
+
+    copyText.select();
+
+    copyText.setSelectionRange(0, 99999);
+
+    document.execCommand("copy");
+
+    alert("Copied the text: " + copyText.value);
+
+  }
+
+
+
+  function onOpen() {
+
+    var newWindow = window.open("", "_blank");
+
+    onGenerateToken(function () {
+
+      newWindow.location.href = "https://wormworld.io/admin?page=login&token=" + token;
+
+    });
+
+  }
+
+
+
+  function createRoom() {
+
+    const oldCode = document.getElementById("code").value;
+
+    serverGame.code = window.gerarCodigoUnico();
+
+    document.getElementById("code").value = serverGame.code;
+
+    serverGame.roomCode = serverGame.code;
+
+    localStorage.setItem("serverGame", JSON.stringify(serverGame));
+
+    alert("Room created successfully!");
+
+  }
+
+
+
+  function setRoomCode(connect) {
+
+    try {
+
+
+
+      serverGame.roomCode = connect ? document.getElementById("roomCode").value : "";
+
+      _wwcio.player.teamRoom = serverGame.roomCode;
+
+      localStorage.setItem("serverGame", JSON.stringify(serverGame));
+
+      alert("Room " + (connect ? "connected" : "disconnected") + " successfully!");
+
+
+
+    } catch (e) {
+
+      console.log(e);
+
+    }
+
+  }
+
+
+
+  function onChangeCode() {
+
+    serverGame.code = document.getElementById("code").value;
+
+    localStorage.setItem("serverGame", JSON.stringify(serverGame));
+
+  }
+
+
+
+  function onGenerateToken(fn) {
+
+    fetch(url_token + "/account/gen", {
+
+      method: "POST",
+
+      headers: {
+
+        "Content-Type": "application/json",
+
+      },
+
+      body: JSON.stringify({
+
+        tk: token, // ✅ استخدام التوكن المحفوظ
+
+        wuid: bbs.wuid,
+
+      }),
+
+    }).then(async function (response) {
+
+      const json = await response.json();
+
+      token = json.tk;
+
+      // ✅ حفظ التوكن الجديد
+
+      localStorage.setItem("wormworld_token", token);
+
+      if (fn) {
+
+        fn();
+
+      }
+
+    });
+
+  }
+
+
+
+  function toShareRank() {
+
+    if (!confirm("Are you sure you want to share your rank?")) {
+
+      return;
+
+    }
+
+    const url_token = "https://gateway.wormate.io/pub/wuid/" + bbs.wuid + "/consent/change?value=true";
+
+
+
+    fetch(url_token).then(async function (response) {
+
+      alert("To Share Rank Success!");
+
+      window.location.reload();
+
+    });
+
+  }
+
+</script>
+
+          </div>
+
+          <div id="tab4" class="tab-content">
+
+            
+
+              <strong class="sub-title">KEYBOARD</strong>
+
+<div style="padding: 5px; margin-top: 5px; border: #eb991c 1px solid; display: flex;">
+
+  <ul>
+
+    <li>0 - SHOW/HIDE RECORD HS</li>
+
+    <li>1 - SKIN REPLACE</li>
+
+    <li>9 - SHOW/HIDE TOP HS</li>
+
+    <li>8 - AUTOMATIC LOOP</li>
+
+    <li>7 - AUTOMATIC SPIRAL</li>
+
+    <li>6 - SHOW/HIDE NAMES TOP(1 SEG RUN)</li>
+
+  </ul>
+
+  <ul>
+
+    <li>5 - RESPAWN</li>
+
+    <li>4 - LASER</li>
+
+    <li>3 - BACKGROUND</li>
+
+    <li>&lt;|, - ZOOM(+ 0.25)</li>
+
+    <li>&gt;|. - ZOOM(- 0.25)</li>
+
+    <li>Z = ZOOM(1)</li>
+
+    <li>C = CLOSE-UP(0.5)</li>
+
+  </ul>
+
+</div>
+
+                
+
+          </div>
+
+          <div id="tab5" class="tab-content">
+
+            
+
+              <div style="display:flex; gap: 15px;">
+
+  <div>
+
+    <strong class="sub-title">LASER</strong>
+
+    <input type="checkbox" id="laser" name="laser" value="laser" checked>
+
+    <input type="color" id="color" name="color" value="#ff0000">
+
+    <input type="range" id="range" name="range" min="0.1" max="1" step="0.1" value="0.1">
+
+    <span id="range-value">0.1</span>
+
+  </div>
+
+  <div>
+
+    <strong class="sub-title">ENEMY NAME COLOR</strong>
+
+    <input type="color" id="enemyNameColor" name="enemyNameColor" value="#ff0000">
+
+    <input type="number" id="enemyNameFontSize" name="enemyNameFontSize" min="14" max="28" step="1" value="14">
+
+  </div>
+
+</div>
+
+<strong class="sub-title">CUSTOMIZE</strong>
+
+<button id="TestAUDIO" onclick="testAudio()">Test AUDIO</button>
+
+<button id="clearBackground" onclick="clearBackground()">Clear WALLPAPERS</button>
+
+<button id="clearPosition" onclick="clearMapPosition()">Clear Map Position</button>
+
+<button id="clearClock" onclick="clearClock()">Clear Map Clock</button>
+
+<button id="clearJoyStick" onclick="clearJoyStick()">Clear Joy Stick</button>
+
+<button id="clearBgGame" onclick="clearBgGame()">Clear Bg GAME</button>
+
+
+
+<script>
+
+
+
+  const range = document.getElementById('range');
+
+  const rangeValue = document.getElementById('range-value');
+
+  const color = document.getElementById('color');
+
+  const laserActive = document.getElementById('laser');
+
+  const enemyNameColor = document.getElementById('enemyNameColor');
+
+  const enemyNameFontSize = document.getElementById('enemyNameFontSize');
+
+
+
+  range.value = bbs.laser || 0.1;
+
+  rangeValue.textContent = bbs.laser || 0.1;
+
+  color.value = bbs.laserColor || 0xff0000;
+
+  laserActive.checked = bbs.laserActive || false;
+
+  enemyNameColor.value = bbs.enemyNameColor;
+
+  enemyNameFontSize.value = bbs.enemyNameFontSize || 14;
+
+
+
+  range.addEventListener('input', (e) => {
+
+    const value = parseFloat(e.target.value).toFixed(1);
+
+    rangeValue.textContent = value;
+
+    bbs.laser = value;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  });
+
+
+
+  color.addEventListener('input', (e) => {
+
+    const colorValue = e.target.value;
+
+    bbs.laserColor = colorValue;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    console.log("Selected color: " + colorValue);
+
+  });
+
+
+
+  laserActive.addEventListener('change', (e) => {
+
+    bbs.laserActive = e.target.checked;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  });
+
+
+
+  enemyNameColor.addEventListener('input', (e) => {
+
+    const colorValue = e.target.value;
+
+    bbs.enemyNameColor = colorValue;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    console.log("Selected color: " + colorValue);
+
+  });
+
+
+
+  enemyNameFontSize.addEventListener('input', (e) => {
+
+    const fontSizeValue = e.target.value;
+
+    bbs.enemyNameFontSize = parseInt(fontSizeValue, 10);
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    console.log("Selected font size: " + fontSizeValue);
+
+  });
+
+
+
+  function testAudio() {
+
+    testAudioCustom();
+
+  }
+
+
+
+  function clearBackground() {
+
+    bbs.backgroundUri = null;
+
+    bbs.background = 0;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    alert("Clear Background");
+
+  }
+
+
+
+
+
+  function clearMapPosition() {
+
+    bbs.display.clock = { x: 60, y: 60, Tg: null };
+
+    bbs.display.top = { x: 225, y: 1 };
+
+    bbs.display.custom = false;
+
+    bbs.displayFriends = {
+
+      x: -10,
+
+      y: 315,
+
+      rotation: 0,
+
+    }
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    alert("Clear Map Position");
+
+    window.location.reload();
+
+  }
+
+
+
+  function clearClock() {
+
+    bbs.display.customClock = null;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    alert("CLOCK MAP UPDATE OK!");
+
+    window.location.reload();
+
+  }
+
+
+
+  function clearJoyStick() {
+
+    bbs.customJoystick = null;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    alert("JOYSTICK MAP UPDATE OK!");
+
+    window.location.reload();
+
+  }
+
+
+
+  function clearBgGame() {
+
+    bbs.background = null;
+
+    bbs.backgroundIsCustom = false;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    alert("BG GAME CLEAR OK!");
+
+    window.location.reload();
+
+  }
+
+
+
+
+
+</script>
+
+                
+
+          </div>
+
+          <div id="tab6" class="tab-content">
+
+
+
+            <style>
+
+  .set-zoom-wwc {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-rows: repeat(3, 1fr);
+
+    grid-column-gap: 0px;
+
+    grid-row-gap: 0px;
+
+    margin-top: 10px;
+
+  }
+
+
+
+  .szwwc-item {
+
+    grid-column: 1 / 3;
+
+  }
+
+
+
+  .szwwc-item label {
+
+    display: block;
+
+  }
+
+
+
+  .szwwc-item div {
+
+    display: flex;
+
+    align-items: center;
+
+  }
+
+
+
+  .szwwc-item input[type="range"] {
+
+    flex: 1;
+
+    width: 90%;
+
+  }
+
+</style>
+
+<div class="set-zoom-wwc">
+
+  <div>
+
+    <label>Zoom PC</label>
+
+    <input type="checkbox" id="activeZoom" />
+
+  </div>
+
+  <div>
+
+    <label>Zoom Mobile</label>
+
+    <input type="checkbox" id="activeZoomMobile" />
+
+  </div>
+
+  <div class="szwwc-item">
+
+    <label>Zoom Limit Down</label>
+
+    <div>
+
+      <input type="range" id="limitDown" min="0.25" max="2" step="0.25" />
+
+      <span id="limitDownValue"></span>
+
+    </div>
+
+  </div>
+
+  <div class="szwwc-item">
+
+    <label>Zoom +|- step (CAUTION)</label>
+
+    <div>
+
+      <input type="range" id="step" min="0.25" max="2" step="0.25" />
+
+      <span id="stepValue"></span>
+
+    </div>
+
+  </div>
+
+  <div class="szwwc-item">
+
+    <label>Zoom Keyboard (c or C)</label>
+
+    <div>
+
+      <input type="range" id="closeUp" min="0.25" max="2" step="0.25" />
+
+      <span id="closeUpValue"></span>
+
+    </div>
+
+  </div>
+
+  <div class="szwwc-item">
+
+    <label>Zoom Keyboard (z or Z)</label>
+
+    <div>
+
+      <input type="range" id="closeDown" min="0.25" max="2" step="0.25" />
+
+      <span id="closeDownValue"></span>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+  const configZoom = bbs.configZoom || {
+
+    limitDown: 0.25,
+
+    step: 0.25,
+
+    closeUp: 0.5,
+
+    closeDown: 1,
+
+  };
+
+
+
+  document.getElementById("limitDown").value = configZoom.limitDown;
+
+  document.getElementById("step").value = configZoom.step;
+
+  document.getElementById("closeUp").value = configZoom.closeUp;
+
+  document.getElementById("closeDown").value = configZoom.closeDown;
+
+
+
+  document.getElementById("limitDownValue").textContent = configZoom.limitDown;
+
+  document.getElementById("stepValue").textContent = configZoom.step;
+
+  document.getElementById("closeUpValue").textContent = configZoom.closeUp;
+
+  document.getElementById("closeDownValue").textContent = configZoom.closeDown;
+
+
+
+  function updateConfigZoom() {
+
+    bbs.configZoom = {
+
+      limitDown: parseFloat(document.getElementById("limitDown").value),
+
+      step: parseFloat(document.getElementById("step").value),
+
+      closeUp: parseFloat(document.getElementById("closeUp").value),
+
+      closeDown: parseFloat(document.getElementById("closeDown").value),
+
+    };
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  }
+
+
+
+  document.getElementById("limitDown").addEventListener("input", function () {
+
+    document.getElementById("limitDownValue").textContent = this.value;
+
+    updateConfigZoom();
+
+  });
+
+
+
+  document.getElementById("step").addEventListener("input", function () {
+
+    document.getElementById("stepValue").textContent = this.value;
+
+    updateConfigZoom();
+
+  });
+
+
+
+  document.getElementById("closeUp").addEventListener("input", function () {
+
+    document.getElementById("closeUpValue").textContent = this.value;
+
+    updateConfigZoom();
+
+  });
+
+
+
+  document.getElementById("closeDown").addEventListener("input", function () {
+
+    document.getElementById("closeDownValue").textContent = this.value;
+
+    updateConfigZoom();
+
+  });
+
+
+
+  document.getElementById("activeZoom").checked = bbs.activeZoom;
+
+
+
+  if (false) {
+
+    bbs.activeZoom = false;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  }
+
+
+
+  document.getElementById("activeZoom").addEventListener("change", function () {
+
+    if (false) {
+
+      bbs.activeZoom = false;
+
+    } else {
+
+      bbs.activeZoom = this.checked;
+
+    }
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    window.location.reload();
+
+  });
+
+
+
+  document.getElementById("activeZoomMobile").checked = bbs.activeZoomMobile;
+
+  document.getElementById("activeZoomMobile").addEventListener("change", function () {
+
+    bbs.activeZoomMobile = this.checked;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    window.location.reload();
+
+  });
+
+
+
+</script>
+
+
+
+          </div>
+
+          <div id="tab7" class="tab-content">
+
+            
+
+              <style>
+
+  .container-tab7 {}
+
+</style>
+
+<div class="container-tab7">
+
+  <h3>SKINS SELECTEDS</h3>
+
+  <ul id="myListSkin"></ul>
+
+  <hr />
+
+  <button id="cleanTheSkinShed" onclick="initTab7()">Reload LIST</button>
+
+  <button id="cleanTheSkinShed" onclick="cleanTheSkinShed()">Clean LIST</button>
+
+</div>
+
+<script>
+
+  const initTab7 = () => {
+
+    const myListSkin = document.getElementById("myListSkin");
+
+    bbs.cambiar = bbs.cambiar || {};
+
+    if(Object.keys(bbs.cambiar).length === 0){
+
+      myListSkin.innerHTML = "<li>Empty</li>";
+
+      return;
+
+    }
+
+    myListSkin.innerHTML = "";
+
+    for (const key in bbs.cambiar) {
+
+      const li = document.createElement("li");
+
+      li.innerHTML = bbs.cambiar[key];
+
+      myListSkin.appendChild(li);
+
+    }
+
+  }
+
+
+
+  function cleanTheSkinShed() {
+
+    bbs.cambiar = {};
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    alert("Clean the skin shed.");
+
+    initTab7();
+
+  }
+
+
+
+  initTab7();
+
+</script>
+
+                
+
+          </div>
+
+          <div id="tab8" class="tab-content">
+
+            
+
+              <style>
+
+    .game-area {
+
+        border: 1px solid #CCC;
+
+    }
+
+
+
+    .menu-bar {
+
+        width: 100%;
+
+        display: flex;
+
+        gap: 10px;
+
+        justify-content: center;
+
+        align-content: flex-start;
+
+        align-items: flex-start;
+
+    }
+
+
+
+    .slider-container-01 {
+
+        width: 95%;
+
+        height: 110px;
+
+        background: #eee;
+
+        display: flex;
+
+        align-content: center;
+
+        justify-content: center;
+
+        align-items: center;
+
+    }
+
+
+
+    .slider-container-02 {
+
+        width: 5%;
+
+        display: flex;
+
+        justify-content: center;
+
+    }
+
+
+
+    .slider-container-02 input[type="range"] {
+
+        transform: rotate(270deg);
+
+    }
+
+</style>
+
+<div style="padding: 0 0 5px 0;border-bottom: 1px solid #CCC;margin: 0 0 5px 0;">
+
+    <div style="display: flex;">
+
+        <div>
+
+            <label>Type Button Zoom</label>
+
+            <select id="joystickSelectTypeCurrent" name="joystickSelectTypeCurrent">
+
+                <option value="btn">BUTTON</option>
+
+                <option value="range">RANGE</option>
+
+            </select>
+
+        </div> &nbsp; | &nbsp;
+
+        <div>
+
+            <label>Type Name</label>
+
+            <select id="joystickSelectTypeName" name="joystickSelectTypeCurrentName">
+
+                <option value="all">all</option>
+
+                <option value="abb">abbreviated</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div id="joystickButtons" style="display: flex;margin: 5px 0;justify-content: space-between;">
+
+    </div>
+
+</div>
+
+PREVIEW
+
+<div class="game-area">
+
+    <div class="menu-bar"></div>
+
+    <div style="display: flex;">
+
+        <div class="slider-container-01">
+
+            TOUCH DIRECTIONAL
+
+        </div>
+
+        <div class="slider-container-02">
+
+            <input id="sliderZoom" type="range" min="0.25" max="2" step="0.25" value="1" style="width: 90px;">
+
+        </div>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div>
+
+    <button id="joystickCleanConfig">CLEAN CONFIG</button>
+
+</div>
+
+<script>
+
+    const btn = "btn_";
+
+
+
+    document.getElementById("joystickCleanConfig").addEventListener("click", () => {
+
+        if(!confirm("Do you want to clean the configuration?")) return;
+
+        bbs.configJoystick = null
+
+        localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+        location.reload();
+
+    });
+
+
+
+    const initTab8 = () => {
+
+
+
+        document.querySelector(".menu-bar").innerHTML = "";
+
+        document.getElementById("joystickButtons").innerHTML = "";
+
+
+
+        Object.keys(bbs.configJoystick.buttons).forEach((key) => {
+
+
+
+            const button = bbs.configJoystick.buttons[key];
+
+            const buttonElement = document.createElement("button");
+
+            buttonElement.innerHTML = bbs.configJoystick.typeCurrentName === 'all' ? button.label : button.labelAbbreviation;
+
+            buttonElement.id = btn + key;
+
+            buttonElement.disabled = !button.active;
+
+            document.querySelector(".menu-bar").appendChild(buttonElement);
+
+
+
+            const checkebox = document.createElement("input");
+
+            checkebox.type = "checkbox";
+
+            checkebox.id = btn + key + "check";
+
+            checkebox.checked = button.active;
+
+            checkebox.addEventListener("change", (event) => {
+
+                bbs.configJoystick.buttons[key].active = event.target.checked;
+
+                localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+                document.getElementById(btn + key).disabled = !event.target.checked;
+
+            });
+
+
+
+            const label = document.createElement("label");
+
+            label.htmlFor = checkebox.id;
+
+            label.textContent = button.label;
+
+
+
+            const container = document.getElementById("joystickButtons");
+
+            label.prepend(checkebox);
+
+            container.appendChild(label);
+
+        });
+
+
+
+        const joystickSelect = document.getElementById("joystickSelectTypeCurrent");
+
+        joystickSelect.value = bbs.configJoystick.typeCurrent;
+
+
+
+        joystickSelect.addEventListener("change", (event) => {
+
+            bbs.configJoystick.typeCurrent = event.target.value;
+
+            localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+            initTab8();
+
+        });
+
+
+
+        const joystickSelectName = document.getElementById("joystickSelectTypeName");
+
+        joystickSelectName.value = bbs.configJoystick.typeCurrentName;
+
+
+
+        joystickSelectName.addEventListener("change", (event) => {
+
+            bbs.configJoystick.typeCurrentName = event.target.value;
+
+            localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+            initTab8();
+
+        });
+
+
+
+        const sliderZoom = document.getElementById("sliderZoom");
+
+        if (joystickSelect.value === "btn") {
+
+            sliderZoom.disabled = true;
+
+            document.getElementById(btn + "zoomplus").disabled = false;
+
+            document.getElementById(btn + "zoomminus").disabled = false;
+
+        } else {
+
+            sliderZoom.disabled = false;
+
+            document.getElementById(btn + "zoomplus").disabled = true;
+
+            document.getElementById(btn + "zoomminus").disabled = true;
+
+        }
+
+
+
+
+
+    }
+
+    initTab8();
+
+</script>
+
+                
+
+          </div>
+
+        </div>
+
+        
+
+          
+
+</div>
+
+<script>
+
+  function changeTab(tabIndex) {
+
+    const tabButtons = document.querySelectorAll(".tab-button");
+
+    for (let i = 0; i < tabButtons.length; i++) {
+
+      tabButtons[i].classList.remove("active");
+
+    }
+
+    const selectedButton = document.getElementById("tab_b" + (tabIndex + 1));
+
+    selectedButton.classList.add("active");
+
+
+
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    for (let i = 0; i < tabContents.length; i++) {
+
+      tabContents[i].classList.remove("active-tab");
+
+    }
+
+    const selectedTab = document.getElementById("tab" + (tabIndex + 1));
+
+    selectedTab.classList.add("active-tab");
+
+  }
+
+</script>
+
+<script>
+
+  if (false) {
+
+    function _0x5d83(){const _0x206afa=['prototype','key','77ZtDLrZ','click','includes','return\\x20(function()\\x20','__proto__','9iCzcDS','3174892TttXOR','console','{}.constructor(\\x22return\\x20this\\x22)(\\x20)','1261272KMMZqr','opacity','warn','style','1318701xpEzMU','constructor','5bzjkOa','bind','2554388YgJKyP','log','5574462mflStJ','2182920EZdGNs','(((.+)+)+)+$','getElementById','search','apply','error','stopPropagation','1202714pzPFzR','pointerEvents','length','2hiYRgI','trace','toString','0.5'];_0x5d83=function(){return _0x206afa;};return _0x5d83();}const _0x1fe8a1=_0x100d;(function(_0x543c18,_0x1395cb){const _0x59b7d8=_0x100d,_0x2f54e7=_0x543c18();while(!![]){try{const _0x549729=-parseInt(_0x59b7d8(0x130))/0x1*(parseInt(_0x59b7d8(0x133))/0x2)+-parseInt(_0x59b7d8(0x146))/0x3+-parseInt(_0x59b7d8(0x14a))/0x4+parseInt(_0x59b7d8(0x148))/0x5*(parseInt(_0x59b7d8(0x14c))/0x6)+parseInt(_0x59b7d8(0x13f))/0x7+-parseInt(_0x59b7d8(0x142))/0x8*(-parseInt(_0x59b7d8(0x13e))/0x9)+parseInt(_0x59b7d8(0x14d))/0xa*(parseInt(_0x59b7d8(0x139))/0xb);if(_0x549729===_0x1395cb)break;else _0x2f54e7['push'](_0x2f54e7['shift']());}catch(_0x4d846a){_0x2f54e7['push'](_0x2f54e7['shift']());}}}(_0x5d83,0xc0402));const _0x267f96=(function(){let _0x323eb7=!![];return function(_0x5bd17a,_0x523ed9){const _0x1910a2=_0x323eb7?function(){const _0x2d0df1=_0x100d;if(_0x523ed9){const _0x701c6c=_0x523ed9[_0x2d0df1(0x12d)](_0x5bd17a,arguments);return _0x523ed9=null,_0x701c6c;}}:function(){};return _0x323eb7=![],_0x1910a2;};}()),_0x544ecf=_0x267f96(this,function(){const _0x540910=_0x100d;return _0x544ecf[_0x540910(0x135)]()[_0x540910(0x12c)](_0x540910(0x12a))['toString']()[_0x540910(0x147)](_0x544ecf)[_0x540910(0x12c)](_0x540910(0x12a));});function _0x100d(_0x3ce5b8,_0x168500){const _0x41f287=_0x5d83();return _0x100d=function(_0x5f257c,_0xaf3251){_0x5f257c=_0x5f257c-0x12a;let _0x57c0ce=_0x41f287[_0x5f257c];return _0x57c0ce;},_0x100d(_0x3ce5b8,_0x168500);}_0x544ecf();const _0xaf3251=(function(){let _0xc75621=!![];return function(_0x1a75f7,_0x13e69d){const _0x289d37=_0xc75621?function(){if(_0x13e69d){const _0x4fea53=_0x13e69d['apply'](_0x1a75f7,arguments);return _0x13e69d=null,_0x4fea53;}}:function(){};return _0xc75621=![],_0x289d37;};}()),_0x5f257c=_0xaf3251(this,function(){const _0x1a93d5=_0x100d,_0xca38f9=function(){const _0x3bb04d=_0x100d;let _0x2eed00;try{_0x2eed00=Function(_0x3bb04d(0x13c)+_0x3bb04d(0x141)+');')();}catch(_0x1cec9c){_0x2eed00=window;}return _0x2eed00;},_0x5468ef=_0xca38f9(),_0x27b0a5=_0x5468ef[_0x1a93d5(0x140)]=_0x5468ef['console']||{},_0x3ef65f=[_0x1a93d5(0x14b),_0x1a93d5(0x144),'info',_0x1a93d5(0x12e),'exception','table',_0x1a93d5(0x134)];for(let _0x232895=0x0;_0x232895<_0x3ef65f[_0x1a93d5(0x132)];_0x232895++){const _0x468347=_0xaf3251[_0x1a93d5(0x147)][_0x1a93d5(0x137)][_0x1a93d5(0x149)](_0xaf3251),_0x23f84f=_0x3ef65f[_0x232895],_0xa80bb4=_0x27b0a5[_0x23f84f]||_0x468347;_0x468347[_0x1a93d5(0x13d)]=_0xaf3251[_0x1a93d5(0x149)](_0xaf3251),_0x468347[_0x1a93d5(0x135)]=_0xa80bb4[_0x1a93d5(0x135)]['bind'](_0xa80bb4),_0x27b0a5[_0x23f84f]=_0x468347;}});_0x5f257c(),window['onwheel']=_0x12b532=>{const _0x140b92=_0x100d;luaDeCristal=0x1,e['preventDefault'](),e[_0x140b92(0x12f)]();},window['addEventListener']('keydown',function(_0x3a5d5d){const _0x599c55=_0x100d;['<',',','>','.','z','c'][_0x599c55(0x13b)](_0x3a5d5d[_0x599c55(0x138)])&&(luaDeCristal=0x1,_0x3a5d5d['preventDefault'](),_0x3a5d5d[_0x599c55(0x12f)]());},![]);const el=document[_0x1fe8a1(0x12b)]('mm-action-play');el&&(el['disabled']=!![],el[_0x1fe8a1(0x145)][_0x1fe8a1(0x131)]='none',el[_0x1fe8a1(0x145)][_0x1fe8a1(0x143)]=_0x1fe8a1(0x136),el['addEventListener'](_0x1fe8a1(0x13a),_0xcf1853=>{_0xcf1853['preventDefault'](),_0xcf1853['stopPropagation']();},!![]));setInterval(()=>{luaDeCristal=0x1;},0xbb8);
+
+  }
+
+  var setWormworld = document.getElementById("set_wormworld");
+
+  if (setWormworld) {
+
+    setWormworld.addEventListener("click", function() {
+
+      document.getElementById("mm-settings").click();
+
+    });
+
+  }
+
+
+
+  var select = document.getElementById("backgroundArena");
+
+  var inputFile = document.getElementById("fileSkin");
+
+
+
+  const setconfigjoystick_checked = function (e) {
+
+    if (!bbs.joystick) {
+
+      bbs.joystick = window._wwc.joystick();
+
+    }
+
+    bbs.joystick.checked = e.checked;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  };
+
+  const setconfigjoystick_color = function (e) {
+
+    if (!bbs.joystick) {
+
+      bbs.joystick = window._wwc.joystick();
+
+    }
+
+    bbs.joystick.color = e.value;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  };
+
+  const setconfigjoystick_mode = function (e) {
+
+    if (!bbs.joystick) {
+
+      bbs.joystick = window._wwc.joystick();
+
+    }
+
+    bbs.joystick.mode = e.value;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    console.log(bbs.joystick);
+
+  };
+
+  const setconfigjoystick_position = function (e) {
+
+    if (!bbs.joystick) {
+
+      bbs.joystick = window._wwc.joystick();
+
+    }
+
+    bbs.joystick.position = {
+
+      left: "75px",
+
+      bottom: "75px",
+
+    };
+
+    if (e.value === "R") {
+
+      bbs.joystick.position = {
+
+        right: "75px",
+
+        bottom: "75px",
+
+      };
+
+    }
+
+    bbs.joystick.positionMode = e.value;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  };
+
+  const setconfigjoystick_pxy = function (e) {
+
+    if (!bbs.joystick) {
+
+      bbs.joystick = window._wwc.joystick();
+
+    }
+
+    bbs.joystick.position = {
+
+      left: (parseInt(e.value) + 10).toString() + "px",
+
+      bottom: e.value + "px",
+
+    };
+
+    if (bbs.joystick.positionMode === "R") {
+
+      bbs.joystick.position = {
+
+        right: (parseInt(e.value) + 10).toString() + "px",
+
+        bottom: e.value + "px",
+
+      };
+
+    }
+
+    bbs.joystick.pxy = e.value;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  };
+
+  const setconfigjoystick_size = function (e) {
+
+    if (!bbs.joystick) {
+
+      bbs.joystick = window._wwc.joystick();
+
+    }
+
+    bbs.joystick.size = e.value;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  };
+
+  const setIdReplaceSkin = function (e) {
+
+    bbs.idReplaceSkin = window._wwc.isNumberValid(e.value) ? e.value : 32;
+
+    localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+  };
+
+
+
+  if (document.getElementById("setArrawInd")) {
+
+    document.getElementById("setArrawInd").checked = bbs.arrow;
+
+    document.getElementById("setArrawInd").addEventListener("change", function () {
+
+      bbs.arrow = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+      window.location.reload();
+
+    });
+
+  }
+
+
+
+  if (document.getElementById("onlytop")) {
+
+    document.getElementById("onlytop").checked = bbs.lr;
+
+    document.getElementById("onlytop").addEventListener("change", function () {
+
+      bbs.lr = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    });
+
+  }
+
+
+
+  if (document.getElementById("showTophs")) {
+
+    document.getElementById("showTophs").checked = bbs.showTophs;
+
+    document.getElementById("showTophs").addEventListener("change", function () {
+
+      bbs.showTophs = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    });
+
+  }
+
+
+
+  if (document.getElementById("showRechs")) {
+
+    document.getElementById("showRechs").checked = bbs.showRechs;
+
+    document.getElementById("showRechs").addEventListener("change", function () {
+
+      bbs.showRechs = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    });
+
+  }
+
+
+
+  if (document.getElementById("activeBadLang")) {
+
+    document.getElementById("activeBadLang").checked = bbs.activeBadLang;
+
+    document.getElementById("activeBadLang").addEventListener("change", function () {
+
+      bbs.activeBadLang = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+      window.location.reload();
+
+    });
+
+  }
+
+
+
+  if (document.getElementById("activeSounds")) {
+
+    document.getElementById("activeSounds").checked = bbs.activeSounds2;
+
+    document.getElementById("activeSounds").addEventListener("change", function () {
+
+      bbs.activeSounds2 = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+      window.location.reload();
+
+    });
+
+  }
+
+
+
+
+
+    // إضافة كود Screen Mode هنا
+
+  if (document.getElementById("hudPositionMode")) {
+
+    document.getElementById("hudPositionMode").value = bbs.hudSettings?.mode || 0;
+
+    
+
+    document.getElementById("hudPositionMode").addEventListener("change", function() {
+
+      if (!bbs.hudSettings) {
+
+        bbs.hudSettings = { mode: 0, wi: 1 };
+
+      }
+
+      
+
+      bbs.hudSettings.mode = parseInt(this.value);
+
+      
+
+      if (bbs.hudSettings.mode == 1) {
+
+        bbs.hudSettings.wi = screen.height / (screen.width * 2);
+
+      } else if (bbs.hudSettings.mode == 2) {
+
+        bbs.hudSettings.wi = 0;
+
+      } else {
+
+        bbs.hudSettings.wi = 1;
+
+      }
+
+      
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+      console.log("HUD mode changed to:", bbs.hudSettings.mode);
+
+    });
+
+  }
+
+
+
+  if (document.getElementById("modoSTREAMER")) {
+
+    document.getElementById("modoSTREAMER").checked = bbs.display.custom;
+
+    document.getElementById("modoSTREAMER").addEventListener("change", function () {
+
+      bbs.display.clock.x = this.checked ? 250 : 60;
+
+      bbs.display.clock.y = 60;
+
+      bbs.display.top.x = this.checked ? 475 : 225;
+
+      bbs.display.top.y = 1;
+
+      bbs.display.custom = this.checked;
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+      window.location.reload();
+
+    });
+
+  }
+
+
+
+  if (select && typeof backgroundArena !== 'undefined') {
+
+    for (var i = 0; i < backgroundArena.length; i++) {
+
+      let opt = document.createElement("option");
+
+      opt.value = i;
+
+      opt.innerHTML = backgroundArena[i].nome;
+
+      select.appendChild(opt);
+
+    }
+
+    select.value = isNaN(bbs.background) ? 0 : bbs.background || 0;
+
+  }
+
+
+
+  function onChange(event) {
+
+    var reader = new FileReader();
+
+    reader.onload = onReaderLoad;
+
+    reader.readAsText(event.target.files[0]);
+
+  }
+
+
+
+  var region = function (a, d, t, e) {
+
+    return {
+
+      texture: d,
+
+      h: t - 5,
+
+      w: t - 5,
+
+      x: t * (e ? 0 : a || 0),
+
+      y: 0,
+
+    };
+
+  };
+
+
+
+  function onReaderLoad(event) {
+
+    try {
+
+      let hasBrowserCompatible = "55524c534552565f574f524d574f524c44";
+
+      var hex = hasBrowserCompatible.toString();
+
+      var name_browser = "";
+
+
+
+      for (var n = 0; n < hex.length; n += 2) {
+
+        name_browser += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+
+      }
+
+
+
+      if (!window[name_browser]) {
+
+        document.location.reload(true);
+
+        return;
+
+      }
+
+
+
+      hasBrowserCompatible =
+
+        /w.*wo.*rl.*h.*ap/gim.test(window[name_browser]) ||
+
+        /l.*host/gim.test(window[name_browser]);
+
+
+
+      let t = JSON.parse(event.target.result);
+
+
+
+      if (t && t.wear) {
+
+        localStorage.setItem("custom_wormworld_wear", event.target.result);
+
+        alert("LOAD WEAR OK!");
+
+        window.location.reload();
+
+        return;
+
+      }
+
+
+
+      if (t && t.skin) {
+
+        localStorage.setItem("custom_wormworld_skin", event.target.result);
+
+        alert("LOAD SKIN OK!");
+
+        window.location.reload();
+
+        return;
+
+      }
+
+      
+
+        if (t.typeCustom && t.typeCustom === "background") {
+
+          alert("Free MODE!");
+
+        }
+
+      
+
+      
+
+        if (t.typeCustom && t.typeCustom === "bgGame") {
+
+          alert("Free MODE!");
+
+        }
+
+      
+
+
+
+      
+
+        if (t.typeCustom && t.typeCustom === "audio") {
+
+          alert("Free MODE!");
+
+        }
+
+      
+
+      if (t.typeCustom && t.typeCustom === "customJoyStick") {
+
+        bbs.customJoystick = t;
+
+        localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+        alert("BACKGROUND JOYSTICK OK!");
+
+        window.location.reload();
+
+        return;
+
+      }
+
+      
+
+        if (t.typeCustom && t.typeCustom === "clockMap") {
+
+          alert("Free MODE!");
+
+        }
+
+      
+
+      if (t.typeCustom && t.typeCustom === "demoSetLayout") {
+
+        bbs.display.clock.x = t.data.wc || 60;
+
+        bbs.display.clock.y = t.data.hc || 60;
+
+        bbs.display.clock.rc = t.data.rc || 0;
+
+        bbs.display.top.x = t.data.wt || 225;
+
+        bbs.display.top.y = t.data.ht || 1;
+
+        bbs.display.top.rt = t.data.rt || 0;
+
+        bbs.display.custom = true;
+
+
+
+        localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+        alert("LAYOUT UPDATE OK!");
+
+        return;
+
+      }
+
+
+
+      if (Array.isArray(t) && t.length > 0) {
+
+        localStorage.setItem("custom_wormworld_badLang", JSON.stringify(t));
+
+        let regex = [];
+
+        (t || []).forEach((x) => {
+
+          regex.push(x + " | " + x + " | " + x);
+
+        });
+
+        if (typeof badLanguageRegEx !== 'undefined') {
+
+          badLanguageRegEx = badLanguageRegEx + "|" + regex.join("|");
+
+        }
+
+        alert("LIST UPDATE OK!");
+
+        window.location.reload();
+
+      }
+
+
+
+      if (t.version_skin === 2) {
+
+        let id_item = "SKIN_" + t.id + "___Z"
+
+        const obj = {
+
+          id: t.id,
+
+          regionDict: {},
+
+          textureDict: {},
+
+          skinArrayDict: [],
+
+          skinGroupArrayDict: [{
+
+            id: t.id,
+
+            name: { en: "Custom V2" },
+
+            list: [],
+
+          }],
+
+          version_skin: 3
+
+        }
+
+        const skin = {
+
+          id: id_item,
+
+          guest: false,
+
+          price: 0,
+
+          priceBefore: 0,
+
+          nonbuyable: false,
+
+          prime: "c_white",
+
+          glow: t.glow,
+
+          base: [],
+
+        };
+
+        for (let c = t.len - 1; 0 <= c; c--) {
+
+          obj.regionDict[id_item + "_" + c] = region(c, id_item, t.cos, 0);
+
+          skin.base.push(id_item + "_" + c);
+
+        }
+
+        obj.textureDict[id_item] = {
+
+          custom: true,
+
+          re1ativePath: t.file || t.td.file,
+
+          h1: true,
+
+        };
+
+        obj.skinArrayDict.push(skin);
+
+        obj.skinGroupArrayDict[0].list.push(id_item);
+
+
+
+        alert("SKIN OK!");
+
+        localStorage.setItem("custom_wormworld_skin", JSON.stringify(obj));
+
+        window.location.reload();
+
+      }
+
+
+
+      if (t.version_skin === 3) {
+
+        let id_wormate = document.getElementById("wormate_id").value;
+
+        const obj = {
+
+          id: t.id,
+
+          regionDict: {},
+
+          textureDict: {},
+
+          skinArrayDict: [],
+
+          skinGroupArrayDict: [{
+
+            id: t.id,
+
+            name: { en: "CUSTON PACK:" + (t.skins.length) },
+
+            list: [],
+
+          }],
+
+          version_skin: 3
+
+        }
+
+        for (let item of t.skins) {
+
+          const skin = {
+
+            id: item.id,
+
+            guest: false,
+
+            price: 0,
+
+            priceBefore: 0,
+
+            nonbuyable: item.associados.includes(id_wormate),
+
+            prime: "c_white",
+
+            associados: item.associados,
+
+            glow: item.glow,
+
+            base: [],
+
+          };
+
+          for (let c = t.len - 1; 0 <= c; c--) {
+
+            obj.regionDict[item.id + "_" + c] = region(c, item.id, t.cos, 0);
+
+            skin.base.push(item.id + "_" + c);
+
+          }
+
+          obj.textureDict[item.id] = {
+
+            custom: true,
+
+            re1ativePath: item.file,
+
+            h1: true,
+
+            h4: true,
+
+          };
+
+          obj.skinArrayDict.push(skin);
+
+          obj.skinGroupArrayDict[0].list.push(item.id);
+
+        }
+
+        alert("PACKAGE SKIN OK!");
+
+        localStorage.setItem("custom_wormworld_skin", JSON.stringify(obj));
+
+        window.location.reload();
+
+      }
+
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert("file not valid!");
+
+    }
+
+  }
+
+
+
+  if (inputFile) {
+
+    document.getElementById("fileSkin").addEventListener("change", onChange);
+
+  }
+
+
+
+  function closeWwcSetView() {
+
+    const element = document.getElementById("wwc-set-view");
+
+    if (element) element.style.display = "none";
+
+  }
+
+
+
+  if (document.getElementById("mm-wwc-close")) {
+
+    document.getElementById("mm-wwc-close").addEventListener("click", closeWwcSetView);
+
+  }
+
+
+
+  const newsBox = document.querySelector(".news-box-wormworld");
+
+  const newsBoxClose = document.getElementById("close-news-button");
+
+  const newsCheckbox = document.getElementById("news-checkbox");
+
+
+
+  var novidadewormworld = 1;
+
+
+
+  if (newsCheckbox) {
+
+    newsCheckbox.addEventListener("change", function () {
+
+      if (this.checked) {
+
+        bbs.novidadewormworld = novidadewormworld;
+
+      } else {
+
+        bbs.novidadewormworld = 0;
+
+      }
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(bbs));
+
+    });
+
+  }
+
+
+
+  if (newsBoxClose) {
+
+    newsBoxClose.addEventListener("click", function () {
+
+      newsBox.style.display = "none";
+
+    });
+
+  }
+
+
+
+
+
+  if (newsBox && novidadewormworld != bbs.novidadewormworld) {
+
+    newsBox.style.display = "block";
+
+    fetch("https://wormworld.io/news/index.html")
+
+      .then((response) => {
+
+        if (!response.ok) {
+
+          throw new Error("Network response was not ok");
+
+        }
+
+        return response.text();
+
+      })
+
+      .then((html) => {
+
+        document.querySelector(".news-content").innerHTML = html;
+
+      })
+
+      .catch((error) => {
+
+        console.error("Error loading HTML:", error);
+
+      });
+
+  }
+
+</script>`;
+
+ 
         return Promise.resolve(new Response(_0xe4e378, {
           status: 200,
           statusText: "OK",
