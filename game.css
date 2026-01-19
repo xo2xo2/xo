@@ -1211,7 +1211,7 @@ body {
 }
 
 /* توسيع الأزرار عند التحويم */
-#op_wup:hover,
+#mm-wwc:hover,
 #mm-store:hover,
 #mm-leaders:hover,
 #mm-settings:hover {
@@ -1226,7 +1226,7 @@ body {
 }
 
 /* تنسيق الأيقونات لجميع الأزرار - بأولوية أعلى */
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup i,
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wcc i,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-store i,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-leaders i,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-settings i {
@@ -1246,7 +1246,7 @@ body {
 }
 
 /* إضافة مسافة بين الأيقونة والنص عند التحويم + إضافة مسافة من اليسار - بدون حدود */
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup:hover i,
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc:hover i,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-store:hover i,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-leaders:hover i,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-settings:hover i {
@@ -1256,7 +1256,7 @@ body {
 }
 
 /* النص المخفي لجميع الأزرار - بأولوية أعلى */
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup .btn-text,
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-store .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-leaders .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-settings .btn-text {
@@ -1277,7 +1277,7 @@ body {
 }
 
 /* إظهار النص عند التحويم لجميع الأزرار - بدون حدود */
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup:hover .btn-text,
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc:hover .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-store:hover .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-leaders:hover .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-settings:hover .btn-text {
@@ -1290,7 +1290,7 @@ body {
 }
 
 /* زر Tool/Set - الزر الأول */
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup {
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc {
     /* الخصائص الأساسية */
     overflow: hidden;
     height: 50px;
@@ -1325,7 +1325,7 @@ body {
     transition: all 0.3s ease !important;
 }
 
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup:hover {
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc:hover {
     background: rgba(255, 255, 255, 0.15) !important; /* الخلفية تظهر فقط عند التحويم */
     backdrop-filter: blur(15px) !important; /* التشويش يظهر فقط عند التحويم */
     border: 2px solid rgba(255, 255, 255, 1) !important; /* حد أبيض أقوى عند التحويم */
@@ -1342,11 +1342,11 @@ body {
         0 0 6px rgba(255, 255, 255, 0.9) !important;
 }
 
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup:focus {
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc:focus {
     outline: none;
 }
 
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #op_wup * {
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc * {
     vertical-align: middle;
 }
 
