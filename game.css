@@ -1280,7 +1280,7 @@ body {
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc:hover .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-store:hover .btn-text,
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-leaders:hover .btn-text,
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-settings:hover .btn-text {
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-:hover .btn-text {
     opacity: 1 !important;
     width: auto !important;
     position: relative !important;
@@ -1290,7 +1290,7 @@ body {
 }
 
 /* زر Tool/Set - الزر الأول */
-#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #wwc {
+#game-wrap #game-cont #stretch-box #main-menu-view #mm-line-bottom #mm-bottom-buttons #mm-wwc {
     /* الخصائص الأساسية */
     overflow: hidden;
     height: 50px;
