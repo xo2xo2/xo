@@ -1294,14 +1294,14 @@ body {
     /* الخصائص الأساسية */
     overflow: hidden;
     height: 50px;
-    line-height: 50px;
+    line-height: 150px;
     font-size: 20px;
     padding: 0 10px;
     box-sizing: border-box;
     text-align: center;
     cursor: pointer;
     min-width: 50px; /* تصغير العرض */
-    width: 50px !important; /* عرض ثابت أصغر */
+    width: 150px !important; /* عرض ثابت أصغر */
     display: block; /* تغيير إلى block للعرض العمودي */
     margin-right: 0;
     margin-bottom: 11px; /* تقليل المسافة قليلاً */
@@ -1330,7 +1330,7 @@ body {
     backdrop-filter: blur(15px) !important; /* التشويش يظهر فقط عند التحويم */
     border: 2px solid rgba(255, 255, 255, 1) !important; /* حد أبيض أقوى عند التحويم */
     border-right: none !important;
-    width: 110px !important;
+    width: 160px !important;
     min-width: 110px !important;
     padding: 0 8px !important; /* زيادة padding لمنع الالتصاق */
     text-align: center !important; /* تغيير المحاذاة إلى المنتصف */
