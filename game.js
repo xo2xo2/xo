@@ -17786,15 +17786,48 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
     _0x2ca347();
   });
 })();
-(function () {
-  const _0x4be657 = window.fetch;
-  window.fetch = function (..._0x598b48) {
-    const _0x18e741 = _0x598b48[0];
-    console.log("🌐 طلب fetch:", _0x18e741);
-    return _0x4be657.apply(this, _0x598b48).then(_0x3f165c => {
-      console.log("📥 استجابة من:", _0x18e741);
-      if (_0x18e741.includes("/extension/set-worm-world") || _0x18e741.includes("/set-worm-world")) {
-        console.log("🎯 اعتراض set-worm-world");
+
+
+
+
+
+
+
+
+
+// اعتراض جميع طلبات fetch
+
+(function() {
+
+    const originalFetch = window.fetch;
+
+    
+
+    window.fetch = function(...args) {
+
+        const url = args[0];
+
+        console.log("🌐 طلب fetch:", url);
+
+        
+
+        return originalFetch.apply(this, args)
+
+            .then(response => {
+
+                console.log("📥 استجابة من:", url);
+
+                
+
+                // اعتراض طلب set-worm-world
+
+                if (url.includes('/extension/set-worm-world') || url.includes('/set-worm-world')) {
+
+                    console.log("🎯 اعتراض set-worm-world");
+
+                    
+
+                    // إنشاء استجابة مخصصة كاملة
 
                     const customResponse = `<style>
 
@@ -20543,66 +20576,141 @@ PREVIEW
 
 </script>`;
 
- 
-        return Promise.resolve(new Response(_0xe4e378, {
-          status: 200,
-          statusText: "OK",
-          headers: {
-            "Content-Type": "text/html"
-          }
-        }));
-      }
-      return _0x3f165c;
-    }).catch(_0x49036c => {
-      console.error("❌ خطأ في fetch:", _0x49036c);
-      throw _0x49036c;
-    });
-  };
-  console.log("🔧 تم تثبيت مُعترض fetch المُحدث");
+                    
+
+                    // إنشاء response جديد
+
+                    return Promise.resolve(new Response(customResponse, {
+
+                        status: 200,
+
+                        statusText: 'OK',
+
+                        headers: {
+
+                            'Content-Type': 'text/html'
+
+                        }
+
+                    }));
+
+                }
+
+                
+
+                // للطلبات الأخرى، إرجاع الاستجابة الأصلية
+
+                return response;
+
+            })
+
+            .catch(error => {
+
+                console.error("❌ خطأ في fetch:", error);
+
+                throw error;
+
+            });
+
+    };
+
+    
+
+    console.log("🔧 تم تثبيت مُعترض fetch المُحدث");
+
 })();
-(function () {
-  const _0x190969 = XMLHttpRequest.prototype.open;
-  const _0x12f811 = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.open = function (_0x11547f, _0x43ee11, ..._0x5d8d2e) {
-    this._url = _0x43ee11;
-    console.log("🌐 طلب XHR:", _0x11547f, _0x43ee11);
-    return _0x190969.apply(this, [_0x11547f, _0x43ee11, ..._0x5d8d2e]);
-  };
-  XMLHttpRequest.prototype.send = function (..._0x222643) {
-    const _0x549203 = this;
-    if (this._url && (this._url.includes("/extension/set-worm-world") || this._url.includes("/set-worm-world"))) {
-      console.log("🎯 اعتراض XHR set-worm-world");
-      setTimeout(() => {
-        const _0x14c7f1 = "<h3>✅ CUSTOMER MODE ACTIVATED VIA XHR ✅</h3>";
-        Object.defineProperty(_0x549203, "status", {
-          value: 200
-        });
-        Object.defineProperty(_0x549203, "statusText", {
-          value: "OK"
-        });
-        Object.defineProperty(_0x549203, "responseText", {
-          value: _0x14c7f1
-        });
-        Object.defineProperty(_0x549203, "response", {
-          value: _0x14c7f1
-        });
-        Object.defineProperty(_0x549203, "readyState", {
-          value: 4
-        });
-        if (_0x549203.onreadystatechange) {
-          _0x549203.onreadystatechange();
+
+
+
+// إضافة اعتراض XMLHttpRequest أيضاً
+
+(function() {
+
+    const originalOpen = XMLHttpRequest.prototype.open;
+
+    const originalSend = XMLHttpRequest.prototype.send;
+
+    
+
+    XMLHttpRequest.prototype.open = function(method, url, ...args) {
+
+        this._url = url;
+
+        console.log("🌐 طلب XHR:", method, url);
+
+        return originalOpen.apply(this, [method, url, ...args]);
+
+    };
+
+    
+
+    XMLHttpRequest.prototype.send = function(...args) {
+
+        const xhr = this;
+
+        
+
+        if (this._url && (this._url.includes('/extension/set-worm-world') || this._url.includes('/set-worm-world'))) {
+
+            console.log("🎯 اعتراض XHR set-worm-world");
+
+            
+
+            // منع الطلب الأصلي
+
+            setTimeout(() => {
+
+                const customResponse = `<h3>✅ CUSTOMER MODE ACTIVATED VIA XHR ✅</h3>`;
+
+                
+
+                Object.defineProperty(xhr, 'status', { value: 200 });
+
+                Object.defineProperty(xhr, 'statusText', { value: 'OK' });
+
+                Object.defineProperty(xhr, 'responseText', { value: customResponse });
+
+                Object.defineProperty(xhr, 'response', { value: customResponse });
+
+                Object.defineProperty(xhr, 'readyState', { value: 4 });
+
+                
+
+                if (xhr.onreadystatechange) xhr.onreadystatechange();
+
+                if (xhr.onload) xhr.onload();
+
+            }, 100);
+
+            
+
+            return;
+
         }
-        if (_0x549203.onload) {
-          _0x549203.onload();
-        }
-      }, 100);
-      return;
-    }
-    return _0x12f811.apply(this, _0x222643);
-  };
-  console.log("🔧 تم تثبيت مُعترض XHR");
+
+        
+
+        return originalSend.apply(this, args);
+
+    };
+
+    
+
+    console.log("🔧 تم تثبيت مُعترض XHR");
+
 })();
+
+
+
 console.log("🚀 مُعترض الطلبات جاهز - مع إصلاح مشكلة التوكن!");
+
+
+
+
+
+
+
+
 document.querySelector(".mm-event-cont")?.style.setProperty("display", "none", "important");
 document.querySelector(".mm-logo")?.style.setProperty("display", "none", "important");
 document.querySelector(".mm-event-cont + span")?.style.setProperty("display", "none", "important");
