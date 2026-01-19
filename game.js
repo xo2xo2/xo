@@ -7574,7 +7574,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         _0x3c7638.dh.Np();
         _0x129b06();
       };
-      $("<button type=\"button\" id=\"mm-wwc\" style=\"float: right;line-height: 48px;width: 120px;background: #ffffff33;color: #FFF;font-weight: bold;margin-right: 1px; top: 1px;border-radius: 7px; cursor: pointer;\">Settings</button>").insertAfter("#mm-store");
+      $("<button type=\"button\" id=\"mm-wwc\" style=\"float: right;line-height: 48px;width: 120px;background: #ffffff33;color: #FFF;font-weight: bold;margin-right: 1px; top: 1px;border-radius: 7px; cursor: pointer;\">Settings-xo</button>").insertAfter("#mm-store");
       $(".store-view-cont").append("<div id=\"idReplaceSkin\"></div>");
       $(".wear-view-cont").append("<div id=\"idWearViewCont\"></div>");
       var _0x4b3be6 = "display:none;position:relative;background:#FFF;padding:15px;max-width:680px;margin:10px auto;";
@@ -8497,7 +8497,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         fontStyle: {
           amarelo: new PIXI.TextStyle({
             align: "center",
-            fill: "#ffd53c",
+            fill: "#ffc800",
             fontSize: 10,
             lineJoin: "round",
             stroke: "red",
@@ -8746,7 +8746,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
       w2c2020.containerCountInfo.addChild(w2c2020.label_kill);
       w2c2020.containerCountInfo.addChild(w2c2020.kill);
       w2c2020.containerCountInfo.addChild(w2c2020.killTotal);
-      w2c2020.labelRoom = new PIXI.Text("XCC", w2c2020.fontStyle.amarelo);
+      w2c2020.labelRoom = new PIXI.Text("WXO", w2c2020.fontStyle.amarelo);
       w2c2020.labelRoom.x = -50;
       w2c2020.labelRoom.y = -56;
       w2c2020.addRoom = function (_0x97610d) {
