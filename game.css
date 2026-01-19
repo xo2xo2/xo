@@ -313,7 +313,7 @@ body {
     padding: 0;
     background: #00000099;
     border-radius: 8px;
-    border: solid 3px #ffffff00;
+    border: solid 3px #00000000;
 }
 
 #game-wrap #game-cont #stretch-box .stretch-view {
