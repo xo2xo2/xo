@@ -10456,31 +10456,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               return _0x5a8157;
             }();
 
-
-                this.pwr_flex = new _0x232886.sc();
-
-                (function(){
-                  try {
-                    var z = String(((window.bbsConfig||window.bbs||{}).zigzag)||'0');
-                    console.log('Game loading zigzag config:', z);
-                    var set = _0x5d39d0().Lc;
-                    var tex = set.pwrFlex1 || set.yb; // Default/Normal zigzag
-                    if (z === '1') tex = set.pwrFlex || set.pwrFlex1;
-                    else if (z === '2') tex = set.pwrFlex2 || set.pwrFlex;
-                    else if (z === '3') tex = set.pwrFlex3 || set.pwrFlex2 || set.pwrFlex;
-                    console.log('Selected zigzag texture:', tex);
-                    this.pwr_flex.Bc(tex);
-                  } catch (err) {
-                    console.error('Error loading zigzag:', err);
-                    this.pwr_flex.Bc(_0x5d39d0().Lc.pwrFlex);
-                  }
-                }).call(this);
-
-                this.pwr_flex.xc.zIndex = 0.001;
-
-                this.addChild(this.pwr_flex.xc);
-
-                this.disableFlex();                  
+    
 
                                 
 
