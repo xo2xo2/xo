@@ -8771,6 +8771,11 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         if (_0x138804.key === "R" || _0x138804.key === "r") {
           respawnFn();
         }
+
+               if (_0x138804.key === "5") {
+          respawnFn();
+        }
+
         if (_0x138804.key === "4") {
           var _0x4a030d = _wwc._anApp.og.af.ng.mf.getChildByName("lineHS");
           if (_0x4a030d) {
