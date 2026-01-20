@@ -8768,7 +8768,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         if (_0x138804.key === "6" && _0xb65a12.setIntervalRun) {
           _0x346984 = !_0x346984;
         }
-        if (_0x138804.key === "5") {
+        if (_0x138804.key === "R" || _0x138804.key === "r") {
           respawnFn();
         }
         if (_0x138804.key === "4") {
