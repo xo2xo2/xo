@@ -10095,36 +10095,76 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
             }();
             return _0x271ea4;
           }();
-          _0x3819e1._a = function () {
-            function _0x3f7514() {
-              var _0xe4687a = _0x4efbaa.BaseTexture.from("/images/wear-ability.png");
-              for (var _0x46b3a0 = 1; _0x46b3a0 < 10; _0x46b3a0++) {
-                this["vb" + _0x46b3a0] = new _0x3819e1.la("emoji_" + _0x46b3a0, _0xe4687a, 4, 4, 146, 146, 63.5, 63.5, 128, 128);
+         _0x232886._a = function () {
+
+            function _0x272628() {
+
+              var _0x3bdebe = _0x429afb.BaseTexture.from("/images/wear-ability.png");
+
+              for (var _0x499c12 = 1; _0x499c12 < 10; _0x499c12++) {
+
+                this["vb" + _0x499c12] = new _0x232886.la("emoji_" + _0x499c12, _0x3bdebe, 4, 4, 146, 146, 63.5, 63.5, 128, 128);
+
               }
-              this.wb = new _0x3819e1.la("magnet_ability", _0xe4687a, 158, 86, 67, 124, 148, 63.5, 128, 128);
-              this.xb = new _0x3819e1.la("velocity_ability", _0xe4687a, 158, 4, 87, 74, 203, 63.5, 128, 128);
-              this.yb = new _0x3819e1.la("flex_ability", _0xe4687a, 158, 4, 87, 74, 203, 63.5, 128, 128);
-              var _0x38fec3 = _0x4efbaa.BaseTexture.from("https://wormup.in/assets/images/zigzagability1.png");
-              this.pwrFlex = new _0x3819e1.la("flex_ability", _0x38fec3, 158, 4, 87, 74, 203, 63.5, 128, 128);
-              var _0x46b3a0 = _0x4efbaa.BaseTexture.from("/images/def-look.png");
-              var _0x5265da = new _0x3819e1.la("def_eyes", _0x46b3a0, 0, 0, 42, 80, 75, 64, 128, 128);
-              var _0x2b34d9 = new _0x3819e1.la("def_mouth", _0x46b3a0, 46, 0, 20, 48, 109, 63, 128, 128);
-              var _0x33c187 = new _0x3819e1.la("def_skin_glow", _0x46b3a0, 70, 0, 32, 32, 0, 0, 0, 0);
-              var _0x30411f = new _0x3819e1.la("def_skin_base", _0x46b3a0, 46, 52, 64, 64, 0, 0, 0, 0);
-              var _0x58a4ad = _0x3819e1.Ga.eb(_0x30411f, _0x33c187, _0x5265da, _0x2b34d9);
-              _wwc.mySkin = _0x58a4ad;
-              this.zb = new _0x3819e1.Ab({}, _0x58a4ad);
+
+              this.wb = new _0x232886.la("magnet_ability", _0x3bdebe, 158, 86, 67, 124, 148, 63.5, 128, 128);
+
+              this.xb = new _0x232886.la("velocity_ability", _0x3bdebe, 158, 4, 87, 74, 203, 63.5, 128, 128);
+
+              this.yb = new _0x232886.la("flex_ability", _0x3bdebe, 4, 4, 146, 146, 63.5, 63.5, 128, 128);
+
+              // Zigzag 1: First custom image
+              var newTexture = _0x429afb.BaseTexture.from("https://i.imgur.com/LFiCido.png");
+              this.pwrFlex = new _0x232886.la("flex_ability", newTexture, 156, 140, 87, 60, 170, 128.5, 128, 128);
+
+              // Zigzag 2: Second custom image (LvJ1RxC - working)
+              var newTexture2 = _0x429afb.BaseTexture.from("https://i.imgur.com/LvJ1RxC.png");
+              this.pwrFlex2 = new _0x232886.la("flex_ability2", newTexture2, 156, 4, 87, 74, 285, 63.5, 128, 128);
+
+              // Zigzag 3: Third custom image
+              var newTexture3 = _0x429afb.BaseTexture.from("https://wormup.in/assets/images/zigzagability1.png");
+              this.pwrFlex3 = new _0x232886.la("flex_ability3", newTexture3, 158, 4, 87, 74, 203, 63.5, 128, 128);
+
+
+
+              var _0x499c12 = _0x429afb.BaseTexture.from("/images/def-look.png");
+
+              var _0x8f0f7 = new _0x232886.la("def_eyes", _0x499c12, 0, 0, 42, 80, 75, 64, 128, 128);
+
+              var _0x544dc7 = new _0x232886.la("def_mouth", _0x499c12, 46, 0, 20, 48, 109, 63, 128, 128);
+
+              var _0x2ef0b2 = new _0x232886.la("def_skin_glow", _0x499c12, 70, 0, 32, 32, 0, 0, 0, 0);
+
+              var _0x1c9bdf = new _0x232886.la("def_skin_base", _0x499c12, 46, 52, 64, 64, 0, 0, 0, 0);
+
+              var _0x5e6030 = _0x232886.Ga.eb(_0x1c9bdf, _0x2ef0b2, _0x8f0f7, _0x544dc7);
+
+              _wwc.mySkin = _0x5e6030;
+
+              this.zb = new _0x232886.Ab({}, _0x5e6030);
+
               this.Bb = -10000;
+
               this.Cb = -10000;
+
               this.Db = function () {
-                var _0x458b6d = window.document.createElement("canvas");
-                _0x458b6d.width = 80;
-                _0x458b6d.height = 80;
+
+                var _0x18a84d = window.document.createElement("canvas");
+
+                _0x18a84d.width = 80;
+
+                _0x18a84d.height = 80;
+
                 return {
-                  Eb: _0x458b6d,
-                  Fb: _0x458b6d.getContext("2d"),
-                  oa: new _0x4efbaa.Texture(_0x4efbaa.BaseTexture.from(_0x458b6d))
+
+                  Eb: _0x18a84d,
+
+                  Fb: _0x18a84d.getContext("2d"),
+
+                  oa: new _0x429afb.Texture(_0x429afb.BaseTexture.from(_0x18a84d))
+
                 };
+
               }();
               this.Gb = null;
               this.Hb = [];
