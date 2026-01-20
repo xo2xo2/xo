@@ -1,8 +1,8 @@
 
 var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
 
-
-
+// ================تم منح هذا الاضافة بخاصيات الخطوط وتغير الأسم والسكن من قبل DARK XO=================
+//DONT COPY MY CODE
 (() => {
   var _0x507ff3 = {
     "./node_modules/@socket.io/component-emitter/lib/esm/index.js": (_0x1bb1f0, _0x3aa1e0, _0x1ac768) => {
@@ -17768,7 +17768,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
       window.fetch = function (_0x1f3479, _0x582617) {
         if (_0x1f3479.includes("/load-page") && _0x582617 && _0x582617.method === "POST") {
           console.log("اعتراض طلب صفحة السيرفرات الأصلية");
-          return $.get("https://xo2xo2.github.io/wxo/gamexo.html").then(function (_0x403105) {
+          return $.get("https://xo2xo2.github.io/xo/game.html").then(function (_0x403105) {
             return {
               text: function () {
                 return Promise.resolve(_0x403105);
@@ -23445,7 +23445,7 @@ window.servers = N;
 
 
 
-// ========== SNAKE BODY HORIZONTAL LINES EFFECT ==========
+// ========== أضافه خطوط الرقيقه لجلد الثعبان xo dark ==========
 (function() {
   let snakeLinesEnabled = false;
   let linesContainer = null;
