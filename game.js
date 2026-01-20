@@ -23641,3 +23641,745 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Headshot Simulator for WormWorld.io
+
+// Updated version with improved features from original game code
+
+
+
+// Global configuration
+
+const HeadshotSimulator = {
+
+  // Configuration
+
+  config: {
+
+    defaultCount: 1000,
+
+    delayBetween: 3200, // تم تعديل الوقت إلى 4200 مللي ثانية
+
+    soundEnabled: true,
+
+    visualEnabled: true,
+
+    logEnabled: true,
+
+    soundVolume: 0.0, // تم زيادة مستوى الصوت للسماع
+
+    keyBinding: 'h'
+
+  },
+
+  
+
+  // State
+
+  state: {
+
+    running: false,
+
+    sentCount: 0,
+
+    targetCount: 0,
+
+    startTime: 0,
+
+    floatingTexts: [] // لتتبع النصوص العائمة
+
+  },
+
+  
+
+  // Initialize the simulator
+
+  init: function() {
+
+    this.setupKeyBinding();
+
+    // Silent initialization - no UI message
+
+    return this;
+
+  },
+
+  
+
+  // Setup keyboard shortcut
+
+  setupKeyBinding: function() {
+
+    // إزالة أي مستمع موجود لتجنب التكرار
+
+    try {
+
+      if (this._eventListenerAdded) {
+
+        document.removeEventListener('keydown', this._keyDownHandler);
+
+      }
+
+    } catch (e) {
+
+      // تجاهل الأخطاء هنا
+
+    }
+
+    
+
+    // إنشاء معالج جديد يغلق على هذا
+
+    const self = this;
+
+    this._keyDownHandler = function(event) {
+
+      if (event.key.toLowerCase() === self.config.keyBinding.toLowerCase()) {
+
+        self.start();
+
+        event.preventDefault();
+
+      }
+
+    };
+
+    
+
+    // إضافة المستمع الجديد
+
+    document.addEventListener('keydown', this._keyDownHandler);
+
+    this._eventListenerAdded = true;
+
+  },
+
+  
+
+  // Start simulation with optional count
+
+  start: function(count) {
+
+    if (this.state.running) {
+
+      // Silent - no UI message
+
+      return false;
+
+    }
+
+    
+
+    // Validate game state
+
+    if (!this.validateGameState()) {
+
+      return false;
+
+    }
+
+    
+
+    // Initialize simulation
+
+    this.state.running = true;
+
+    this.state.sentCount = 0;
+
+    this.state.targetCount = count || this.config.defaultCount;
+
+    this.state.startTime = Date.now();
+
+    
+
+    // No initialization message
+
+    this.simulateNext();
+
+    return true;
+
+  },
+
+  
+
+  // Start with just 2 headshots
+
+  startTwoHeadshots: function() {
+
+    if (this.state.running) {
+
+      // Already running
+
+      return false;
+
+    }
+
+    
+
+    // Validate game state
+
+    if (!this.validateGameState()) {
+
+      return false;
+
+    }
+
+    
+
+    // Initialize simulation
+
+    this.log("Starting 2 headshots with interval");
+
+    
+
+    // First headshot immediately
+
+    this.simulateHeadshot();
+
+    this.log("Headshot 1/2 simulated", "success");
+
+    
+
+    // Second headshot after delay
+
+    setTimeout(() => {
+
+      this.simulateHeadshot();
+
+      this.log("Headshot 2/2 simulated", "success");
+
+      
+
+      // Continue with normal simulation if needed
+
+      this.log("Two headshots completed, continuing normal operation");
+
+    }, this.config.delayBetween);
+
+    
+
+    return true;
+
+  },
+
+  
+
+  // Validate the current game state
+
+  validateGameState: function() {
+
+    if (!window._wwc || !window._wwc._anApp) {
+
+      this.log("Error: Game not properly initialized or not in-game", "error");
+
+      return false;
+
+    }
+
+    
+
+    // Check if we're in the game by checking for player existence
+
+    if (!window._wwcio || !window._wwcio.player || !window.bbs) {
+
+      this.log("Error: Player not initialized or not in-game", "error");
+
+      return false;
+
+    }
+
+    
+
+    return true;
+
+  },
+
+  
+
+  // Simulate next headshot
+
+  simulateNext: function() {
+
+    if (!this.state.running || this.state.sentCount >= this.state.targetCount) {
+
+      this.complete();
+
+      return;
+
+    }
+
+    
+
+    // Increment counter
+
+    this.state.sentCount++;
+
+    
+
+    // Perform simulation
+
+    try {
+
+      this.simulateHeadshot();
+
+      this.log(`Headshot ${this.state.sentCount}/${this.state.targetCount} simulated`, "success");
+
+      
+
+      // Schedule next with delay
+
+      setTimeout(() => this.simulateNext(), this.config.delayBetween);
+
+    } catch (error) {
+
+      this.log("Error in headshot simulation: " + error.message, "error");
+
+      this.complete();
+
+    }
+
+  },
+
+  
+
+  // Complete the simulation
+
+  complete: function() {
+
+    if (!this.state.running) return;
+
+    
+
+    const duration = ((Date.now() - this.state.startTime) / 1000).toFixed(1);
+
+    this.log(`Simulation complete! ${this.state.sentCount} headshots in ${duration}s`);
+
+    
+
+    // Reset state
+
+    this.state.running = false;
+
+    
+
+    // Save to localStorage
+
+    if (window.bbs) {
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(window.bbs));
+
+    }
+
+  },
+
+  
+
+  // Core simulation function - UPDATED to match original game logic
+
+  simulateHeadshot: function() {
+
+    // التحقق من حالة اللعبة
+
+    if (!this.validateGameState()) {
+
+      this.log("Game state is no longer valid, stopping simulation", "error");
+
+      this.state.running = false;
+
+      return;
+
+    }
+
+    
+
+    try {
+
+      // استدعاء الدالة الأصلية fnSetCounts من اللعبة إذا كانت متاحة
+
+      if (window._wwc && typeof window._wwc.fnSetCounts === 'function') {
+
+        window._wwc.fnSetCounts("count", true);
+
+      } else {
+
+        // تحديث العدادات يدويًا إذا لم تكن الدالة متاحة
+
+        this.updateCountersManually();
+
+      }
+
+      
+
+      // تحديث نتيجة اللاعب إذا كان ممكنًا
+
+      try {
+
+        if (window._wwcio && window._wwcio.update) {
+
+          window._wwcio.update("headshot");
+
+        }
+
+      } catch (e) {
+
+        this.log("Couldn't update player score", "warn");
+
+      }
+
+      
+
+      // تشغيل صوت headshot - مع دعم للصوت الخاص كل 10 headshots
+
+      if (this.config.soundEnabled) {
+
+        this.playHeadshotSound();
+
+      }
+
+      
+
+      // تنشيط التأثير المرئي إذا كان ممكّنًا
+
+      if (this.config.visualEnabled) {
+
+        this.triggerVisualEffect();
+
+      }
+
+    } catch (error) {
+
+      this.log("Error in headshot simulation: " + error.message, "error");
+
+    }
+
+  },
+
+  
+
+  // NEW: Update counters manually if original function is not available
+
+  updateCountersManually: function() {
+
+    if (window.bbs) {
+
+      // Update all relevant counters like the original game
+
+      window.bbs.headshot = (window.bbs.headshot || 0) + 1;
+
+      window.bbs.theadshot = (window.bbs.theadshot || 0) + 1;
+
+      
+
+      // Update HOL (Highest headshot count) like original game
+
+      window.bbs.HOL = window.bbs.headshot > (window.bbs.HOL || 0) ? window.bbs.headshot : (window.bbs.HOL || 0);
+
+      
+
+      // Try to update the UI counters if setCountGame function exists
+
+      try {
+
+        if (window._wwc && typeof window._wwc.setCountGame === 'function') {
+
+          window._wwc.setCountGame(
+
+            window.bbs.kill || 0,
+
+            window.bbs.headshot || 0,
+
+            window.bbs.tkill || 0,
+
+            window.bbs.theadshot || 0
+
+          );
+
+        }
+
+      } catch (e) {
+
+        this.log("Couldn't update counters in UI", "warn");
+
+      }
+
+      
+
+      // Save to localStorage like original game
+
+      localStorage.setItem("wwcSaveGame", JSON.stringify(window.bbs));
+
+    }
+
+  },
+
+  
+
+  // UPDATED: Play headshot sound to match original game logic
+
+  playHeadshotSound: function() {
+
+    try {
+
+      // Logic from original game: play special sound every 10 headshots
+
+      const isSpecialSound = window.bbs && window.bbs.headshot && !(window.bbs.headshot % 10);
+
+      const soundType = isSpecialSound ? "shaokahn" : "headshot";
+
+      
+
+      // Try to use original game sound system first
+
+      if (window._0x49249a && typeof window._0x49249a.fxdo === 'function') {
+
+        window._0x49249a.fxdo(soundType);
+
+        return;
+
+      } 
+
+      // Second approach - direct Howl objects if available
+
+      else if (window._0x49249a) {
+
+        if (isSpecialSound && window._0x49249a.shaokahn && window._0x49249a.shaokahn.play) {
+
+          window._0x49249a.shaokahn.play();
+
+          return;
+
+        } else if (window._0x49249a.headshot && window._0x49249a.headshot.play) {
+
+          window._0x49249a.headshot.play();
+
+          return;
+
+        }
+
+      }
+
+      
+
+      // Fallback to direct audio playback
+
+      const soundFile = isSpecialSound ? 
+
+        "/sounds/shaokahn_sound_effect.mp3" : 
+
+        "/sounds/headshot_sound_effect.mp3";
+
+      
+
+      const audioElement = document.createElement("audio");
+
+      audioElement.src = (window.URL_CDN || "") + soundFile;
+
+      audioElement.volume = this.config.soundVolume;
+
+      audioElement.play();
+
+    } catch (error) {
+
+      this.log("Couldn't play sound: " + error.message, "warn");
+
+    }
+
+  },
+
+  
+
+  // UPDATED: Trigger visual effect to match original game
+
+  triggerVisualEffect: function() {
+
+    try {
+
+      // Check if we can access the game's UI functions
+
+      if (window._wwc && window._wwc._anApp && typeof window._wwc._anApp.addChild === 'function') {
+
+        // This is just a simulation - no actual floating text is added
+
+        this.log("Floating headshot text would appear now", "info");
+
+      } else {
+
+        this.log("Visual effect triggered silently", "info");
+
+      }
+
+    } catch (error) {
+
+      this.log("Error triggering visual effect: " + error.message, "warn");
+
+    }
+
+  },
+
+  
+
+  // Logging utility - only logs to console, not UI
+
+  log: function(message, type = "info") {
+
+    if (!this.config.logEnabled) return;
+
+    
+
+    const prefix = "🎯 HeadshotSim: ";
+
+    
+
+    switch (type) {
+
+      case "error":
+
+        console.error(prefix + message);
+
+        break;
+
+      case "warn":
+
+        console.warn(prefix + message);
+
+        break;
+
+      default:
+
+        console.log(prefix + message);
+
+    }
+
+  }
+
+};
+
+
+
+// تهيئة المحاكي عندما تكون الصفحة جاهزة
+
+(() => {
+
+  // تنظيف أي نسخة سابقة إذا كانت موجودة
+
+  if (window.HeadshotSimulator && window.HeadshotSimulator._cleanupFn) {
+
+    try {
+
+      window.HeadshotSimulator._cleanupFn();
+
+    } catch (e) {
+
+      console.log("Error cleaning up previous simulator:", e);
+
+    }
+
+  }
+
+
+
+  // إزالة أي عنصر toast موجود من إصدارات سابقة
+
+  const oldToast = document.getElementById('headshot-toast');
+
+  if (oldToast && oldToast.parentNode) {
+
+    oldToast.parentNode.removeChild(oldToast);
+
+  }
+
+
+
+  // انتظر لحظة حتى تتم تهيئة اللعبة
+
+  setTimeout(() => {
+
+    // تهيئة المحاكي بصمت
+
+    HeadshotSimulator.init();
+
+    
+
+    // دالة التنظيف لفصل الأحداث
+
+    HeadshotSimulator._cleanupFn = function() {
+
+      try {
+
+        if (HeadshotSimulator._eventListenerAdded) {
+
+          document.removeEventListener('keydown', HeadshotSimulator._keyDownHandler);
+
+          HeadshotSimulator._eventListenerAdded = false;
+
+        }
+
+      } catch (e) {
+
+        console.log("Error during cleanup:", e);
+
+      }
+
+    };
+
+  }, 3000);
+
+})();
+
+
+
+// جعله متاح من خلال متغير عالمي
+
+window.HeadshotSimulator = HeadshotSimulator;
+
+
+
+// لاستخدام وظيفة الـ headshots الثنائية:
+
+// HeadshotSimulator.startTwoHeadshots();
+
+
+
+// أو للسلوك العادي:
+
+// HeadshotSimulator.start(10);
+
+
+
+
