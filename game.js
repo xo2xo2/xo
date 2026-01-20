@@ -10107,7 +10107,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               var _0x38fec3 = _0x4efbaa.BaseTexture.from("https://wormup.in/assets/images/zigzagability1.png");
               this.pwrFlex = new _0x3819e1.la("flex_ability", _0x38fec3, 158, 4, 87, 74, 203, 63.5, 128, 128);
 
-              
+
               var _0x46b3a0 = _0x4efbaa.BaseTexture.from("/images/def-look.png");
               var _0x5265da = new _0x3819e1.la("def_eyes", _0x46b3a0, 0, 0, 42, 80, 75, 64, 128, 128);
               var _0x2b34d9 = new _0x3819e1.la("def_mouth", _0x46b3a0, 46, 0, 20, 48, 109, 63, 128, 128);
@@ -20771,7 +20771,7 @@ window.servers = N;
 
     // أسماء اللاعبين للتبديل عند النقر بزر الماوس الأيمن
 
-    const NAME_OPTIONS = ["انا كلب", "انا حمار", "ستريم جحاش"];
+    const NAME_OPTIONS = ["حامل من up", "كس امي", "ستريم جحاش"];
 
     
 
@@ -22437,7 +22437,7 @@ window.servers = N;
 
                     position: fixed;
 
-                    top: 140px;
+                    top: 300px;
 
                     right: 10px;
 
