@@ -10116,17 +10116,6 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               // Zigzag 1: First custom image
               var newTexture = _0x429afb.BaseTexture.from("https://i.imgur.com/LFiCido.png");
               this.pwrFlex = new _0x232886.la("flex_ability", newTexture, 156, 140, 87, 60, 170, 128.5, 128, 128);
-
-              // Zigzag 2: Second custom image (LvJ1RxC - working)
-              var newTexture2 = _0x429afb.BaseTexture.from("https://i.imgur.com/LvJ1RxC.png");
-              this.pwrFlex2 = new _0x232886.la("flex_ability2", newTexture2, 156, 4, 87, 74, 285, 63.5, 128, 128);
-
-              // Zigzag 3: Third custom image
-              var newTexture3 = _0x429afb.BaseTexture.from("https://wormup.in/assets/images/zigzagability1.png");
-              this.pwrFlex3 = new _0x232886.la("flex_ability3", newTexture3, 158, 4, 87, 74, 203, 63.5, 128, 128);
-
-
-
               var _0x499c12 = _0x429afb.BaseTexture.from("/images/def-look.png");
 
               var _0x8f0f7 = new _0x232886.la("def_eyes", _0x499c12, 0, 0, 42, 80, 75, 64, 128, 128);
