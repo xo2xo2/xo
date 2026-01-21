@@ -22200,7 +22200,7 @@ window.servers = N;
 
         if ($("#wwc-player-names").length === 0) {
 
-            const playerList = $("<div id='wwc-player-names' style='top: 180px; right: 10px; width:200px; z-index: 999999; position: absolute; display: none;'></div>")
+            const playerList = $("<div id='wwc-player-names' style='top: 340px; right: 10px; width:200px; z-index: 999999; position: absolute; display: none;'></div>")
 
                 .prependTo("body")
 
