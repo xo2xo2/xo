@@ -4272,7 +4272,7 @@ body {
     right: 15px;
     
     /* اللون الأخضر بتدرج */
-    background-color: #00ff33;
+    background-color: #00ff08;
     color: #ffffff;
     
     /* التخطيط والأبعاد (نفس #final-replay) */
@@ -4296,8 +4296,8 @@ body {
     
     /* الظل والتأثيرات (نفس #final-replay) */
     box-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        0 1px 3px rgba(0, 0, 0, 0.1);
+        0 2px 8px rgba(0, 0, 0, 0),
+        0 1px 3px rgba(0, 0, 0, 0);
     
     /* التفاعل */
     cursor: pointer;
@@ -4311,14 +4311,14 @@ body {
 
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue:hover {
     /* تغيير اللون للأخضر الداكن */
-   /* background: linear-gradient(135deg, #4c9618 0%, #366500 100%); */
+    background-color: #33ff3a;
     color: #ffffff;
     
     /* تأثيرات التمرير (نفس #final-replay) */
     transform: translateY(-1px);
     box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.2),
-        0 2px 6px rgba(0, 0, 0, 0.15);
+        0 4px 12px rgba(0, 0, 0, 0),
+        0 2px 6px rgba(0, 0, 0, 0);
     
     /* تأثير إضافي */
     filter: brightness(1.1);
