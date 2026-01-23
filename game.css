@@ -4272,7 +4272,7 @@ body {
     right: 15px;
     
     /* اللون الأخضر بتدرج */
-    background-color: #00ff08;
+    background-color: #8bc34a;
     color: #ffffff;
     
     /* التخطيط والأبعاد (نفس #final-replay) */
@@ -4311,7 +4311,7 @@ body {
 
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue:hover {
     /* تغيير اللون للأخضر الداكن */
-    background-color: #33ff3a;
+    background-color: #00bb06;
     color: #ffffff;
     
     /* تأثيرات التمرير (نفس #final-replay) */
