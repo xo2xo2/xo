@@ -14444,10 +14444,10 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
             var _0x2141c3 = $("#unl6wj4czdl84o9b");
             $("#congrats");
             var _0x814b1c = $("#final-share-fb");
-            var _0x4644fd = $("#final-message");
+            var _0x4644fd = $("");
             var _0x3ebdd6 = $("#final-score");
             var _0x1444e6 = $("#final-place");
-            var _0x33bd05 = $("#final-board");
+            var _0x33bd05 = $("");
             var _0x1686ef = _0x36bffa.M(_0x3819e1.kf, function () {
               _0x3819e1.kf.call(this, _0x3819e1.Fk.wn);
               var _0x1fd8e3 = this;
@@ -14463,8 +14463,8 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               });
               
               // Add respawn button
-              var _0x4327d6 = _0x24faf4;
-              _0x4327d6.after("<div id='final-replay'>Respawn</div>");
+           //   var _0x4327d6 = _0x24faf4;
+            //  _0x4327d6.after("<div id='final-replay'>Respawn</div>");
               
               $("#final-replay").click(function () {
                 respawnFn();
