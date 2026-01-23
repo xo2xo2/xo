@@ -5865,7 +5865,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         uri: window.URL_CDN + "https://wormup.in/assets/images/bg_sky_10.png"
       }, {
         nome: "ARENA 3",
-        uri: window.URL_CDN + "https://xo2xo2.github.io/xo/bg_sky_7.jpg"
+        uri: window.URL_CDN + "https://wormup.in/assets/images/bg_sky_7.png"
       }, {
         nome: "Blue Light",
         uri: window.URL_CDN + "https://timmapwormate.com/images/store/bg_sky__6.png"
