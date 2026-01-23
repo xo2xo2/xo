@@ -4186,7 +4186,7 @@ body {
     height: 360px;
     background-color: #ffffff;
     box-shadow: 0px 0px 100px 10px #000000;
-    border-radius: 25px;
+    border-radius: 1px;
     overflow: hidden;
 }
 
@@ -4272,7 +4272,7 @@ body {
     right: 15px;
     
     /* اللون الأخضر بتدرج */
-    background: linear-gradient(135deg, #366500 0%, #4c9618 100%);
+    background-color: #00ff33;
     color: #ffffff;
     
     /* التخطيط والأبعاد (نفس #final-replay) */
@@ -4311,7 +4311,7 @@ body {
 
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue:hover {
     /* تغيير اللون للأخضر الداكن */
-    background: linear-gradient(135deg, #4c9618 0%, #366500 100%);
+   /* background: linear-gradient(135deg, #4c9618 0%, #366500 100%); */
     color: #ffffff;
     
     /* تأثيرات التمرير (نفس #final-replay) */
