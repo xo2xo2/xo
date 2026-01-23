@@ -9340,7 +9340,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         document.getElementById("game-wrap").style.display = "unblock";
         
         // Add animated confetti background
-        var confettiURL = "https://timmapwormate.com/images/store/confetti-tmw.png";
+        var confettiURL = "https://imgur.com/7dqKnra.png";
         var bgLayerId = "animated-confetti-layer";
         var bgLayer = document.getElementById(bgLayerId);
         
@@ -14875,7 +14875,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
               _0x3819e1.kf.nn.fadeIn(500);
               
               // Add confetti to main menu only
-              var confettiURL = "https://timmapwormate.com/images/store/confetti-tmw.png";
+              var confettiURL = "https://imgur.com/7dqKnra.png";
               var bgLayerId = "animated-confetti-layer";
               var bgLayer = document.getElementById(bgLayerId);
               
