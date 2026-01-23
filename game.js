@@ -11834,7 +11834,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
                 _0x54fecd.beginFill("black", 0.4);
                 _0x54fecd.drawCircle(0, 0, this.kh);
                 _0x54fecd.endFill();
-                _0x54fecd.lineStyle(0.8, 16225317);
+                _0x54fecd.lineStyle(1, 16225317);
                 _0x54fecd.drawCircle(0, 0, this.kh);
                 _0x54fecd.moveTo(0, -this.kh);
                 _0x54fecd.lineTo(0, +this.kh);
