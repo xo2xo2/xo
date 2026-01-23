@@ -4267,7 +4267,7 @@ body {
 
 #game-wrap #game-cont #results-view #congrats-bg #congrats-wrap #congrats .controls #final-continue {
     position: absolute;
-    margin-top: 65px;
+    margin-top: 70px;
     left: 15px;
     right: 15px;
     
@@ -4276,7 +4276,7 @@ body {
     color: #ffffff;
     
     /* التخطيط والأبعاد (نفس #final-replay) */
-    height: 50px;
+    height: 43px;
     padding: 0 20px;
     box-sizing: border-box;
     overflow: hidden;
@@ -4290,7 +4290,7 @@ body {
     letter-spacing: 0.5px;
     
     /* التصميم والحدود (نفس #final-replay) */
-    border-radius: 8px;
+    border-radius: 2px;
     border: none;
     outline: none;
     
