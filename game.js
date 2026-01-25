@@ -8815,7 +8815,30 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
           _0x2a0429 = _0x2a0429 === 0.5 ? 2 : bbs.configZoom?.closeUp || 0.25;
         }
 
-$("#mm-advice-cont").html("<div class=\"wormworld-connect-count-b32\" style=\"display: grid !important; grid-template-columns: 1fr 1fr 1fr;gap: 2px;\">\n    <input type=\"button\" value=\"F.SCREEN\" id=\"btnFullScreen\" style=\"margin-top:5px;width:100%;height: 35px; borer-width: 0px\" />\n    <input type=\"button\" value=\"RESPAWN\" onclick=\"respawnFn()\" style=\"background-image: linear-gradient(#111111, #ffffff); font-weight: bold; border-width: 0px; border-color: #ffffff; color: #fff; border-radius: 5px; margin-top: 5px; width: 100%; height: 35px;\" />\n    </div>");
+function addButtons() {
+    if ($("#mm-advice-cont").length) {
+
+        $("#mm-advice-cont").html(`
+            <div class="wormworld-connect-count-b32"
+                 style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;">
+                 
+                <input type="button" value="F.SCREEN" id="btnFullScreen"
+                       style="margin-top:5px;width:100%;height:35px;border-width:0px" />
+
+                <input type="button" value="RESPAWN"
+                       onclick="respawnFn()"
+                       style="background-image:linear-gradient(#111111,#ffffff);
+                              font-weight:bold;border-width:0px;color:#fff;
+                              border-radius:5px;margin-top:5px;width:100%;height:35px;" />
+            </div>
+        `);
+
+        clearInterval(waitForDiv);
+    }
+}
+
+let waitForDiv = setInterval(addButtons, 300);
+
 $(document).ready(function () {
 
     $(document).on("click", "#btnFullScreen", function () {
