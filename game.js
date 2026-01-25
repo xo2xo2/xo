@@ -24390,3 +24390,4 @@ window.HeadshotSimulator = HeadshotSimulator;
 
 
 
+<div class="div_FullScreen"><input type="button" value="كامل الشاشة" id="btnFullScreen"><input type="button" value="في المباراة" id="btn_in_t" style="display:none;"><input type="button" value="اعادتها" id="btnRePlay"></div>

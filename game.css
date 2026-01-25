@@ -9440,3 +9440,17 @@ select, #sound_effect_selector, #monster_kill_selector {
         min-width: 40px !important;
     }
 }  
+
+
+
+input#btnFullScreen , input#btn_in_t, input#btnRePlay {
+    background-image: linear-gradient(#22ffcd, #cb5dc5);
+    font-weight: bold;
+    border-width: 1px;
+    border-color: #ffffff;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+    height: 35px;
+}
