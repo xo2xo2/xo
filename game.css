@@ -29,18 +29,6 @@ body {
     display: block !important;
 }
 
-input#btnFullScreen , input#btn_in_t, input#btnRePlay {
-    background-image: linear-gradient(#22ffcd, #cb5dc5);
-    font-weight: bold;
-    border-width: 1px;
-    border-color: #ffffff;
-    color: #fff;
-    border-radius: 5px;
-    margin-top: 5px;
-    width: 100%;
-    height: 35px;
-}
-
 
 /* ====================================================
    عناصر الحاوية الرئيسية
@@ -155,6 +143,20 @@ input#btnFullScreen , input#btn_in_t, input#btnRePlay {
 #JDHnkHtYwyXyVgG9 > div #adbl-continue-container #adbl-continue * {
     vertical-align: middle;
 }
+
+input#btnFullScreen , input#btn_in_t, input#btnRePlay {
+    background-image: linear-gradient(#22ffcd, #cb5dc5);
+    font-weight: bold;
+    border-width: 1px;
+    border-color: #ffffff;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+    height: 35px;
+}
+
+
 
 /* ====================================================
    غلاف اللعبة
