@@ -8816,7 +8816,35 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
         }
 
 $("#mm-advice-cont").html("<div class=\"wormworld-connect-count-b32\" style=\"display: grid !important; grid-template-columns: 1fr 1fr 1fr;gap: 2px;\">\n    <input type=\"button\" value=\"F.SCREEN\" id=\"btnFullScreen\" style=\"margin-top:5px;width:100%;height: 35px; borer-width: 0px\" />\n    <input type=\"button\" value=\"RESPAWN\" onclick=\"respawnFn()\" style=\"background-image: linear-gradient(#111111, #ffffff); font-weight: bold; border-width: 0px; border-color: #ffffff; color: #fff; border-radius: 5px; margin-top: 5px; width: 100%; height: 35px;\" />\n    </div>");
+     var _0x10e00a = document.getElementById("btnFullScreen");
 
+      if (_0x10e00a) {
+
+        _0x10e00a.addEventListener("click", function () {
+
+          var _0x364a9a = document.documentElement.requestFullScreen || document.documentElement.webkitRequestFullScreen || document.documentElement.mozRequestFullScreen;
+
+          if (_0x364a9a && !_wwc.fullscreen) {
+
+            try {
+
+              _wwc.fullscreen = true;
+
+              _0x364a9a.call(document.documentElement);
+
+            } catch (_0x532bf1) {}
+
+          } else {
+
+            _wwc.fullscreen = false;
+
+            document.exitFullscreen();
+
+          }
+
+        });
+
+      }
 
 
 
