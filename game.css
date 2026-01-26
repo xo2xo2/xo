@@ -660,7 +660,7 @@ input#btnFullScreen , input#btn_in_t, input#btnRePlay {
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-skin #mm-skin-canv {
     position: absolute;
-    top: 0;
+    top: -35px;
     left: 60px;
     width: 255px;
     height: 80px;
@@ -698,12 +698,12 @@ input#btnFullScreen , input#btn_in_t, input#btnRePlay {
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-skin #mm-skin-prev {
     left: 0;
     transform: scale(-1, 1);
-    top: 28px;
+    top: -11px;
 }
 
 #game-wrap #game-cont #stretch-box #main-menu-view #mm-line-center .column-middle #mm-menu-cont .mm-skin #mm-skin-next {
     right: 0;
-    top: 28px;
+    top: -11px;
 }
 
 /* تراكب المظهر */
