@@ -8412,7 +8412,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
                 y: 0
               };
             };
-            var _0x59d6c3 = "SKIN_" + _0x3591ab.id + "___Z";
+            var _0x59d6c3 = "SKIN_" + _0x3591ab.id + "_xo";
             var _0x30e969 = {
               id: _0x59d6c3,
               regionDict: {},
@@ -20315,7 +20315,7 @@ PREVIEW
 
       if (t.version_skin === 2) {
 
-        let id_item = "SKIN_" + t.id + "___Z"
+        let id_item = "SKIN_" + t.id + "_xo"
 
         const obj = {
 
