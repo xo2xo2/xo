@@ -8816,39 +8816,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
           _0x2a0429 = _0x2a0429 === 0.5 ? 2 : bbs.configZoom?.closeUp || 0.25;
         }
 
-// تعطيل زر الفل سكرين لعدم فائدتة 
-(function () {
-  const injectBtn = setInterval(() => {
-    const el = document.getElementById("mm-advice-cont");
-    if (!el) return;
 
-    el.innerHTML = `
-      <div class="wormworld-connect-count-b32" style="
-        display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 2px;
-      ">
-        <input
-          type="button"
-          value="RESPAWN"
-          onclick="respawnFn()"
-          style="
-            background-image: linear-gradient(#22ffcd, #cb5dc5);
-            font-weight: bold;
-            border: 0;
-            color: #fff;
-            border-radius: 5px;
-            margin-top: 11px;
-            width: 100%;
-            height: 35px;
-          "
-        />
-      </div>
-    `;
-
-    clearInterval(injectBtn);
-  }, 300);
-})();
         if (_0x138804.key === "m" || _0x138804.key === "M") {
           bbs.showSkinLines = !bbs.showSkinLines;
           // If disabling, hide existing skin lines
@@ -23692,7 +23660,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+// تعطيل زر الفل سكرين لعدم فائدتة 
+(function () {
+  const injectBtn = setInterval(() => {
+    const el = document.getElementById("mm-advice-cont");
+    if (!el) return;
 
+    el.innerHTML = `
+      <div class="wormworld-connect-count-b32" style="
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2px;
+      ">
+        <input
+          type="button"
+          value="RESPAWN"
+          onclick="respawnFn()"
+          style="
+            background-image: linear-gradient(#22ffcd, #cb5dc5);
+            font-weight: bold;
+            border: 0;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 11px;
+            width: 100%;
+            height: 35px;
+          "
+        />
+      </div>
+    `;
+
+    clearInterval(injectBtn);
+  }, 300);
+})();
 
 
 
