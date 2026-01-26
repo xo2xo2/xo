@@ -9052,7 +9052,7 @@ document.getElementById("btnFullScreen").addEventListener("click", function () {
             var _0x1bbcee = _0x3c7638.Lc.Xb().textureDict;
             var _0x1947e0 = _0x44576a === "B";
             if (_0x2bccbc !== "000") {
-              var _0x3b80e8 = "SKIN_S" + _0x2bccbc.substring(0, 2) + "___" + _0x2bccbc.substring(2);
+              var _0x3b80e8 = "SKIN_S" + _0x2bccbc.substring(0, 2) + "_xo" + _0x2bccbc.substring(2);
               var _0x38e9b2 = _0x1bbcee[_0x3b80e8];
               _0x227669.dh.Fh[_0xcbc279.ae].Eh.Hh = !_0x1947e0 ? parseInt(_wwc.skinMap[_0x2bccbc]) : _0x38e9b2 ? _0x3b80e8 : _0x227669.dh.Fh[_0xcbc279.ae].Eh.Hh;
             }
@@ -9137,7 +9137,7 @@ document.getElementById("btnFullScreen").addEventListener("click", function () {
         var _0x51f8b2 = _0x485808(_0x4c88e9, "a");
         var _0x264263 = _0x485808(_0x161e41, "f");
         var _0x2d3d31 = _0x485808(_0x14e305, "c");
-        var _0x1faac0 = _0x9d2f16 + _0x5491e9 + _0x36f698 + _0x3c3f0b.replace("__", "") + _0xf141bc + _0x51f8b2 + _0x264263 + _0x2d3d31;
+        var _0x1faac0 = _0x9d2f16 + _0x5491e9 + _0x36f698 + _0x3c3f0b.replace("__xo", "") + _0xf141bc + _0x51f8b2 + _0x264263 + _0x2d3d31;
         bbs.code = (_0x3c3f0b || "000") + "|" + (_0x2d3d31 || "00");
         function _0x51abd4(_0x47e2cb, _0x31c86a) {
           var _0x2d5895 = "";
