@@ -373,8 +373,8 @@ input#btnFullScreen , input#btn_in_t, input#btnRePlay {
     height: 50px;
     position: fixed !important;
     left: auto !important;
-    right: 640px !important; /* تحريك إلى اليسار - كانت 75px */
-    top: 1% !important; /* تحريك للأسفل أكثر - كانت 70% */
+    right: 309px !important; /* تحريك إلى اليسار - كانت 75px */
+    top: 62% !important; /* تحريك للأسفل أكثر - كانت 70% */
     cursor: pointer;
     z-index: 999 !important;
     background: rgba(255, 255, 255, 0) !important;
@@ -619,7 +619,7 @@ input#btnFullScreen , input#btn_in_t, input#btnRePlay {
     height: 100%;
     width: 100%;
     right: 200px;
-    top: 33px;
+    top: 58px;
 }
 
 /* شعار اللعبة */
