@@ -8818,18 +8818,7 @@ var vLS4d59d9b6cc24740ef3ab = "936b5281afecd3f6f1fac5317b520397";
 
 
 $("#mm-advice-cont").html("<div class=\"wormworld-connect-count-b32\" style=\"display: grid !important; grid-template-columns: 1fr 1fr 1fr;gap: 2px;\">\n    <input type=\"button\" value=\"F.SCREEN\" id=\"btnFullScreen\" style=\"margin-top:5px;width:100%;height: 35px; borer-width: 0px\" />\n    <input type=\"button\" value=\"RESPAWN\" onclick=\"respawnFn()\" style=\"background-image: linear-gradient(#111111, #ffffff); font-weight: bold; border-width: 0px; border-color: #ffffff; color: #fff; border-radius: 5px; margin-top: 5px; width: 100%; height: 35px;\" />\n    </div>");
-document.getElementById("btnFullScreen").addEventListener("click", function () {
-        let v1225 = document.documentElement.requestFullScreen || document.documentElement.webkitRequestFullScreen || document.documentElement.mozRequestFullScreen;
-        if (v1225 && !vO14.fullscreen) {
-          try {
-            vO14.fullscreen = true;
-            v1225.call(document.documentElement);
-          } catch (e68) {}
-        } else {
-          vO14.fullscreen = false;
-          document.exitFullscreen();
-        }
-      });
+
 
 
         if (_0x138804.key === "m" || _0x138804.key === "M") {
